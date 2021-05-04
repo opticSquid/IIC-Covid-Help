@@ -1,0 +1,111 @@
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,400;0,600;0,700;1,400&display=swap');
+.homepage__wrapper{
+    width: 100vw;
+    height: 100vh;
+   background: url("../images/vector/illustration.svg");
+   background-repeat: no-repeat;
+   background-size: 75%;
+   background-position: right -1.8em;
+   display: flex;
+   flex-direction: column;
+   position: fixed;
+
+
+}
+
+
+.homepage__wrapper::before{
+    content: "";
+    position: absolute;
+    width: 75%;
+     
+
+}
+
+.homepage__wrapper--light {
+    /* background-color: #FDFDFD; */
+}
+.homepage__wrapper--dark {
+    background-color: #000;
+}
+
+.homepage__header{
+    /* background:#ff0000aa; */
+    height: 9rem;
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    padding: 0 3rem;
+    padding-top: 2rem;
+
+    align-items: flex-start;
+    justify-content: space-between;
+}
+.homepage__logo{
+    height: 5rem;
+    width: 5rem;
+    
+    background: url("../images//vector/logo.svg");
+    background-size: cover;
+}
+
+.homepage__profile{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.homepage__profile--avatar{
+    width: 60px;
+    height: 60px;
+    border-radius: 100%;
+    background:url("../images/vector/testUserIcon.svg");
+    background-size: cover;
+    position: relative;
+    z-index: 2;
+}
+.homepage__profile--tag{
+    width: 120px;
+
+    font-family: 'Open Sans',sans-serif;
+    font-weight: 600;
+    color:#707070;
+    height: 40px;
+    line-height: 40px;
+    text-align: center;
+    background-color: #fff;
+    transform: translateX(10px);
+}
+
+.homepage__nav--vertical{
+    height: 100%;
+    width: 7rem;
+    background-color: #fff;
+    margin: 1.5rem 2rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    border-radius: 25px;
+    box-shadow: 30px 30px 50px #00000023;
+    
+}
+
+.homepage__nav--vertical>div{
+    color:#707070;
+    font-family: 'Open Sans',
+    sans-serif;
+    text-align: center;
+}
+.homepage__nav--vertical>.active div{
+    width: 70%;
+    height: 10px;
+    background-color: #5200DD;
+    margin: 0 auto;
+    border-radius: 5px;
+    margin-top: .5rem;
+}
+.homepage__body{
+    /* background:#00ff00aa; */
+    height: 100%;
+    width: 100%;
+}
