@@ -1,0 +1,95 @@
+.signIn{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+.logoSignIn{
+    width: 40%;
+    padding: 4rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    font-family: 'Open Sans', sans-serif;
+    font-size: 1.3rem;
+    transform: scale(0.7);
+}
+
+.logoSignIn h2{
+    text-align: start;
+    color: #838383;
+}
+
+.form{
+    width: 40%;
+    height: 75%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.form input{
+    width: 100%;
+    font-size: 1.7rem;
+    font-family: 'Open Sans', sans-serif;
+    font-weight: bold;
+    height: 2.8em;
+    border-radius: 1.4em;
+    border: none;
+    padding: 0px 2em;
+    color: #838383;
+    box-shadow: 0.7em 0.7em 2em rgba(0,0,0,0.1);
+}
+
+.form input:nth-child(1){
+    margin-bottom: -0.5em;
+}
+
+.form input:focus{
+    outline: none;
+}
+
+.signin,.signup,.forgetPassword{
+    
+    font-family: 'Open Sans', sans-serif;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: none;
+    background-color: #fff;
+    cursor: pointer;
+}
+
+.forgetPassword{
+    width: 55%;
+    height: 2.5em;
+    font-size: 1rem;
+    font-weight: 600;
+    color: #838383;
+    box-shadow: 1em 1em 2em rgba(0,0,0,0.2);
+    border-radius: 1.25em;
+}
+
+.signin,.signup{
+    width: 60%;
+    height: 2.8em;
+    font-size: 1.7rem;
+    text-decoration: none;
+    border-radius: 1.5em;
+    box-shadow: 1em 1em 2em rgba(0,0,0,0.2);
+}
+
+.signin{
+    background-color: #5600E7;
+    color: #fff;
+    font-weight: 500;
+}
+
+.signup{
+    color: #000;
+    font-weight: bold;
+}
