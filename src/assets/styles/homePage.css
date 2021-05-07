@@ -297,6 +297,32 @@
   padding-right: 0.5rem;
   padding-left: 1rem;
 }
+
+.HP__add{
+  width: fit-content;
+  margin: .5rem auto;
+  padding: .6rem 10rem;
+  text-align: center;
+  color: #fdfdfd;
+  background-color: #2196f3;
+  border-radius: 10px;
+}
+.HP__add:hover{
+  color: #fff;
+  background-color: #5600e7;
+  cursor: pointer;
+}
+
+@media only screen and (max-width: 840px) {
+  .HP__add {
+    padding: .6rem 6rem;
+  }
+}
+@media only screen and (max-width: 560px) {
+  .HP__add {
+    padding: .6rem 5rem;
+  }
+}
 /************************  media quieries for homepage * ***********************************/
 @media only screen and (max-width: 1500px) {
   .homepage__wrapper {
