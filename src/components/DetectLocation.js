@@ -16,7 +16,7 @@ function DetectLocation() {
       coordinates: [crd.longitude, crd.latitude],
     };
     location.push(locationDoc);
-    
+
     // if (where === "vendor") {
     //   dispatch({
     //     type: "VENDOR_LOCATION",
@@ -32,7 +32,6 @@ function DetectLocation() {
     // }
   };
   const errors = (err) => {
-    
     alert("Location Permission Denied! Emable permission to detect location");
   };
   useEffect(() => {
@@ -48,10 +47,8 @@ function DetectLocation() {
             .query({ name: "geolocation" })
             .then((result) => {
               if (result.state === "granted") {
-                
                 navigator.geolocation.getCurrentPosition(success);
               } else if (result.state === "prompt") {
-                
                 navigator.geolocation.getCurrentPosition(
                   success,
                   errors,
@@ -63,9 +60,7 @@ function DetectLocation() {
                 );
                 setdisabled(true);
               }
-              result.onchange = function () {
-                
-              };
+              result.onchange = function () {};
             });
         } else {
           alert("Sorry Not available!");

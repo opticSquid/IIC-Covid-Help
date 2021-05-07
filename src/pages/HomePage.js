@@ -17,11 +17,8 @@ function HomePage() {
   */
   useEffect(() => {
     if ("geolocation" in navigator) {
-      navigator.geolocation.getCurrentPosition(function (position) {
-        
-      });
+      navigator.geolocation.getCurrentPosition(function (position) {});
     } else {
-      
     }
   }, []);
 
