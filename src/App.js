@@ -17,9 +17,9 @@ function App() {
   return (
     <>
       <Router>
-        <Route path="/" exact component={HomePage} />
         <Route path="/about" component={AboutPage} />
         <Route path="/login" component={login} />
+        <Route path="/" exact component={HomePage} />
       </Router>
       <DetectLocation />
     </>
