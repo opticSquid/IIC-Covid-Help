@@ -95,6 +95,7 @@ function DataContextProvider(props) {
   const [oxygenData] = useState(dummyOxygendata);
   const [bedData] = useState(dummyBeddata);
   const [isLogin, setIsLogin] = useState(false);
+  const [accessToken, setAcessToken] = useState(null);
   return (
     <DataContext.Provider
       value={{
@@ -102,6 +103,8 @@ function DataContextProvider(props) {
         bed: bedData,
         isLogin: isLogin,
         setIsLogin: setIsLogin,
+        accessToken: accessToken,
+        setAcessToken: setAcessToken,
       }}
     >
       {props.children}
