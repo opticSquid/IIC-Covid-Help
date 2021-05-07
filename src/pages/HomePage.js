@@ -37,7 +37,7 @@ function HomePage() {
         {/* the top right profile icon */}
         <div className="homepage__profile">
           <div className="homepage__profile--tag">Hey, User</div>
-          <div className="homepage__profile--avatar"></div>
+          <div className="homepage__profile--avatar" />
         </div>
         {/* headings */}
         <div className="homepage__heading">

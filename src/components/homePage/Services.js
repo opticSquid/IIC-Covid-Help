@@ -74,7 +74,7 @@ function Services() {
         </div>
       </div>
       <div className="HPCat__search--container">
-        <input type="text" placeholder="Enter Search Radius"></input>
+        <input type="text" placeholder="Enter Search Radius" />
         <div>
           <FontAwesomeIcon icon={faSearch} />
         </div>
