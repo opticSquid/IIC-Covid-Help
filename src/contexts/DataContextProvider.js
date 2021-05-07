@@ -94,8 +94,16 @@ function DataContextProvider(props) {
   // removed setOxygenData and setBedData as they were unused
   const [oxygenData] = useState(dummyOxygendata);
   const [bedData] = useState(dummyBeddata);
+  const [isLogin, setIsLogin] = useState(false);
   return (
-    <DataContext.Provider value={{ oxygen: oxygenData, bed: bedData }}>
+    <DataContext.Provider
+      value={{
+        oxygen: oxygenData,
+        bed: bedData,
+        isLogin: isLogin,
+        setIsLogin: setIsLogin,
+      }}
+    >
       {props.children}
     </DataContext.Provider>
   );
