@@ -17,11 +17,8 @@ function HomePage() {
   */
   useEffect(() => {
     if ("geolocation" in navigator) {
-      navigator.geolocation.getCurrentPosition(function (position) {
-        console.log([position.coords.longitude, position.coords.latitude]);
-      });
+      navigator.geolocation.getCurrentPosition(function (position) {});
     } else {
-      console.log("Location Not Available");
     }
   }, []);
 
