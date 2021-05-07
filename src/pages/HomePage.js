@@ -3,6 +3,8 @@ import "../assets/styles/homePage.css";
 import SelectLocation from "../components/homePage/SelectLocation";
 import Services from "../components/homePage/Services";
 
+import Navigation from "../components/homePage/Navigation";
+
 /*
 this is the hopepage component
 it acts as a wrapper to all the other components
@@ -16,7 +18,7 @@ function HomePage() {
   useEffect(() => {
     if ("geolocation" in navigator) {
       navigator.geolocation.getCurrentPosition(function (position) {
-        console.log(position.coords.latitude, position.coords.longitude);
+        console.log([position.coords.longitude, position.coords.latitude]);
       });
     } else {
       console.log("Location Not Available");
@@ -29,23 +31,26 @@ function HomePage() {
   let wrapperDivClass = "homepage__wrapper homepage__wrapper--light";
 
   return (
-    <div className={wrapperDivClass}>
-      {/* the top right profile icon */}
-      <div className="homepage__profile">
-        <div className="homepage__profile--tag">Hey, User</div>
-        <div className="homepage__profile--avatar"></div>
-      </div>
-      {/* headings */}
-      <div className="homepage__heading">
-        <h3>Covid-19</h3>
-        <h2>Help Resources</h2>
-      </div>
-      {/* (select option to select location and the cards based on categories )
+    <>
+      <Navigation />
+      <div className={wrapperDivClass}>
+        {/* the top right profile icon */}
+        <div className="homepage__profile">
+          <div className="homepage__profile--tag">Hey, User</div>
+          <div className="homepage__profile--avatar"></div>
+        </div>
+        {/* headings */}
+        <div className="homepage__heading">
+          <h3>Covid-19</h3>
+          <h2>Help Resources</h2>
+        </div>
+        {/* (select option to select location and the cards based on categories )
         separated into thier own components
       */}
-      <SelectLocation />
-      <Services />
-    </div>
+        <SelectLocation />
+        <Services />
+      </div>
+    </>
   );
 }
 

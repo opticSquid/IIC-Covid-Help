@@ -7,14 +7,14 @@ import {
   faMapMarkerAlt,
   faStar,
   faAngleDown,
-  faPumpMedical,
+  faBed,
 } from "@fortawesome/free-solid-svg-icons";
 
 /* generates cards based on data provided on prop*/
 // make similar sturture for other cards like vacccine and beds
 //uses font awesome for icons
 
-function OxygenCard(props) {
+function BedCard(props) {
   const spring = {
     type: "spring",
     damping: 25,
@@ -51,7 +51,8 @@ function OxygenCard(props) {
           </div> */}
         </div>
         <div className="status-wrapper">
-          <div className="status available">Unavailable</div>
+          <div className="status available">Available</div>
+          {/* // unavailable part left */}
           <div className="updated">updated {props.updated} ago</div>
         </div>
       </div>
@@ -70,8 +71,8 @@ function OxygenCard(props) {
             <span>{props.rating}</span>
           </div>
           <div className="oxygen tag">
-            <FontAwesomeIcon icon={faPumpMedical} color="#2196F3" />
-            <span>{props.stock} Cylinders</span>
+            <FontAwesomeIcon icon={faBed} color="#2196F3" />
+            <span>{props.stock} Beds left</span>
           </div>
         </div>
       </div>
@@ -90,4 +91,4 @@ function OxygenCard(props) {
   );
 }
 
-export default OxygenCard;
+export default BedCard;

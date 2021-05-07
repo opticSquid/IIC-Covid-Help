@@ -24,28 +24,35 @@
     flex-direction: column;
     align-items: center;
 }
-
-.navigation--vertical>div {
+.navigation--vertical>div:hover
+{
+    color: #000;
+}
+.navigation--vertical a:hover
+{
+    color: #000;
+}
+.navigation--vertical>div,a {
     color: #707070;
+    text-decoration: none;
     font-family: 'Open Sans',
         sans-serif;
     text-align: center;
     cursor: pointer;
 }
 
-.navigation--vertical>div:hover {
-    color: #000;
-}
+
 
 .navigation--active div {
     width: 70%;
     height: 10px;
     background-color: #5200DD;
     margin: 0 auto;
-    border-radius: 5px;
+    border-radius: 8px;
     margin-top: .5rem;
     animation: animNavBorder .5s ease-out;
 }
+
 
 
 .navigation--vertical {
@@ -108,14 +115,49 @@
         padding-top: .5rem;
         position: absolute;
         height: 5rem;
+        width: 6.5rem;
     }
 
     .navigation--vertical {
         display: none;
+        z-index: -1;
     }
 
     .navigation__logo {
         height: 60px;
         width: 60px;
+    }
+}
+
+/**************************************************************/
+.navigation--horizontal{
+    position: fixed;
+    z-index: 2;
+    width: 92%;
+    left: 50%;
+    bottom : 1rem;
+    border-radius: 25px;
+    transform: translate(-50%,0);
+    background-color: #5200DD;
+    box-shadow: 30px 30px 50px #00000023;
+    display: none;
+    z-index: -1;
+
+}
+@media only screen and (max-width: 760px) {
+    .navigation--horizontal {
+        display: flex;
+        z-index: 5;
+        justify-content: space-around;
+        align-items: center;
+        color: #fff;
+        font-size: 1.2rem;
+        height: 3.5rem;
+    }
+    .navigation--horizontal a{
+        color: #fff;
+    }
+    .navigation--horizontal div:hover{
+        font-size: 1.4rem;
     }
 }

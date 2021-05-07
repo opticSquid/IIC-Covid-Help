@@ -2,11 +2,11 @@ import React, { useState, useContext } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faSearch } from "@fortawesome/free-solid-svg-icons";
 import OxygenCard from "./Cards/OxygenCard";
-import { OxygenContext } from "../../contexts/OxygenContextProvider";
+import { DataContext } from "../../contexts/DataContextProvider";
+import BedCard from "./Cards/BedCard";
 
 function Services() {
-  /* uses oxygen context for data */
-  const oxygenData = useContext(OxygenContext);
+  /* uses oxygen context for data */ const data = useContext(DataContext);
 
   /* this variable sets the active selection from diffrent categories
   like oxygen/beds/vaccines etc*/
@@ -25,9 +25,24 @@ function Services() {
   // only oxygen works as of now
   const cardBuilder = () => {
     if (active === 0) {
-      return oxygenData.map((card) => {
+      return data.oxygen.map((card) => {
         return (
           <OxygenCard
+            key={card.id}
+            place={card.place}
+            updated={card.updated}
+            available={card.available}
+            phone={card.phone}
+            location={card.location}
+            rating={card.rating}
+            stock={card.stock}
+          />
+        );
+      });
+    } else if (active === 1) {
+      return data.bed.map((card) => {
+        return (
+          <BedCard
             key={card.id}
             place={card.place}
             updated={card.updated}

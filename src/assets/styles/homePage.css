@@ -472,8 +472,17 @@
         margin-bottom: 1rem;
         z-index: 3;
     }
-    .HPCat__selector{
-        display: none;
+    .HPCat__selector {
+        padding: 1rem 0rem;
+        width: 100%;
+        height: fit-content;
+
+    }
+
+    .HPCat__selector div {
+        height: fit-content;
+        margin: 0 .2rem;
+        border-radius: 10px;
     }
     .homepage__profile{
         margin-bottom: .9rem;
@@ -491,6 +500,10 @@
         font-size: .8rem;
         line-height: 30px;
         transform: translateX(10px);
+    }
+    .homepage__wrapper{
+        padding-left: 1rem;
+        padding-right: 1rem;
     }
 }
 
