@@ -11,7 +11,7 @@ export const Index = () => {
                 <Route exact path="/" >
                     <Signin/>
                 </Route>
-                <Route path="/Signup" >
+                <Route path="/signup" >
                     <Signup/>
                 </Route>
                 </Switch>

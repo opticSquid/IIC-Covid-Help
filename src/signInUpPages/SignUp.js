@@ -2,6 +2,6 @@ import React from 'react';
 
 export const Signup = () => {
     return (
-        <h1>Sayan</h1>
+        <h1>Sign Up</h1>
     );
 };
