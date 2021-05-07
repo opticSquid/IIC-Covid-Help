@@ -3,7 +3,7 @@ import "./assets/styles/main.css";
 import DetectLocation from "./components/DetectLocation";
 import HomePage from "./pages/HomePage";
 import { BrowserRouter as Router, Route, Link } from "react-router-dom";
-import login from './signInUpPages/nav';
+import login from "./signInUpPages/nav";
 
 import AboutPage from "./pages/AboutPage";
 import DataContextProvider from "./contexts/DataContextProvider";
