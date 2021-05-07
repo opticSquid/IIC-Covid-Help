@@ -17,11 +17,8 @@ function HomePage() {
   */
   useEffect(() => {
     if ("geolocation" in navigator) {
-      navigator.geolocation.getCurrentPosition(function (position) {
-        console.log([position.coords.longitude, position.coords.latitude]);
-      });
+      navigator.geolocation.getCurrentPosition(function (position) {});
     } else {
-      console.log("Location Not Available");
     }
   }, []);
 
@@ -37,7 +34,7 @@ function HomePage() {
         {/* the top right profile icon */}
         <div className="homepage__profile">
           <div className="homepage__profile--tag">Hey, User</div>
-          <div className="homepage__profile--avatar"></div>
+          <div className="homepage__profile--avatar" />
         </div>
         {/* headings */}
         <div className="homepage__heading">

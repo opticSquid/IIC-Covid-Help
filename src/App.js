@@ -3,7 +3,8 @@ import "./assets/styles/main.css";
 import DetectLocation from "./components/DetectLocation";
 import HomePage from "./pages/HomePage";
 import { BrowserRouter as Router, Route } from "react-router-dom";
-import LoginPage from "./pages/LoginPage";
+import login from "./signInUpPages/nav";
+
 import AboutPage from "./pages/AboutPage";
 import DataContextProvider from "./contexts/DataContextProvider";
 
@@ -21,7 +22,7 @@ function App() {
           <Route path="/" exact component={HomePage} />
         </DataContextProvider>
         <Route path="/about" component={AboutPage} />
-        <Route path="/login" component={LoginPage} />
+        <Route path="/login" component={login} />
       </Router>
       <DetectLocation />
     </>
