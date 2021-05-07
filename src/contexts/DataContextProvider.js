@@ -91,6 +91,7 @@ const dummyBeddata = [
 ];
 
 function DataContextProvider(props) {
+  // removed setOxygenData and setBedData as they were unused
   const [oxygenData] = useState(dummyOxygendata);
   const [bedData] = useState(dummyBeddata);
   return (
