@@ -6,9 +6,7 @@ import {
   faCommentDots,
   faHome,
   faInfoCircle,
-  faMailBulk,
   faMapMarkedAlt,
-  faVoicemail,
 } from "@fortawesome/free-solid-svg-icons";
 
 /* the vertical location bar */

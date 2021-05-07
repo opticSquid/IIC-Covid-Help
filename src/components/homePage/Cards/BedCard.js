@@ -21,11 +21,11 @@ function BedCard(props) {
     stiffness: 120,
   };
 
-  const transition = {
-    type: "spring",
-    damping: 25,
-    stiffness: 120,
-  };
+  // const transition = {
+  //   type: "spring",
+  //   damping: 25,
+  //   stiffness: 120,
+  // };
 
   const animVarient = {
     in: {

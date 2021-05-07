@@ -91,8 +91,8 @@ const dummyBeddata = [
 ];
 
 function DataContextProvider(props) {
-  const [oxygenData, setOxygenData] = useState(dummyOxygendata);
-  const [bedData, setBedData] = useState(dummyBeddata);
+  const [oxygenData] = useState(dummyOxygendata);
+  const [bedData] = useState(dummyBeddata);
   return (
     <DataContext.Provider value={{ oxygen: oxygenData, bed: bedData }}>
       {props.children}
