@@ -1,10 +1,9 @@
 import React,{ useRef } from 'react';
 import logoImg from '../svgs/logo.svg';
 import { Link } from 'react-router-dom';
-import e3 from '../svgs/Ellipse3.svg';
 import './signIn.css';
 
-export const Signin = ()=>{
+const Signin = ()=>{
     return (
         <>
             <div className="signIn">
@@ -52,3 +51,5 @@ const Form = () => {
         </form>
     );
 };
+
+export default Signin;
