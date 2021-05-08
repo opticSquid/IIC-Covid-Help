@@ -83,7 +83,7 @@ function Services() {
           Vaccine
         </div>
       </div>
-      <div className="HPCat__search--container">
+      <div className="HPCat__search--container" style={{width:"63em",zIndex:"5", height:"3em",boxShadow:"0px 0px 15px 0px rgba(0, 0, 0, 0.2)"}}>
         <input type="text" placeholder="Enter Search Radius" />
         <div>
           <FontAwesomeIcon icon={faSearch} />
