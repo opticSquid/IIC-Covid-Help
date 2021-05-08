@@ -1,15 +1,18 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import logoImg from '../svgs/logo.svg';
 import { Link } from 'react-router-dom';
 import IsOk from '../svgs/ok.svg';
 import wrong from '../svgs/wrong.svg';
+import { useStateContext } from "../contexts/ContextProvider";
+import Axios from 'axios';
 import './signup.css';
 
 const Signup = () => {
+    const [{origin},dispatch]=useStateContext();
     return (
         <div className='signUp1'>
             <Logo/>
-            <Form/>
+            <Form origin={origin} dispatch={dispatch} />
         </div>
     );
 };
@@ -26,8 +29,9 @@ const Logo = () => {
 };
 
 
-const Form = () => {
+const Form = ({origin,dispatch}) => {
     let VerifiedClass = null;
+    //const [flag,Setflag] = useState("");
     const [verifedPassword,SetVerifiedPassword] = useState("");
     const [password,Setpassword] = useState("");
     const [name,Setname] = useState("");
@@ -48,11 +52,27 @@ const Form = () => {
                         alert("Please Verify Your Password");
                     }else if(verifedPassword!==password){
                         alert("Please Enter Correct Password");
+                    }else{
+                        let newUser = {Email: email,Name: name, Password: password};
+                        Axios.post(`${origin}/signup`,newUser).then((response)=>{
+                            console.log({ refreshToken: response.data.refreshToken, accessToken: response.data.accessToken });
+                            localStorage.setItem('refreshToken', response.data.refreshToken);
+                            dispatch({
+                                type: "Add Token",
+                                data:  response.data.accessToken,
+                            });
+                        }).catch((error)=>{
+                            if(error)
+                            {
+                                console.log("Error occoured while signing up", error);
+                            }
+                        });
                     }
                 }
             }
         }
     };
+
     if(password!==verifedPassword){
         console.log('wrong');
         VerifiedClass = wrong;
