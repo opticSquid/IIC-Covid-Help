@@ -86,14 +86,15 @@ function Services() {
       <div
         className="HPCat__search--container"
         style={{
-          width: "63em",
-          zIndex: "5",
+          width: "30em",
           height: "3em",
           boxShadow: "0px 0px 15px 0px rgba(0, 0, 0, 0.2)",
+          marginLeft: "17em",
+          marginRight: "22em"
         }}
       >
-        <input type="text" placeholder="Enter Search Radius" />
-        <div>
+        <input style={{ height: "3.3em" }} type="text" placeholder="Enter Search Radius" />
+        <div style={{ height: "3em" }}>
           <FontAwesomeIcon icon={faSearch} />
         </div>
       </div>
