@@ -2,12 +2,10 @@ import React from "react";
 import "./assets/styles/main.css";
 import DetectLocation from "./components/DetectLocation";
 import HomePage from "./pages/HomePage";
-import { BrowserRouter as Router, Route, Link } from "react-router-dom";
+import { BrowserRouter as Router, Route } from "react-router-dom";
 import Login from './signInUpPages/SignIn';
 import Signup from './signInUpPages/SignUp';
-
 import AboutPage from "./pages/AboutPage";
-import DataContextProvider from "./contexts/DataContextProvider";
 
 function App() {
   /*OxygenContextProvider is a context provider that has 
@@ -19,12 +17,11 @@ function App() {
   return (
     <>
       <Router>
-        <DataContextProvider>
-          <Route path="/" exact component={HomePage} />
-        </DataContextProvider>
         <Route path="/about" component={AboutPage} />
         <Route path="/login" component={Login} />
         <Route path="/signup" component={Signup} />
+        <Route path="/login" component={Login} />
+        <Route path="/" exact component={HomePage} />
       </Router>
       <DetectLocation />
     </>

@@ -8,21 +8,23 @@ function SelectLocation(props) {
   return (
     <div className="homepage__select">
       <select>
-        <option>Kolkata</option>
+        <option>State</option>
+        <option>Delhi</option>
+        <option>Bihar</option>
+        <option>Jharkhand</option>
+        <option>Maharashtra</option>
+        <option>West Bengal</option>
+        <option>Karnataka</option>
+      </select>
+      <select>
+        <option>District</option>
         <option>Delhi</option>
         <option>Mumbai</option>
         <option>Raipur</option>
         <option>Dhanbad</option>
       </select>
       <select>
-        <option>Kolkata</option>
-        <option>Delhi</option>
-        <option>Mumbai</option>
-        <option>Raipur</option>
-        <option>Dhanbad</option>
-      </select>
-      <select>
-        <option>Kolkata</option>
+        <option>City</option>
         <option>Delhi</option>
         <option>Mumbai</option>
         <option>Raipur</option>

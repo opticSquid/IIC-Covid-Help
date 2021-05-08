@@ -91,10 +91,22 @@ const dummyBeddata = [
 ];
 
 function DataContextProvider(props) {
-  const [oxygenData, setOxygenData] = useState(dummyOxygendata);
-  const [bedData, setBedData] = useState(dummyBeddata);
+  // removed setOxygenData and setBedData as they were unused
+  const [oxygenData] = useState(dummyOxygendata);
+  const [bedData] = useState(dummyBeddata);
+  const [isLogin, setIsLogin] = useState(false);
+  const [accessToken, setAcessToken] = useState(null);
   return (
-    <DataContext.Provider value={{ oxygen: oxygenData, bed: bedData }}>
+    <DataContext.Provider
+      value={{
+        oxygen: oxygenData,
+        bed: bedData,
+        isLogin: isLogin,
+        setIsLogin: setIsLogin,
+        accessToken: accessToken,
+        setAcessToken: setAcessToken,
+      }}
+    >
       {props.children}
     </DataContext.Provider>
   );

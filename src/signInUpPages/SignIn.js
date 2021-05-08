@@ -1,4 +1,4 @@
-import React,{ useRef } from 'react';
+import React,{ useState } from 'react';
 import logoImg from '../svgs/logo.svg';
 import { Link } from 'react-router-dom';
 import './signIn.css';
@@ -26,16 +26,14 @@ const Logo = () => {
 };
 
 const Form = () => {
-    let emailDOM = useRef(null);
-    let passwordDOM = useRef(null);
+    const [email,SetEmail] = useState("");
+    const [password,SetPassword] = useState("");
     const submitHandler = (e) => {
         e.preventDefault();
-        const email = emailDOM.current.value;
-        const password = passwordDOM.current.value;
-        if(!email){
+        if(email===""){
             alert("Please enter your email");
         }else{
-            if(!password){
+            if(password===""){
                 alert("Please enter the password");
             }
         }
@@ -43,8 +41,8 @@ const Form = () => {
     }
     return (
         <form className="form">
-            <input type="text" ref={emailDOM} className="input" placeholder="Email or Mobile Number"/>
-            <input type="password" ref={passwordDOM} className="input" placeholder="Password"/>
+            <input type="text" onChange={(e)=>SetEmail(e.target.value)} className="input" placeholder="Email or Mobile Number" required/>
+            <input type="password" onChange={(e)=>SetPassword(e.target.value)} className="input" placeholder="Password" required/>
             <button type="submit" onClick={(e) => submitHandler(e)} className="signin">Sign In</button>
             <button className="forgetPassword">Forget Password?</button>
             <p>Don't Have an Account? <Link to="/signup" className="signup">Sign Up</Link></p>
