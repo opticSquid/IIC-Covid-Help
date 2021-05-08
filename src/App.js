@@ -20,7 +20,6 @@ function App() {
         <Route path="/about" component={AboutPage} />
         <Route path="/login" component={Login} />
         <Route path="/signup" component={Signup} />
-        <Route path="/login" component={Login} />
         <Route path="/" exact component={HomePage} />
       </Router>
       <DetectLocation />
