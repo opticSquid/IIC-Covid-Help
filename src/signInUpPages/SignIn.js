@@ -18,7 +18,7 @@ const Logo = () => {
     return (
         <> 
             <section className="logoSignIn">
-                <img src={logoImg}/>
+                <img src={logoImg} alt="Logo"/>
                 <h2>Helping people connect to the emergency services</h2>
             </section>
         </>
