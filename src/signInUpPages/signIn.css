@@ -105,6 +105,11 @@
     color: #fff;
     font-weight: 500;
     margin-bottom: -0.4em;
+    transition: box-shadow 0.5s ease;
+}
+
+.signin:hover{
+    box-shadow: none;
 }
 
 p{
@@ -144,9 +149,11 @@ p{
         margin: 0px;
     }
     .logoSignIn{
+        position: relative;
         transform: scale(0.4);
         margin-top: -7em;
         margin-bottom: -8em;
+        right: -0.3em;
         pointer-events: none;
     }
     .form{

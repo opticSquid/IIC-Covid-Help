@@ -1,79 +1,53 @@
-import React, { useRef } from "react";
-import logoImg from "../svgs/logo.svg";
-import { Link } from "react-router-dom";
-// removing e3 from Sayan's code as it was unused
-// import e3 from '../svgs/Ellipse3.svg';
-import "./signIn.css";
+import React,{ useState } from 'react';
+import logoImg from '../svgs/logo.svg';
+import { Link } from 'react-router-dom';
+import './signIn.css';
 
-export const Signin = () => {
-  return (
-    <>
-      <div className="signIn">
-        <Logo />
-        <Form />
-      </div>
-    </>
-  );
+const Signin = ()=>{
+    return (
+        <>
+            <div className="signIn">
+                <Logo/>
+                <Form/>
+            </div>
+        </>
+    );
 };
 
 const Logo = () => {
-  return (
-    <>
-      <section className="logoSignIn">
-        {/* changing Sayan's code to supress compiler warning 
-          adding alt attribute
-          */}
-        <img src={logoImg} alt="logo" />
-        <h2>Helping people connect to the emergency services</h2>
-      </section>
-    </>
-  );
+    return (
+        <> 
+            <section className="logoSignIn">
+                <img src={logoImg}/>
+                <h2>Helping people connect to the emergency services</h2>
+            </section>
+        </>
+    );
 };
 
 const Form = () => {
-  let emailDOM = useRef(null);
-  let passwordDOM = useRef(null);
-  const submitHandler = (e) => {
-    e.preventDefault();
-    const email = emailDOM.current.value;
-    const password = passwordDOM.current.value;
-    if (!email) {
-      alert("Please enter your email");
-    } else {
-      if (!password) {
-        alert("Please enter the password");
-      }
+    const [email,SetEmail] = useState("");
+    const [password,SetPassword] = useState("");
+    const submitHandler = (e) => {
+        e.preventDefault();
+        if(email===""){
+            alert("Please enter your email");
+        }else{
+            if(password===""){
+                alert("Please enter the password");
+            }
+        }
+        console.log(email,password);
     }
-    console.log(email, password);
-  };
-  return (
-    <form className="form">
-      <input
-        type="text"
-        ref={emailDOM}
-        className="input"
-        placeholder="Email or Mobile Number"
-      />
-      <input
-        type="password"
-        ref={passwordDOM}
-        className="input"
-        placeholder="Password"
-      />
-      <button
-        type="submit"
-        onClick={(e) => submitHandler(e)}
-        className="signin"
-      >
-        Sign In
-      </button>
-      <button className="forgetPassword">Forget Password?</button>
-      <p>
-        Don't Have an Account?{" "}
-        <Link to="/signup" className="signup">
-          Sign Up
-        </Link>
-      </p>
-    </form>
-  );
+    return (
+        <form className="form">
+            <input type="text" onChange={(e)=>SetEmail(e.target.value)} className="input" placeholder="Email or Mobile Number" required/>
+            <input type="password" onChange={(e)=>SetPassword(e.target.value)} className="input" placeholder="Password" required/>
+            <button type="submit" onClick={(e) => submitHandler(e)} className="signin">Sign In</button>
+            <button className="forgetPassword">Forget Password?</button>
+            <p>Don't Have an Account? <Link to="/signup" className="signup">Sign Up</Link></p>
+        </form>
+    );
 };
+
+export default Signin;
