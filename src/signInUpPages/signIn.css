@@ -149,9 +149,11 @@ p{
         margin: 0px;
     }
     .logoSignIn{
+        position: relative;
         transform: scale(0.4);
         margin-top: -7em;
         margin-bottom: -8em;
+        right: -0.3em;
         pointer-events: none;
     }
     .form{

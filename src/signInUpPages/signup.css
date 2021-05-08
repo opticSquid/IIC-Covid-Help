@@ -1,0 +1,228 @@
+:root{
+    --violet: #5600E7;
+    --green: #28C937;
+    --gray: #838383;
+    --font: 'Open Sans', sans-serif;
+    --phoneShadow: 0px 0px 2em 1em rgba(0,0,0,0.05);
+}
+
+.signUp1{
+    width: 100%;
+    height: 100vh;
+    background-image: url('../svgs/logo1.svg');
+    background-repeat: no-repeat;
+    background-size: 100% auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+}
+
+.logoSignUp1{
+    width: 45%;
+    padding: 4rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    font-family: var(--font);
+    font-size: 1.3rem;
+    transform: scale(0.7);
+}
+
+.logoSignUp1 h2{
+    width: 110%;
+    text-align: start;
+    color: var(--gray);
+}
+
+.form1{
+    position: relative;
+    width: 55%;
+    height: 30em;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.form1>.input1{
+    width: 85%;
+    font-size: 1.5rem;
+    font-family: var(--font);
+    font-weight: bold;
+    height: 2.8em;
+    border-radius: 1.4em;
+    border: none;
+    padding: 0px 2em;
+    color: var(--gray);
+    box-shadow: 0.7em 0.7em 2em rgba(0,0,0,0.3);
+}
+
+.form1 .verify{
+    position: relative;
+    width: 85%;
+    font-size: 1.5rem;
+    height: 2.8em;
+    border-radius: 1.4em;
+    border: none;
+    background-color: transparent;
+}
+
+.verify img{
+    position: absolute;
+    right: 0.5em;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+.verify .input1{
+    width: 100%;
+    font-size: 1.5rem;
+    font-family: var(--font);
+    font-weight: bold;
+    height: 100%;
+    border-radius: 1.4em;
+    border: none;
+    padding: 0px 2em;
+    color: var(--gray);
+    box-shadow: 0.7em 0.7em 2em rgba(0,0,0,0.3);
+}
+
+.form1 .input1:focus{
+    outline: none;
+}
+
+.signup1{
+    font-family: var(--font);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: none;
+    width: 45%;
+    height: 2.8em;
+    font-size: 1.5rem;
+    text-decoration: none;
+    border-radius: 1.5em;
+    box-shadow: 1em 1em 2em rgba(0,0,0,0.3);
+    background-color: var(--green);
+    color: #fff;
+    font-weight: 500;
+    transition: box-shadow 0.5s ease;
+    cursor: pointer;
+    position: relative;
+    top: 1em;
+}
+
+.signup1:hover{
+    box-shadow: none;
+}
+
+.fp{
+    background: transparent;
+    border: none;
+    font-family: var(--font);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    width: 40%;
+    height: 2.5em;
+    font-size: 1rem;
+    font-weight: 600;
+    color: var(--gray);
+    border-radius: 1.25em;
+    position: relative;
+    top: 1.2em;
+}
+
+.signin1{
+    width: auto;
+    height: auto;
+    font-size: 1rem;
+    text-decoration: none;
+    box-shadow: none;
+    color: var(--violet);
+    font-weight: bold;
+    background-color: transparent;
+    margin-left: 7px;
+}
+
+.p1{
+    position: relative;
+    top: 0em;
+    font-size: 1rem;
+    font-family: var(--font);
+    display: flex;
+    font-weight: 600;
+    color: var(--gray);
+}
+
+@media screen and (max-width: 850px){
+    .signUp1{
+        flex-direction: column;
+        align-items: center;
+        justify-content: space-between;
+        height: auto;
+    }
+    .logoSignUp1,.form1{
+        width: 100%;
+    }
+    .logoSignUp1{
+        position: relative;
+        transform-origin: center;
+        transform: scale(0.4);
+        padding: 0px;
+        margin-bottom: -3.7em;
+        height: auto;
+        right: -0.3em;
+        text-align: center;
+    }
+    .logoSignUp1 h2{
+        display: none;
+    }
+    .form1{
+        margin-top: -1.5em;
+        height: 21em;
+    }
+    .form1>.input1, .form1 .verify{
+        font-size: 0.9rem;
+        text-align: center;
+        width: min(90%,30em);
+    }
+    .form1>.input1{
+        font-size: 0.9rem;
+        box-shadow: var(--phoneShadow);
+    }
+    .verify .input1{
+        font-size: 0.9rem;
+        box-shadow: var(--phoneShadow);
+        text-align: center;
+    }
+    .verify img{
+        transform-origin: center;
+        transform: scale(0.6);
+        right: 0px;
+        top: 0px;
+    }
+    .signup1{
+        position: relative;
+        font-size: 1rem;
+        width: min(35%,10em);
+        height: 2.5em;
+        box-shadow: var(--phoneShadow);
+        top: 0.15em;
+    }
+    .p1,.fp,.signin1{
+        font-size: 0.8rem;
+    }
+    .fp{
+        top: -0.4em;
+    }
+    .p1{
+        top: -1.8em;
+    }
+    .signin1{
+        margin-left: 5px;
+    }
+}
