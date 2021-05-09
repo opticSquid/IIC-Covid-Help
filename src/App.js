@@ -6,6 +6,7 @@ import { BrowserRouter as Router, Route } from "react-router-dom";
 import Login from "./signInUpPages/SignIn";
 import Signup from "./signInUpPages/SignUp";
 import AboutPage from "./pages/AboutPage";
+import Hospitals from "./components/hospitals/Hospitals";
 
 function App() {
   /*OxygenContextProvider is a context provider that has 
