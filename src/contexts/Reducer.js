@@ -10,6 +10,11 @@ const reducer = (state, action) => {
         ...state,
         accessToken: null,
       };
+    case "Update Data":
+      return {
+        ...state,
+        data: action.data,
+      };
     default:
       return state;
   }
