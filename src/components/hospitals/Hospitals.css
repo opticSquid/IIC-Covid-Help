@@ -113,9 +113,8 @@ button {
 }
 
 #location__button {
-  position: absolute;
-  right: 28em;
-  bottom: 9.2em;
+  margin-left:auto;
+  transform: translateY(-3.5em);
   width: 10em;
   height: 3em;
   padding-left: 1em;
