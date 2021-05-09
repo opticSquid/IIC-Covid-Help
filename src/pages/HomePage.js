@@ -6,6 +6,9 @@ import Services from "../components/homePage/Services";
 import Navigation from "../components/homePage/Navigation";
 import { Link } from "react-router-dom";
 
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import {faPlus} from "@fortawesome/free-solid-svg-icons";
+
 /*
 this is the hopepage component
 it acts as a wrapper to all the other components

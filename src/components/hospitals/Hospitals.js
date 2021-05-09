@@ -1,9 +1,9 @@
 import React, { useState } from "react";
 import "./Hospitals.css";
-import { Link } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faChevronDown, faTimes } from "@fortawesome/free-solid-svg-icons";
 import Axios from "axios";
+import { useStateContext } from "../../contexts/ContextProvider";
 function Hospitals() {
   const [show, setShow] = useState(false);
   const [show1, setShow1] = useState(false);
@@ -11,16 +11,36 @@ function Hospitals() {
   const [show3, setShow3] = useState(false);
   const [show4, setShow4] = useState(false);
   const [location, setLocation] = useState(false);
+  const sendLocation = [];
   const [autoDectect, setAutoDectect] = useState(true);
-
+  const [
+    { origin, Oxygen, Normal, Icu, Doctor, Available, VaccineName, Quantity },
+    dispatch,
+  ] = useStateContext();
+  const [Centre, setCentre] = useState({
+    facility: "",
+    phone: "",
+    email: "",
+    state: "",
+    district: "",
+    city: "",
+  });
+  const setValues = (event) => {
+    setCentre({ ...Centre, [event.target.name]: event.target.value });
+  };
   function Location() {
     setAutoDectect(false);
     navigator.geolocation.getCurrentPosition(function (position) {
       const lat = position.coords.latitude;
       const long = position.coords.longitude;
-
+      setLocation([long, lat]);
       console.log("Latitude is :", lat);
       console.log("Longitude is :", long);
+      let locationDoc = {
+        type: "Point",
+        coordinates: [position.coords.longitude, position.coords.latitude],
+      };
+      sendLocation.push(locationDoc);
     });
   }
 
@@ -55,6 +75,12 @@ function Hospitals() {
                 }}
                 type="number"
                 placeholder="Enter the amount of oxygen"
+                onChange={(e) => {
+                  dispatch({
+                    type: "AddOxygen",
+                    data: e.target.value,
+                  });
+                }}
               ></input>
             ) : null}
           </li>
@@ -79,6 +105,12 @@ function Hospitals() {
                   }}
                   type="number"
                   placeholder="Enter number of normal beds"
+                  onChange={(e) => {
+                    dispatch({
+                      type: "AddNormalBeds",
+                      data: e.target.value,
+                    });
+                  }}
                 ></input>
                 <input
                   style={{
@@ -88,6 +120,12 @@ function Hospitals() {
                     outline: "none",
                     paddingLeft: "1em",
                     marginLeft: "1em",
+                  }}
+                  onChange={(e) => {
+                    dispatch({
+                      type: "AddICUBeds",
+                      data: e.target.value,
+                    });
                   }}
                   type="number"
                   placeholder="Enter number of normal beds"
@@ -113,6 +151,12 @@ function Hospitals() {
                   outline: "none",
                   paddingLeft: "1em",
                 }}
+                onChange={(e) => {
+                  dispatch({
+                    type: "AddDoctors",
+                    data: e.target.value,
+                  });
+                }}
                 type="number"
                 placeholder="Enter number of doctors"
               ></input>
@@ -121,11 +165,7 @@ function Hospitals() {
           <li>
             <label className="options">
               <div>
-                <input
-                  type="radio"
-                  onClick={() => setShow4(!show4)}
-                  type="radio"
-                ></input>
+                <input type="radio" onClick={() => setShow4(!show4)}></input>
               </div>
               <div style={{ cursor: "pointer" }} className="covid19 radio">
                 Covid-19 Vaccine
@@ -143,6 +183,16 @@ function Hospitals() {
                   }}
                   type="text"
                   placeholder="Enter the name of the vaccine"
+                  onChange={(e) => {
+                    dispatch({
+                      type: "AddVaccineAvailable",
+                      data: true,
+                    });
+                    dispatch({
+                      type: "AddVaccineName",
+                      data: e.target.value,
+                    });
+                  }}
                 ></input>
                 <input
                   style={{
@@ -155,6 +205,16 @@ function Hospitals() {
                   }}
                   type="number"
                   placeholder="Enter the quantity of vaccine"
+                  onChange={(e) => {
+                    dispatch({
+                      type: "AddVaccineAvailable",
+                      data: true,
+                    });
+                    dispatch({
+                      type: "AddQuantity",
+                      data: e.target.value,
+                    });
+                  }}
                 ></input>
               </div>
             ) : null}
@@ -165,6 +225,42 @@ function Hospitals() {
   }
   const submitHandler = (e) => {
     e.preventDefault();
+    let newCentre = {
+      FacilityName: Centre.facility,
+      PhoneNumber: Centre.phone,
+      Email: Centre.email,
+      Beds: {
+        ICU: Icu,
+        Normal: Normal,
+      },
+      Oxygen: Oxygen,
+      CovidVaccines: {
+        Available: Available,
+        VaccineName: VaccineName,
+        Quantity: Quantity,
+      },
+      Doctors: Doctor,
+      Address: {
+        Location: sendLocation,
+        StreetAddress: {
+          State: Centre.state,
+          District: Centre.district,
+          City: Centre.city,
+        },
+      },
+    };
+    console.log(
+      "New Centre", newCentre
+    );
+    Axios.post(`${origin}/newHealthCentre`, newCentre, {
+      headers: { accesstoken: sessionStorage.getItem("accessToken") },
+    })
+      .then((response) => {
+        console.log("Response from Backend", response);
+      })
+      .catch((error) => {
+        if (error) console.log("Error occoured", error);
+      });
   };
   return (
     <div className="hospital">
@@ -177,54 +273,80 @@ function Hospitals() {
         </div>
       </div>
       <h1>Add a new hostipal:</h1>
-      <div className="information">
-        <input
-          className="facility__name"
-          type="text"
-          placeholder="Enter Facility Name"
-        ></input>
-        <input
-          className="phone__number"
-          type="tel"
-          placeholder=" Enter Phone Number"
-        ></input>
-
-        <div class="select__facility">
-          <div className="facility" onClick={() => setShow(!show)}>
-            Select the type of Facility
-          </div>
-          <div id="chevronDown" onClick={() => setShow(!show)}>
-            <FontAwesomeIcon icon={faChevronDown} />
-          </div>
-        </div>
-        {show ? dropdown() : null}
-
-        <input
-          className="resources__available"
-          type="text"
-          placeholder="Enter the number of resources available"
-        ></input>
-        {autoDectect ? (
-          <div>
-            <input
-              id="location"
-              placeholder="Enter your location (latitude,longitude)"
-            ></input>
-
-            <div onClick={() => setLocation(!location)} id="location__button">
-              <div>Auto Detect</div>
+      <form>
+        <div className="information">
+          <input
+            name="facility"
+            className="facility__name"
+            type="text"
+            placeholder="Enter Facility Name"
+            required
+            onChange={setValues}
+          ></input>
+          <input
+            name="phone"
+            className="phone__number"
+            type="tel"
+            placeholder=" Enter Phone Number"
+            required
+            onChange={setValues}
+          ></input>
+          <input
+            name="email"
+            className="phone__number"
+            type="email"
+            placeholder=" Enter email"
+            required
+            onChange={setValues}
+          ></input>
+          <div class="select__facility">
+            <div className="facility" onClick={() => setShow(!show)}>
+              Select the type of Facility
             </div>
-            {location ? Location() : null}
+            <div id="chevronDown" onClick={() => setShow(!show)}>
+              <FontAwesomeIcon icon={faChevronDown} />
+            </div>
           </div>
-        ) : null}
+          {show ? dropdown() : null}
 
-        <div className="street__location">
-          <input id="state" type="text" placeholder="Enter state"></input>
-          <input id="district" type="text" placeholder="Enter district"></input>
-          <input id="city" type="text" placeholder="Enter city"></input>
+          {autoDectect ? (
+            <div>
+              <input
+                id="location"
+                placeholder="Enter your location (latitude,longitude)"
+              ></input>
+              <div onClick={() => setLocation(!location)} id="location__button">
+                <div>Auto Detect</div>
+              </div>
+              {location ? Location() : null}
+            </div>
+          ) : null}
+          <div className="street__location">
+            <input
+              name="state"
+              id="state"
+              onChange={setValues}
+              type="text"
+              placeholder="Enter state"
+            ></input>
+            <input
+              name="district"
+              id="district"
+              type="text"
+              onChange={setValues}
+              placeholder="Enter district"
+            ></input>
+            <input
+              name="city"
+              id="city"
+              type="text"
+              onChange={setValues}
+              placeholder="Enter city"
+            ></input>
+          </div>
+          <button onClick={submitHandler}>Submit</button>
         </div>
-        <button onClick={submitHandler}>Submit</button>
-      </div>
+      </form>
     </div>
   );
 }
