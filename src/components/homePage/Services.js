@@ -90,10 +90,14 @@ function Services() {
           height: "3em",
           boxShadow: "0px 0px 15px 0px rgba(0, 0, 0, 0.2)",
           marginLeft: "17em",
-          marginRight: "22em"
+          marginRight: "22em",
         }}
       >
-        <input style={{ height: "3.3em" }} type="text" placeholder="Enter Search Radius" />
+        <input
+          style={{ height: "3.3em" }}
+          type="text"
+          placeholder="Enter Search Radius"
+        />
         <div style={{ height: "3em" }}>
           <FontAwesomeIcon icon={faSearch} />
         </div>
