@@ -1,14 +1,20 @@
 import React, { useState } from "react";
 import logoImg from "../svgs/logo.svg";
 import { Link } from "react-router-dom";
+
+import { useStateContext } from "../contexts/ContextProvider";
+import Axios from "axios";
 import "./signIn.css";
 
 const Signin = () => {
+  const [{ origin }, dispatch] = useStateContext();
+
   return (
     <>
       <div className="signIn">
         <Logo />
-        <Form />
+
+        <Form origin={origin} dispatch={dispatch} />
       </div>
     </>
   );
@@ -25,7 +31,7 @@ const Logo = () => {
   );
 };
 
-const Form = () => {
+const Form = ({ origin, dispatch }) => {
   const [email, SetEmail] = useState("");
   const [password, SetPassword] = useState("");
   const submitHandler = (e) => {
@@ -35,17 +41,36 @@ const Form = () => {
     } else {
       if (password === "") {
         alert("Please enter the password");
+      } else {
+        let newUser = { Email: email, Password: password };
+        Axios.post(`${origin}/login`, newUser)
+          .then((response) => {
+            console.log({
+              refreshToken: response.data.refreshToken,
+              accessToken: response.data.accessToken,
+            });
+            localStorage.setItem("refreshToken", response.data.refreshToken);
+            dispatch({
+              type: "Add Token",
+              data: response.data.accessToken,
+            });
+          })
+          .catch((error) => {
+            if (error) {
+              console.log("Error occoured while signing up", error);
+            }
+          });
       }
     }
-    console.log(email, password);
   };
+  console.log(email, password);
   return (
     <form className="form">
       <input
-        type="text"
+        type="email"
         onChange={(e) => SetEmail(e.target.value)}
         className="input"
-        placeholder="Email or Mobile Number"
+        placeholder="Email"
         required
       />
       <input
@@ -74,3 +99,5 @@ const Form = () => {
 };
 
 export default Signin;
+// 1234
+// abc@gmail.com

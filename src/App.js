@@ -3,8 +3,8 @@ import "./assets/styles/main.css";
 import DetectLocation from "./components/DetectLocation";
 import HomePage from "./pages/HomePage";
 import { BrowserRouter as Router, Route } from "react-router-dom";
-import Login from './signInUpPages/SignIn';
-import Signup from './signInUpPages/SignUp';
+import Login from "./signInUpPages/SignIn";
+import Signup from "./signInUpPages/SignUp";
 import AboutPage from "./pages/AboutPage";
 
 function App() {
@@ -20,7 +20,6 @@ function App() {
         <Route path="/about" component={AboutPage} />
         <Route path="/login" component={Login} />
         <Route path="/signup" component={Signup} />
-        <Route path="/login" component={Login} />
         <Route path="/" exact component={HomePage} />
       </Router>
       <DetectLocation />
