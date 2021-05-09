@@ -1,17 +1,21 @@
 import React, { useState } from "react";
 import logoImg from "../svgs/logo.svg";
 import { Link } from "react-router-dom";
+
 import { useStateContext } from "../contexts/ContextProvider";
 import Axios from "axios";
 import "./signIn.css";
 
 const Signin = () => {
   const [{ origin }, dispatch] = useStateContext();
+
   return (
     <>
       <div className="signIn">
         <Logo />
+
         <Form origin={origin} dispatch={dispatch} />
+
       </div>
     </>
   );
@@ -28,7 +32,9 @@ const Logo = () => {
   );
 };
 
+
 const Form = ({ origin, dispatch }) => {
+
   const [email, SetEmail] = useState("");
   const [password, SetPassword] = useState("");
   const submitHandler = (e) => {
@@ -38,6 +44,7 @@ const Form = ({ origin, dispatch }) => {
     } else {
       if (password === "") {
         alert("Please enter the password");
+
       } else {
         let newUser = { Email: email, Password: password };
         Axios.post(`${origin}/login`, newUser)
@@ -68,6 +75,7 @@ const Form = ({ origin, dispatch }) => {
         onChange={(e) => SetEmail(e.target.value)}
         className="input"
         placeholder="Email"
+
         required
       />
       <input
@@ -98,3 +106,4 @@ const Form = ({ origin, dispatch }) => {
 export default Signin;
 // 1234
 // abc@gmail.com
+
