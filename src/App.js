@@ -21,6 +21,7 @@ function App() {
         <Route path="/login" component={Login} />
         <Route path="/signup" component={Signup} />
         <Route path="/" exact component={HomePage} />
+        <Route path="/hospitals" component={Hospitals} />
       </Router>
       <DetectLocation />
     </>
