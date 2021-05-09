@@ -1,28 +1,16 @@
 import React, { useState } from "react";
 import logoImg from "../svgs/logo.svg";
 import { Link } from "react-router-dom";
-<<<<<<< HEAD
-=======
-
->>>>>>> upstream/main
 import { useStateContext } from "../contexts/ContextProvider";
 import Axios from "axios";
 import "./signIn.css";
 
 const Signin = () => {
   const [{ origin }, dispatch] = useStateContext();
-<<<<<<< HEAD
-=======
-
->>>>>>> upstream/main
   return (
     <>
       <div className="signIn">
         <Logo />
-<<<<<<< HEAD
-=======
-
->>>>>>> upstream/main
         <Form origin={origin} dispatch={dispatch} />
       </div>
     </>
