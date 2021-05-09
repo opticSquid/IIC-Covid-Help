@@ -3,9 +3,10 @@ import "./assets/styles/main.css";
 import DetectLocation from "./components/DetectLocation";
 import HomePage from "./pages/HomePage";
 import { BrowserRouter as Router, Route } from "react-router-dom";
-import Login from './signInUpPages/SignIn';
-import Signup from './signInUpPages/SignUp';
+import Login from "./signInUpPages/SignIn";
+import Signup from "./signInUpPages/SignUp";
 import AboutPage from "./pages/AboutPage";
+import Hospitals from "./components/hospitals/Hospitals";
 
 function App() {
   /*OxygenContextProvider is a context provider that has 
@@ -21,6 +22,7 @@ function App() {
         <Route path="/login" component={Login} />
         <Route path="/signup" component={Signup} />
         <Route path="/" exact component={HomePage} />
+        <Route path="/hospitals" component={Hospitals} />
       </Router>
       <DetectLocation />
     </>
