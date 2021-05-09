@@ -26,21 +26,21 @@ function Hospitals() {
 
   function dropdown() {
     return (
-      <div className='resources'>
+      <div className="resources">
         <div
           style={{ cursor: "pointer" }}
-          id='cross'
+          id="cross"
           onClick={() => setShow(!show)}
         >
           <FontAwesomeIcon icon={faTimes} />
         </div>
         <ul style={{ listStyle: "none" }}>
           <li>
-            <label className='options'>
+            <label className="options">
               <div>
-                <input onClick={() => setShow1(!show1)} type='radio'></input>
+                <input onClick={() => setShow1(!show1)} type="radio"></input>
               </div>
-              <div style={{ cursor: "pointer" }} className='oxygen radio'>
+              <div style={{ cursor: "pointer" }} className="oxygen radio">
                 Oxygen
               </div>
             </label>
@@ -53,17 +53,17 @@ function Hospitals() {
                   outline: "none",
                   paddingLeft: "1em",
                 }}
-                type='number'
-                placeholder='Enter the amount of oxygen'
+                type="number"
+                placeholder="Enter the amount of oxygen"
               ></input>
             ) : null}
           </li>
           <li>
-            <label className='options'>
+            <label className="options">
               <div>
-                <input type='radio' onClick={() => setShow2(!show2)}></input>
+                <input type="radio" onClick={() => setShow2(!show2)}></input>
               </div>
-              <div style={{ cursor: "pointer" }} className='bed radio'>
+              <div style={{ cursor: "pointer" }} className="bed radio">
                 Hospital Bed
               </div>
             </label>
@@ -77,8 +77,8 @@ function Hospitals() {
                     outline: "none",
                     paddingLeft: "1em",
                   }}
-                  type='number'
-                  placeholder='Enter number of normal beds'
+                  type="number"
+                  placeholder="Enter number of normal beds"
                 ></input>
                 <input
                   style={{
@@ -89,18 +89,18 @@ function Hospitals() {
                     paddingLeft: "1em",
                     marginLeft: "1em",
                   }}
-                  type='number'
-                  placeholder='Enter number of normal beds'
+                  type="number"
+                  placeholder="Enter number of normal beds"
                 ></input>
               </div>
             ) : null}
           </li>
           <li>
-            <label className='options'>
+            <label className="options">
               <div>
-                <input onClick={() => setShow3(!show3)} type='radio'></input>
+                <input onClick={() => setShow3(!show3)} type="radio"></input>
               </div>
-              <div style={{ cursor: "pointer" }} className='doctor radio'>
+              <div style={{ cursor: "pointer" }} className="doctor radio">
                 Doctor
               </div>
             </label>
@@ -113,21 +113,21 @@ function Hospitals() {
                   outline: "none",
                   paddingLeft: "1em",
                 }}
-                type='number'
-                placeholder='Enter number of doctors'
+                type="number"
+                placeholder="Enter number of doctors"
               ></input>
             ) : null}
           </li>
           <li>
-            <label className='options'>
+            <label className="options">
               <div>
                 <input
-                  type='radio'
+                  type="radio"
                   onClick={() => setShow4(!show4)}
-                  type='radio'
+                  type="radio"
                 ></input>
               </div>
-              <div style={{ cursor: "pointer" }} className='covid19 radio'>
+              <div style={{ cursor: "pointer" }} className="covid19 radio">
                 Covid-19 Vaccine
               </div>
             </label>
@@ -141,8 +141,8 @@ function Hospitals() {
                     outline: "none",
                     paddingLeft: "1em",
                   }}
-                  type='text'
-                  placeholder='Enter the name of the vaccine'
+                  type="text"
+                  placeholder="Enter the name of the vaccine"
                 ></input>
                 <input
                   style={{
@@ -153,8 +153,8 @@ function Hospitals() {
                     paddingLeft: "1em",
                     marginLeft: "1em",
                   }}
-                  type='number'
-                  placeholder='Enter the quantity of vaccine'
+                  type="number"
+                  placeholder="Enter the quantity of vaccine"
                 ></input>
               </div>
             ) : null}
@@ -163,14 +163,13 @@ function Hospitals() {
       </div>
     );
   }
-  const submitHandler= e => {
+  const submitHandler = (e) => {
     e.preventDefault();
-
-  } 
+  };
   return (
-    <div className='hospital'>
-      <div className='hospital__icon'>
-        <div className='homepage__icon'>
+    <div className="hospital">
+      <div className="hospital__icon">
+        <div className="homepage__icon">
           <h1>C</h1>
           <h3>
             <span>O</span> Help
@@ -178,53 +177,53 @@ function Hospitals() {
         </div>
       </div>
       <h1>Add a new hostipal:</h1>
-      <div className='information'>
+      <div className="information">
         <input
-          className='facility__name'
-          type='text'
-          placeholder='Enter Facility Name'
+          className="facility__name"
+          type="text"
+          placeholder="Enter Facility Name"
         ></input>
         <input
-          className='phone__number'
-          type='tel'
-          placeholder=' Enter Phone Number'
+          className="phone__number"
+          type="tel"
+          placeholder=" Enter Phone Number"
         ></input>
 
-        <div class='select__facility'>
-          <div className='facility' onClick={() => setShow(!show)}>
+        <div class="select__facility">
+          <div className="facility" onClick={() => setShow(!show)}>
             Select the type of Facility
           </div>
-          <div id='chevronDown' onClick={() => setShow(!show)}>
+          <div id="chevronDown" onClick={() => setShow(!show)}>
             <FontAwesomeIcon icon={faChevronDown} />
           </div>
         </div>
         {show ? dropdown() : null}
 
         <input
-          className='resources__available'
-          type='text'
-          placeholder='Enter the number of resources available'
+          className="resources__available"
+          type="text"
+          placeholder="Enter the number of resources available"
         ></input>
         {autoDectect ? (
           <div>
             <input
-              id='location'
-              placeholder='Enter your location (latitude,longitude)'
+              id="location"
+              placeholder="Enter your location (latitude,longitude)"
             ></input>
 
-            <div onClick={() => setLocation(!location)} id='location__button'>
+            <div onClick={() => setLocation(!location)} id="location__button">
               <div>Auto Detect</div>
             </div>
             {location ? Location() : null}
           </div>
         ) : null}
 
-        <div className='street__location'>
-          <input id='state' type='text' placeholder='Enter state'></input>
-          <input id='district' type='text' placeholder='Enter district'></input>
-          <input id='city' type='text' placeholder='Enter city'></input>
+        <div className="street__location">
+          <input id="state" type="text" placeholder="Enter state"></input>
+          <input id="district" type="text" placeholder="Enter district"></input>
+          <input id="city" type="text" placeholder="Enter city"></input>
         </div>
-          <button onClick={submitHandler}>Submit</button>
+        <button onClick={submitHandler}>Submit</button>
       </div>
     </div>
   );
