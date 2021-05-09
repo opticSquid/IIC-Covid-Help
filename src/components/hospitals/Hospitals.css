@@ -130,45 +130,45 @@ button {
 }
 
 .street__location {
-    display: flex;
-    gap:1em;
+  display: flex;
+  gap: 1em;
 }
 
 #state {
-    width:10em;
-    height:3em;
-    border-radius:20px;
-    border-radius: 30px;
-    border: none;
-    outline: none;
-    padding-left: 1.5em;
-    box-shadow: 5px 3px 10px 5px rgba(0, 0, 0, 0.15);
-    font-size: 1rem;
-    font-family: "Open Sans", sans-serif;
+  width: 10em;
+  height: 3em;
+  border-radius: 20px;
+  border-radius: 30px;
+  border: none;
+  outline: none;
+  padding-left: 1.5em;
+  box-shadow: 5px 3px 10px 5px rgba(0, 0, 0, 0.15);
+  font-size: 1rem;
+  font-family: "Open Sans", sans-serif;
 }
 #district {
-    width:10em;
-    height:3em;
-    border-radius:20px;
-    border-radius: 30px;
-    border: none;
-    outline: none;
-    padding-left: 1.5em;
-    box-shadow: 5px 3px 10px 5px rgba(0, 0, 0, 0.15);
-    font-size: 1rem;
-    font-family: "Open Sans", sans-serif;
+  width: 10em;
+  height: 3em;
+  border-radius: 20px;
+  border-radius: 30px;
+  border: none;
+  outline: none;
+  padding-left: 1.5em;
+  box-shadow: 5px 3px 10px 5px rgba(0, 0, 0, 0.15);
+  font-size: 1rem;
+  font-family: "Open Sans", sans-serif;
 }
 #city {
-    width:10em;
-    height:3em;
-    border-radius:20px;
-    border-radius: 30px;
-    border: none;
-    outline: none;
-    padding-left: 1.5em;
-    box-shadow: 5px 3px 10px 5px rgba(0, 0, 0, 0.15);
-    font-size: 1rem;
-    font-family: "Open Sans", sans-serif;
+  width: 10em;
+  height: 3em;
+  border-radius: 20px;
+  border-radius: 30px;
+  border: none;
+  outline: none;
+  padding-left: 1.5em;
+  box-shadow: 5px 3px 10px 5px rgba(0, 0, 0, 0.15);
+  font-size: 1rem;
+  font-family: "Open Sans", sans-serif;
 }
 
 .facility {
@@ -177,7 +177,7 @@ button {
   width: 32em;
   padding-left: 1.5em;
   padding-top: 1.2em;
-  color:grey;
+  color: grey;
   box-shadow: 5px 3px 10px 5px rgba(0, 0, 0, 0.15);
   font-size: 1rem;
   font-family: "Open Sans", sans-serif;
@@ -185,21 +185,21 @@ button {
 
 .select__facility {
   position: relative;
-  cursor:pointer;
+  cursor: pointer;
 }
 
 #chevronDown {
   position: absolute;
-  right:2em;
-  top:1.2em;
-  color:grey;
+  right: 2em;
+  top: 1.2em;
+  color: grey;
 }
 
 #cross {
   position: absolute;
-  right:2em;
-  top:1.2em;
-  color:grey;
+  right: 2em;
+  top: 1.2em;
+  color: grey;
 }
 
 .options {
@@ -209,16 +209,16 @@ button {
 .radio {
   /* padding-top:1.2em; */
   /* transform:translateX(-13em); */
-  padding-left:2em;
-  padding-bottom:1em;
+  padding-left: 2em;
+  padding-bottom: 1em;
 }
 
 .resources {
   position: absolute;
-  transform:translateY(6.5em);
-  z-index:5;
-  background:white;
+  transform: translateY(6.5em);
+  z-index: 5;
+  background: white;
   border-radius: 20px;
   box-shadow: 5px 3px 10px 15px rgba(0, 0, 0, 0.15);
-  padding:2em 4em;
+  padding: 2em 4em;
 }
