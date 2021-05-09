@@ -18,17 +18,17 @@ function Services() {
     }
   };
 
-  const btnBuilder =
-    /*data.isLogin ?*/ 1 === 1 ? (
-      <div className="HP__add">
-        <span style={{ margin: ".5rem" }}>
-          <FontAwesomeIcon icon={faPlus} />
-        </span>
-        ADD DATA
-      </div>
-    ) : (
-      ""
-    );
+  // const btnBuilder =
+  //   /*data.isLogin ?*/ 1 === 1 ? (
+  //     <div className="HP__add">
+  //       <span style={{ margin: ".5rem" }}>
+  //         <FontAwesomeIcon icon={faPlus} />
+  //       </span>
+  //       ADD DATA
+  //     </div>
+  //   ) : (
+  //     ""
+  //   );
   //the following function makes the cards that are to be shown
   // data comes from oxygen context
   // dynamic : based on user selction
@@ -104,7 +104,7 @@ function Services() {
         </div>
       </div>
       <h3 className="HPCat--h3">Nearby Places</h3>
-      {btnBuilder}
+      {/* {btnBuilder} */}
       {/* <div className="HP__cards--container">{cardBuilder()}</div> */}
     </>
   );
