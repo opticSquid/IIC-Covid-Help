@@ -8,4 +8,5 @@ export const InitialState = {
   Available: false,
   VaccineName: "",
   Quantity: "",
+  userName: "",
 };

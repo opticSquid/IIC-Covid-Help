@@ -50,7 +50,8 @@ function App() {
           <Route path="/login" component={Login} />
           <Route path="/signup" component={Signup} />
           <Route path="/hospitals" component={Hospitals} />
-          <Route path="/" component={Verify} />
+          <Route path="/verify" component={Verify} />
+          <Route path="/" component={HomePage} />
           <Redirect to="/" />
         </Switch>
       </Router>
