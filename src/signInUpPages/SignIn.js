@@ -30,7 +30,7 @@ const Logo = () => {
   );
 };
 
-const Form = ({ origin, dispatch,history }) => {
+const Form = ({ origin, dispatch, history }) => {
   const [email, SetEmail] = useState("");
   const [password, SetPassword] = useState("");
   const submitHandler = (e) => {
@@ -53,7 +53,7 @@ const Form = ({ origin, dispatch,history }) => {
             //   type: "Add Token",
             //   data: response.data.accessToken,
             // });
-            sessionStorage.setItem('accessToken',response.data.accessToken);
+            sessionStorage.setItem("accessToken", response.data.accessToken);
             history.push("/");
           })
           .catch((error) => {

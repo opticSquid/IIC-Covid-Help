@@ -28,7 +28,7 @@ const reducer = (state, action) => {
         ...state,
         Normal: action.data,
       };
-      case "AddICUBeds":
+    case "AddICUBeds":
       return {
         ...state,
         Icu: action.data,
@@ -43,16 +43,16 @@ const reducer = (state, action) => {
         ...state,
         Available: action.data,
       };
-      case "AddVaccineName":
-        return {
-          ...state,
-          VaccineName: action.data,
-        };
-      case "AddQuantity":
-        return{
-          ...state,
-          Quantity: action.data
-        };
+    case "AddVaccineName":
+      return {
+        ...state,
+        VaccineName: action.data,
+      };
+    case "AddQuantity":
+      return {
+        ...state,
+        Quantity: action.data,
+      };
 
     default:
       return state;

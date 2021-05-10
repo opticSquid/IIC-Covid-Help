@@ -28,20 +28,24 @@ function HomePage() {
       SortBy: "Oxygen",
     };
     console.log("Request that will be going: ", locationDoc);
-      axios
-        .post(`${origin}/getHealthCentres`,locationDoc)
-        .then((response) => {
-          console.log(response);
-          dispatch({
-            type: "Update Data",
-            data: response.data,
-          });
-        }).catch ((error)=>{
-          console.log("Error occoured while fetching data from backend", error);
+    axios
+      .post(`${origin}/getHealthCentres`, locationDoc)
+      .then((response) => {
+        console.log(response);
+        dispatch({
+          type: "Update Data",
+          data: response.data,
         });
-    }
+      })
+      .catch((error) => {
+        console.log("Error occoured while fetching data from backend", error);
+      });
+  };
   const errors = (err) => {
-    alert("Location Permission Denied! Emable permission to detect location", err);
+    alert(
+      "Location Permission Denied! Emable permission to detect location",
+      err
+    );
   };
   useEffect(() => {
     let options = {
