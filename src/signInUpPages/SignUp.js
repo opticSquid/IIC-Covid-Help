@@ -1,4 +1,4 @@
-import React, { useState} from "react";
+import React, { useState } from "react";
 import logoImg from "../svgs/logo.svg";
 import { Link, useHistory } from "react-router-dom";
 import IsOk from "../svgs/ok.svg";
@@ -68,7 +68,10 @@ const Form = ({ origin, dispatch, history }) => {
                 //   type: "Add Token",
                 //   data: response.data.accessToken,
                 // });
-                sessionStorage.setItem('accessToken',response.data.accessToken);
+                sessionStorage.setItem(
+                  "accessToken",
+                  response.data.accessToken
+                );
                 history.push("/");
               })
               .catch((error) => {

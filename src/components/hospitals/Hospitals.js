@@ -4,6 +4,8 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faChevronDown, faTimes } from "@fortawesome/free-solid-svg-icons";
 import Axios from "axios";
 import { useStateContext } from "../../contexts/ContextProvider";
+import { useMediaQuery } from "react-responsive";
+
 function Hospitals() {
   const [show, setShow] = useState(false);
   const [show1, setShow1] = useState(false);
@@ -11,8 +13,9 @@ function Hospitals() {
   const [show3, setShow3] = useState(false);
   const [show4, setShow4] = useState(false);
   const [location, setLocation] = useState(false);
+  const isTabletOrMobile = useMediaQuery({ query: "(max-width:750px)" });
+
   const sendLocation = [];
-  const [autoDectect, setAutoDectect] = useState(true);
   const [
     { origin, Oxygen, Normal, Icu, Doctor, Available, VaccineName, Quantity },
     dispatch,
@@ -28,14 +31,10 @@ function Hospitals() {
   const setValues = (event) => {
     setCentre({ ...Centre, [event.target.name]: event.target.value });
   };
-  function Location() {
-    setAutoDectect(false);
-    navigator.geolocation.getCurrentPosition(function (position) {
-      const lat = position.coords.latitude;
-      const long = position.coords.longitude;
-      setLocation([long, lat]);
-      console.log("Latitude is :", lat);
-      console.log("Longitude is :", long);
+
+  function locations() {
+    // if (navigator.geolocation) {
+    navigator.geolocation.watchPosition(function (position) {
       let locationDoc = {
         type: "Point",
         coordinates: [position.coords.longitude, position.coords.latitude],
@@ -249,9 +248,7 @@ function Hospitals() {
         },
       },
     };
-    console.log(
-      "New Centre", newCentre
-    );
+    console.log("New Centre", newCentre);
     Axios.post(`${origin}/newHealthCentre`, newCentre, {
       headers: { accesstoken: sessionStorage.getItem("accessToken") },
     })
@@ -265,7 +262,13 @@ function Hospitals() {
   return (
     <div className="hospital">
       <div className="hospital__icon">
-        <div className="homepage__icon">
+        <div
+          className={
+            isTabletOrMobile
+              ? "mobile__homepage__icon"
+              : "desktop__homepage__icon"
+          }
+        >
           <h1>C</h1>
           <h3>
             <span>O</span> Help
@@ -299,7 +302,20 @@ function Hospitals() {
             required
             onChange={setValues}
           ></input>
-          <div class="select__facility">
+
+          <div>
+            <div
+              onClick={() => setLocation(!location)}
+              id={location ? "success__button" : "location__button"}
+            >
+              <div style={{ color: location ? "black" : "white" }}>
+                {!location ? "Detect Location" : "Location Detected"}
+              </div>
+            </div>
+            {location ? locations() : null}
+          </div>
+
+          <div className="select__facility">
             <div className="facility" onClick={() => setShow(!show)}>
               Select the type of Facility
             </div>
@@ -309,42 +325,36 @@ function Hospitals() {
           </div>
           {show ? dropdown() : null}
 
-          {autoDectect ? (
-            <div>
-              <input
-                id="location"
-                placeholder="Enter your location (latitude,longitude)"
-              ></input>
-              <div onClick={() => setLocation(!location)} id="location__button">
-                <div>Auto Detect</div>
-              </div>
-              {location ? Location() : null}
-            </div>
-          ) : null}
           <div className="street__location">
             <input
               name="state"
               id="state"
               onChange={setValues}
               type="text"
-              placeholder="Enter state"
+              placeholder="State"
             ></input>
             <input
               name="district"
               id="district"
               type="text"
               onChange={setValues}
-              placeholder="Enter district"
+              placeholder="District"
             ></input>
             <input
               name="city"
               id="city"
               type="text"
               onChange={setValues}
-              placeholder="Enter city"
+              placeholder="City"
             ></input>
           </div>
-          <button onClick={submitHandler}>Submit</button>
+
+          <button
+            className={isTabletOrMobile ? "mobile__submit" : "desktop__submit"}
+            onClick={submitHandler}
+          >
+            Submit
+          </button>
         </div>
       </form>
     </div>

@@ -2,7 +2,12 @@ import React, { useEffect } from "react";
 import "./assets/styles/main.css";
 import HomePage from "./pages/HomePage";
 //import test from "./components/test";
-import { BrowserRouter as Router, Route, Switch, Redirect } from "react-router-dom";
+import {
+  BrowserRouter as Router,
+  Route,
+  Switch,
+  Redirect,
+} from "react-router-dom";
 import Login from "./signInUpPages/SignIn";
 import Signup from "./signInUpPages/SignUp";
 import AboutPage from "./pages/AboutPage";
@@ -40,12 +45,12 @@ function App() {
     <>
       <Router>
         <Switch>
-        <Route path="/about" component={AboutPage} />
-        <Route path="/login" component={Login} />
-        <Route path="/signup" component={Signup} />
-        <Route path="/hospitals" component={Hospitals} />
-        <Route path="/" component={HomePage} />
-        <Redirect to="/" />
+          <Route path="/about" component={AboutPage} />
+          <Route path="/login" component={Login} />
+          <Route path="/signup" component={Signup} />
+          <Route path="/hospitals" component={Hospitals} />
+          <Route path="/" component={HomePage} />
+          <Redirect to="/" />
         </Switch>
       </Router>
     </>

@@ -21,7 +21,7 @@ body {
   font-family: "Open Sans", sans-serif;
 }
 
-.homepage__icon {
+.desktop__homepage__icon {
   height: 100px;
   width: 100px;
   border-radius: 50%;
@@ -31,7 +31,7 @@ body {
   position: relative;
 }
 
-.homepage__icon h1 {
+.desktop__homepage__icon h1 {
   font-size: 5rem;
   color: white;
   padding-left: 10px;
@@ -39,12 +39,39 @@ body {
   top: -0.1em;
 }
 
-.homepage__icon h3 {
+.desktop__homepage__icon h3 {
   position: absolute;
   top: 2em;
   left: 2em;
   color: white;
   white-space: nowrap;
+}
+
+.mobile__homepage__icon {
+  height: 80px;
+  width: 80px;
+  border-radius: 50%;
+  background: #5600e7;
+  margin-left: 28px;
+  margin-top: 25px;
+  position: relative;
+}
+
+.mobile__homepage__icon h1 {
+  font-size: 4rem;
+  color: white;
+  padding-left: 10px;
+  position: absolute;
+  top: -0.1em;
+}
+
+.mobile__homepage__icon h3 {
+  position: absolute;
+  top: 1.8em;
+  left: 1.5em;
+  color: white;
+  white-space: nowrap;
+  font-size: 1rem;
 }
 
 .hospital__icon {
@@ -69,7 +96,7 @@ body {
   border: none;
   outline: none;
   height: 4em;
-  width: 32em;
+  width: 38vmax;
   padding-left: 1.5em;
   box-shadow: 5px 3px 10px 5px rgba(0, 0, 0, 0.15);
   font-size: 1rem;
@@ -92,7 +119,7 @@ select {
   color: grey;
 }
 
-button {
+.desktop__submit {
   border-radius: 20px;
   border: none;
   outline: none;
@@ -108,6 +135,19 @@ button {
   font-family: "Open Sans", sans-serif;
 }
 
+.mobile__submit {
+  border-radius: 20px;
+  border: none;
+  outline: none;
+  width: 9em;
+  height: 3em;
+  background: #5600e7;
+  color: white;
+  font-size: 1rem;
+  cursor: pointer;
+  font-family: "Open Sans", sans-serif;
+}
+
 #location {
   position: relative;
 }
@@ -117,16 +157,33 @@ button {
   right: 31em;
   bottom: 11.3em;
   width: 10em;
+
   height: 3em;
   padding-left: 1em;
   padding-top: 0.6em;
-  border-radius: 50px;
+  border-radius: 10px;
   box-shadow: 5px 3px 10px 5px rgba(0, 0, 0, 0.15);
   background-image: url("./location.png");
+  background-color: #5600e7;
   background-repeat: no-repeat;
   background-position: right;
   cursor: pointer;
   color: rgb(87, 84, 84);
+}
+
+#success__button {
+  width: 38vmax;
+  height: 3em;
+  padding-left: 1em;
+  padding-top: 0.6em;
+  border-radius: 10px;
+  box-shadow: 5px 3px 10px 5px rgba(0, 0, 0, 0.15);
+  background-image: url("./location.png");
+  background-color: greenyellow;
+  background-repeat: no-repeat;
+  background-position: right;
+  cursor: pointer;
+  color: black;
 }
 
 .street__location {
@@ -135,7 +192,7 @@ button {
 }
 
 #state {
-  width: 10em;
+  width: 12vmax;
   height: 3em;
   border-radius: 20px;
   border-radius: 30px;
@@ -147,7 +204,7 @@ button {
   font-family: "Open Sans", sans-serif;
 }
 #district {
-  width: 10em;
+  width: 12vmax;
   height: 3em;
   border-radius: 20px;
   border-radius: 30px;
@@ -159,7 +216,7 @@ button {
   font-family: "Open Sans", sans-serif;
 }
 #city {
-  width: 10em;
+  width: 12vmax;
   height: 3em;
   border-radius: 20px;
   border-radius: 30px;
@@ -174,7 +231,7 @@ button {
 .facility {
   border-radius: 30px;
   height: 4em;
-  width: 32em;
+  width: 38vmax;
   padding-left: 1.5em;
   padding-top: 1.2em;
   color: grey;
@@ -207,8 +264,6 @@ button {
 }
 
 .radio {
-  /* padding-top:1.2em; */
-  /* transform:translateX(-13em); */
   padding-left: 2em;
   padding-bottom: 1em;
 }
