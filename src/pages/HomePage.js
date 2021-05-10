@@ -4,6 +4,7 @@ import SelectLocation from "../components/homePage/SelectLocation";
 import Services from "../components/homePage/Services";
 
 import Navigation from "../components/homePage/Navigation";
+import { Link } from "react-router-dom";
 
 /*
 this is the hopepage component
@@ -32,10 +33,12 @@ function HomePage() {
       <Navigation />
       <div className={wrapperDivClass}>
         {/* the top right profile icon */}
-        <div className="homepage__profile">
-          <div className="homepage__profile--tag">Hey, User</div>
-          <div className="homepage__profile--avatar" />
-        </div>
+        <Link to="/login">
+          <div className="homepage__profile">
+            <div className="homepage__profile--tag">Hey, User</div>
+            <div className="homepage__profile--avatar" />
+          </div>
+        </Link>
         {/* headings */}
         <div className="homepage__heading">
           <h3>Covid-19</h3>
