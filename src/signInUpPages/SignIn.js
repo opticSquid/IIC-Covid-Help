@@ -1,17 +1,19 @@
 import React, { useState } from "react";
 import logoImg from "../svgs/logo.svg";
-import { Link } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
 import { useStateContext } from "../contexts/ContextProvider";
 import Axios from "axios";
 import "./signIn.css";
 
 const Signin = () => {
   const [{ origin }, dispatch] = useStateContext();
+  const history = useHistory();
   return (
     <>
       <div className="signIn">
         <Logo />
         <Form origin={origin} dispatch={dispatch} />
+        <Form origin={origin} dispatch={dispatch} history={history} />
       </div>
     </>
   );
@@ -28,7 +30,7 @@ const Logo = () => {
   );
 };
 
-const Form = ({ origin, dispatch }) => {
+const Form = ({ origin, dispatch,history }) => {
   const [email, SetEmail] = useState("");
   const [password, SetPassword] = useState("");
   const submitHandler = (e) => {
@@ -47,10 +49,12 @@ const Form = ({ origin, dispatch }) => {
               accessToken: response.data.accessToken,
             });
             localStorage.setItem("refreshToken", response.data.refreshToken);
-            dispatch({
-              type: "Add Token",
-              data: response.data.accessToken,
-            });
+            // dispatch({
+            //   type: "Add Token",
+            //   data: response.data.accessToken,
+            // });
+            sessionStorage.setItem('accessToken',response.data.accessToken);
+            history.push("/");
           })
           .catch((error) => {
             if (error) {
