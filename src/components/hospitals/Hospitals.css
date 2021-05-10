@@ -71,7 +71,7 @@ body {
   left: 1.5em;
   color: white;
   white-space: nowrap;
-  font-size:1rem;
+  font-size: 1rem;
 }
 
 .hospital__icon {
@@ -179,7 +179,7 @@ select {
   background-repeat: no-repeat;
   background-position: right;
   cursor: pointer;
-  color:black;
+  color: black;
 }
 
 .street__location {
@@ -273,4 +273,3 @@ select {
   box-shadow: 5px 3px 10px 15px rgba(0, 0, 0, 0.15);
   padding: 2em 4em;
 }
-
