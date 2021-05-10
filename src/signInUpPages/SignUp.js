@@ -1,6 +1,6 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import logoImg from "../svgs/logo.svg";
-import { Link } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
 import IsOk from "../svgs/ok.svg";
 import wrong from "../svgs/wrong.svg";
 import { useStateContext } from "../contexts/ContextProvider";
@@ -9,10 +9,11 @@ import "./signup.css";
 
 const Signup = () => {
   const [{ origin }, dispatch] = useStateContext();
+  const history = useHistory();
   return (
     <div className="signUp1">
       <Logo />
-      <Form origin={origin} dispatch={dispatch} />
+      <Form origin={origin} dispatch={dispatch} history={history} />
     </div>
   );
 };
@@ -28,7 +29,7 @@ const Logo = () => {
   );
 };
 
-const Form = ({ origin, dispatch }) => {
+const Form = ({ origin, dispatch, history }) => {
   let VerifiedClass = null;
   //const [flag,Setflag] = useState("");
   const [verifedPassword, SetVerifiedPassword] = useState("");
@@ -63,10 +64,15 @@ const Form = ({ origin, dispatch }) => {
                   "refreshToken",
                   response.data.refreshToken
                 );
-                dispatch({
-                  type: "Add Token",
-                  data: response.data.accessToken,
-                });
+                // dispatch({
+                //   type: "Add Token",
+                //   data: response.data.accessToken,
+                // });
+                sessionStorage.setItem(
+                  "accessToken",
+                  response.data.accessToken
+                );
+                history.push("/");
               })
               .catch((error) => {
                 if (error) {
