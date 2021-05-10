@@ -16,7 +16,7 @@ it acts as a wrapper to all the other components
 */
 
 function HomePage() {
-  const [{ origin, data }, dispatch] = useStateContext();
+  const [{ origin }, dispatch] = useStateContext();
   const fetchData = (pos) => {
     let crd = pos.coords;
     let locationDoc = {
@@ -24,14 +24,14 @@ function HomePage() {
         type: "Point",
         coordinates: [crd.longitude, crd.latitude],
       },
-      Radius: 5,
-      SortBy: "Oxygen",
+      Radius: 5000,
+      SortBy: "Vaccines",
     };
     console.log("Request that will be going: ", locationDoc);
     axios
       .post(`${origin}/getHealthCentres`, locationDoc)
       .then((response) => {
-        console.log(response);
+        // console.log(response);
         dispatch({
           type: "Update Data",
           data: response.data,
@@ -74,7 +74,7 @@ function HomePage() {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
   // console.log(origin);
-  // console.log(data || "NO DATA");
+  // console.log(data?.Centres || "NO DATA");
   // console.log(dispatch);
   //classname for the wrapper div
   //in future homepage__wrapper--dark will be used for dark theme

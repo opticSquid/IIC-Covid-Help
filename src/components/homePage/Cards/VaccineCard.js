@@ -7,20 +7,18 @@ import {
   faMapMarkerAlt,
   faStar,
   faAngleDown,
-  faPumpMedical,
+  faEnvelope,
+  faUserMd,
+  faSyringe,
+  faPills,
 } from "@fortawesome/free-solid-svg-icons";
 
-/* generates cards based on data provided on prop*/
-// make similar sturture for other cards like vacccine and beds
-//uses font awesome for icons
-
-function OxygenCard(props) {
+function VaccineCard(props) {
   const spring = {
     type: "spring",
     damping: 25,
     stiffness: 120,
   };
-
   const calcTimeDiff = (time) => {
     let now = new Date();
     time = new Date(time);
@@ -33,12 +31,11 @@ function OxygenCard(props) {
   const ratingSum = props.rating.reduce(function (a, b) {
     return a + b;
   }, 0);
-  const isAvailable =
-    props.stock > 0 ? (
-      <div className="status available">Available</div>
-    ) : (
-      <div className="status">Unavailable</div>
-    );
+  const isAvailable = props.available ? (
+    <div className="status available">Available</div>
+  ) : (
+    <div className="status">Unavailable</div>
+  );
   const animVarient = {
     in: {
       opacity: 0,
@@ -78,6 +75,10 @@ function OxygenCard(props) {
           <FontAwesomeIcon icon={faMapMarkerAlt} color="#2196F3" />
           <span>{props.location}</span>
         </div>
+        <div className="varient tag">
+          <FontAwesomeIcon icon={faSyringe} color="#e21d2a" />
+          <span>{props.vaccine}</span>
+        </div>
         <div className="HP__cards--flex">
           <div className="stars tag">
             <FontAwesomeIcon icon={faStar} color="#FFFF00" />
@@ -88,8 +89,8 @@ function OxygenCard(props) {
             </span>
           </div>
           <div className="oxygen tag">
-            <FontAwesomeIcon icon={faPumpMedical} color="#00E676" />
-            <span>{props.stock} Cylinders</span>
+            <FontAwesomeIcon icon={faPills} color="#e21d2a" />
+            <span>{props.stock} Dosage</span>
           </div>
         </div>
       </div>
@@ -108,4 +109,4 @@ function OxygenCard(props) {
   );
 }
 
-export default OxygenCard;
+export default VaccineCard;
