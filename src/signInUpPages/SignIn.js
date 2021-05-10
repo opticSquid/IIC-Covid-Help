@@ -12,7 +12,6 @@ const Signin = () => {
     <>
       <div className="signIn">
         <Logo />
-        <Form origin={origin} dispatch={dispatch} />
         <Form origin={origin} dispatch={dispatch} history={history} />
       </div>
     </>
