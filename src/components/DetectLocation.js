@@ -16,6 +16,7 @@ function DetectLocation() {
       coordinates: [crd.longitude, crd.latitude],
     };
     location.push(locationDoc);
+    console.log(locationDoc);
 
     // if (where === "vendor") {
     //   dispatch({

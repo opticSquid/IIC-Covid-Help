@@ -11,6 +11,13 @@ const reducer = (state, action) => {
         ...state,
         accessToken: undefined,
       };
+
+    case "Update Data":
+      return {
+        ...state,
+        data: action.data,
+      };
+
     case "AddOxygen":
       return {
         ...state,
@@ -46,6 +53,7 @@ const reducer = (state, action) => {
           ...state,
           Quantity: action.data
         };
+
     default:
       return state;
   }

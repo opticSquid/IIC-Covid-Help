@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import logoImg from "../svgs/logo.svg";
 import { Link, useHistory } from "react-router-dom";
-
 import { useStateContext } from "../contexts/ContextProvider";
 import Axios from "axios";
 import "./signIn.css";
@@ -13,7 +12,7 @@ const Signin = () => {
     <>
       <div className="signIn">
         <Logo />
-
+        <Form origin={origin} dispatch={dispatch} />
         <Form origin={origin} dispatch={dispatch} history={history} />
       </div>
     </>
