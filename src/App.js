@@ -1,6 +1,7 @@
 import React, { useEffect } from "react";
 import "./assets/styles/main.css";
 import HomePage from "./pages/HomePage";
+import Verify from './EmailVerification/Verify';
 //import test from "./components/test";
 import {
   BrowserRouter as Router,
@@ -49,7 +50,7 @@ function App() {
           <Route path="/login" component={Login} />
           <Route path="/signup" component={Signup} />
           <Route path="/hospitals" component={Hospitals} />
-          <Route path="/" component={HomePage} />
+          <Route path="/" component={Verify} />
           <Redirect to="/" />
         </Switch>
       </Router>
