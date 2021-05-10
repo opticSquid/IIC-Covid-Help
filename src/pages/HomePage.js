@@ -9,9 +9,6 @@ import axios from "axios";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPlus } from "@fortawesome/free-solid-svg-icons";
 
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import {faPlus} from "@fortawesome/free-solid-svg-icons";
-
 /*
 this is the hopepage component
 it acts as a wrapper to all the other components
@@ -19,56 +16,59 @@ it acts as a wrapper to all the other components
 */
 
 function HomePage() {
-  /* the following code below checks if location is available and then logs it to console
-  if location is unavailable its logs it too
-  */
-  const location = {
-    type: "Point",
-    coordinates: ["87.784956", "22.884775"],
-  };
-  const t = {
-    // Location: {
-    //   type: "Point",
-    //   coordinates: ["87.784956", "22.884775"],
-    // },
-    Radius: 25,
-    SortBy: "Oxygen",
-    Location: ["87.784956", "22.884775"],
-  };
-
-  const fetchData = async () => {
-    try {
-      const data = await axios
-        .get("https://stormy-temple-98364.herokuapp.com/getHealthCentres", {
-          Location: {
-            type: "Point",
-            coordinates: [87.784956, 22.884775],
-          },
-          Radius: 2500,
-          SortBy: "Vaccine",
-        })
-        .then(function (response) {
+  const [{ origin, data }, dispatch] = useStateContext();
+  const fetchData = (pos) => {
+    let crd = pos.coords;
+    let locationDoc = {
+      Location: {
+        type: "Point",
+        coordinates: [crd.longitude, crd.latitude],
+      },
+      Radius: 5,
+      SortBy: "Oxygen",
+    };
+    console.log("Request that will be going: ", locationDoc);
+      axios
+        .post(`${origin}/getHealthCentres`,locationDoc)
+        .then((response) => {
           console.log(response);
           dispatch({
             type: "Update Data",
             data: response.data,
           });
+        }).catch ((error)=>{
+          console.log("Error occoured while fetching data from backend", error);
         });
-    } catch (e) {
-      console.log(e);
     }
+  const errors = (err) => {
+    alert("Location Permission Denied! Emable permission to detect location", err);
   };
-
   useEffect(() => {
-    if ("geolocation" in navigator) {
-      navigator.geolocation.getCurrentPosition(function (position) {});
+    let options = {
+      enableHighAccuracy: true,
+      timeout: 30000,
+      maximumAge: 0,
+    };
+
+    if (navigator.geolocation) {
+      navigator.permissions.query({ name: "geolocation" }).then((result) => {
+        if (result.state === "granted") {
+          navigator.geolocation.getCurrentPosition(fetchData);
+        } else if (result.state === "prompt") {
+          navigator.geolocation.getCurrentPosition(fetchData, errors, options);
+        } else if (result.state === "denied") {
+          alert(
+            "Location Permission Denied! Emable permission to detect location"
+          );
+        }
+        result.onchange = function () {};
+      });
     } else {
+      alert("Sorry Not available!");
     }
+
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
-
-  useEffect(() => fetchData(), []);
-
-  const [{ origin, data }, dispatch] = useStateContext();
   // console.log(origin);
   // console.log(data || "NO DATA");
   // console.log(dispatch);
