@@ -7,20 +7,16 @@ import {
   faMapMarkerAlt,
   faStar,
   faAngleDown,
-  faPumpMedical,
+  faEnvelope,
+  faUserMd,
 } from "@fortawesome/free-solid-svg-icons";
 
-/* generates cards based on data provided on prop*/
-// make similar sturture for other cards like vacccine and beds
-//uses font awesome for icons
-
-function OxygenCard(props) {
+function DoctorCard(props) {
   const spring = {
     type: "spring",
     damping: 25,
     stiffness: 120,
   };
-
   const calcTimeDiff = (time) => {
     let now = new Date();
     time = new Date(time);
@@ -74,6 +70,12 @@ function OxygenCard(props) {
             <span>{props.phone}</span>
           </div>
         </a>
+        <a style={{ fontWeight: "400" }} href={"mailto::" + props.mail}>
+          <div className="mail tag">
+            <FontAwesomeIcon icon={faEnvelope} color="#e21d2a" />
+            <span>{props.mail}</span>
+          </div>
+        </a>
         <div className="location tag">
           <FontAwesomeIcon icon={faMapMarkerAlt} color="#2196F3" />
           <span>{props.location}</span>
@@ -88,8 +90,8 @@ function OxygenCard(props) {
             </span>
           </div>
           <div className="oxygen tag">
-            <FontAwesomeIcon icon={faPumpMedical} color="#00E676" />
-            <span>{props.stock} Cylinders</span>
+            <FontAwesomeIcon icon={faUserMd} color="#00E676" />
+            <span>{props.stock} Doctors</span>
           </div>
         </div>
       </div>
@@ -108,4 +110,4 @@ function OxygenCard(props) {
   );
 }
 
-export default OxygenCard;
+export default DoctorCard;

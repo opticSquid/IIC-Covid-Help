@@ -56,23 +56,11 @@ const Form = ({ origin, dispatch, history }) => {
             let newUser = { Email: email, Name: name, Password: password };
             Axios.post(`${origin}/signup`, newUser)
               .then((response) => {
-                console.log({
-                  refreshToken: response.data.refreshToken,
-                  accessToken: response.data.accessToken,
-                });
-                localStorage.setItem(
-                  "refreshToken",
-                  response.data.refreshToken
-                );
-                // dispatch({
-                //   type: "Add Token",
-                //   data: response.data.accessToken,
-                // });
-                sessionStorage.setItem(
-                  "accessToken",
-                  response.data.accessToken
-                );
-                history.push("/");
+                if (response.data.status === "Mail sent yet to be verified") {
+                  history.push("/");
+                } else {
+                  // error signup
+                }
               })
               .catch((error) => {
                 if (error) {

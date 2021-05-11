@@ -1,10 +1,14 @@
 const reducer = (state, action) => {
   switch (action.type) {
     case "Add Token":
-      console.log("Setting Access Token", action.data);
       return {
         ...state,
         accessToken: action.data,
+      };
+    case "Add name":
+      return {
+        ...state,
+        userName: action.data,
       };
     case "Remove Token":
       return {

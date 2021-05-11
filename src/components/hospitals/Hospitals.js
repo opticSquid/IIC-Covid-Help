@@ -260,103 +260,107 @@ function Hospitals() {
       });
   };
   return (
-    <div className="hospital">
-      <div className="hospital__icon">
-        <div
-          className={
-            isTabletOrMobile
-              ? "mobile__homepage__icon"
-              : "desktop__homepage__icon"
-          }
-        >
-          <h1>C</h1>
-          <h3>
-            <span>O</span> Help
-          </h3>
+    <div className="hospital--wrapper">
+      <div className="hospital">
+        <div className="hospital__icon">
+          <div
+            className={
+              isTabletOrMobile
+                ? "mobile__homepage__icon"
+                : "desktop__homepage__icon"
+            }
+          >
+            <h1>C</h1>
+            <h3>
+              <span>O</span> Help
+            </h3>
+          </div>
         </div>
-      </div>
-      <h1>Add a new hostipal:</h1>
-      <form>
-        <div className="information">
-          <input
-            name="facility"
-            className="facility__name"
-            type="text"
-            placeholder="Enter Facility Name"
-            required
-            onChange={setValues}
-          ></input>
-          <input
-            name="phone"
-            className="phone__number"
-            type="tel"
-            placeholder=" Enter Phone Number"
-            required
-            onChange={setValues}
-          ></input>
-          <input
-            name="email"
-            className="phone__number"
-            type="email"
-            placeholder=" Enter email"
-            required
-            onChange={setValues}
-          ></input>
+        <h1>Add a new hostipal:</h1>
+        <form>
+          <div className="information">
+            <input
+              name="facility"
+              className="facility__name"
+              type="text"
+              placeholder="Enter Facility Name"
+              required
+              onChange={setValues}
+            ></input>
+            <input
+              name="phone"
+              className="phone__number"
+              type="tel"
+              placeholder=" Enter Phone Number"
+              required
+              onChange={setValues}
+            ></input>
+            <input
+              name="email"
+              className="phone__number"
+              type="email"
+              placeholder=" Enter email"
+              required
+              onChange={setValues}
+            ></input>
 
-          <div>
-            <div
-              onClick={() => setLocation(!location)}
-              id={location ? "success__button" : "location__button"}
-            >
-              <div style={{ color: location ? "black" : "white" }}>
-                {!location ? "Detect Location" : "Location Detected"}
+            <div>
+              <div
+                onClick={() => setLocation(!location)}
+                id={location ? "success__button" : "location__button"}
+              >
+                <div style={{ color: location ? "black" : "white" }}>
+                  {!location ? "Detect Location" : "Location Detected"}
+                </div>
+              </div>
+              {location ? locations() : null}
+            </div>
+
+            <div className="select__facility">
+              <div className="facility" onClick={() => setShow(!show)}>
+                Select the type of Facility
+              </div>
+              <div id="chevronDown" onClick={() => setShow(!show)}>
+                <FontAwesomeIcon icon={faChevronDown} />
               </div>
             </div>
-            {location ? locations() : null}
-          </div>
+            {show ? dropdown() : null}
 
-          <div className="select__facility">
-            <div className="facility" onClick={() => setShow(!show)}>
-              Select the type of Facility
+            <div className="street__location">
+              <input
+                name="state"
+                id="state"
+                onChange={setValues}
+                type="text"
+                placeholder="State"
+              ></input>
+              <input
+                name="district"
+                id="district"
+                type="text"
+                onChange={setValues}
+                placeholder="District"
+              ></input>
+              <input
+                name="city"
+                id="city"
+                type="text"
+                onChange={setValues}
+                placeholder="City"
+              ></input>
             </div>
-            <div id="chevronDown" onClick={() => setShow(!show)}>
-              <FontAwesomeIcon icon={faChevronDown} />
-            </div>
-          </div>
-          {show ? dropdown() : null}
 
-          <div className="street__location">
-            <input
-              name="state"
-              id="state"
-              onChange={setValues}
-              type="text"
-              placeholder="State"
-            ></input>
-            <input
-              name="district"
-              id="district"
-              type="text"
-              onChange={setValues}
-              placeholder="District"
-            ></input>
-            <input
-              name="city"
-              id="city"
-              type="text"
-              onChange={setValues}
-              placeholder="City"
-            ></input>
+            <button
+              className={
+                isTabletOrMobile ? "mobile__submit" : "desktop__submit"
+              }
+              onClick={submitHandler}
+            >
+              Submit
+            </button>
           </div>
-
-          <button
-            className={isTabletOrMobile ? "mobile__submit" : "desktop__submit"}
-            onClick={submitHandler}
-          >
-            Submit
-          </button>
-        </div>
-      </form>
+        </form>
+      </div>
     </div>
   );
 }

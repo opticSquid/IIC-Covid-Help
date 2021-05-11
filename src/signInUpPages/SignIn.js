@@ -47,13 +47,23 @@ const Form = ({ origin, dispatch, history }) => {
               refreshToken: response.data.refreshToken,
               accessToken: response.data.accessToken,
             });
-            localStorage.setItem("refreshToken", response.data.refreshToken);
-            // dispatch({
-            //   type: "Add Token",
-            //   data: response.data.accessToken,
-            // });
-            sessionStorage.setItem("accessToken", response.data.accessToken);
-            history.push("/");
+            if (response.data.status === "Logged in successfully") {
+              localStorage.setItem(
+                "refreshToken",
+                response.data.tokens.refreshToken
+              );
+              dispatch({
+                type: "Add name",
+                data: response.data.Name,
+              });
+              sessionStorage.setItem(
+                "accessToken",
+                response.data.tokens.accessToken
+              );
+              history.push("/");
+            } else {
+              //error sign in
+            }
           })
           .catch((error) => {
             if (error) {

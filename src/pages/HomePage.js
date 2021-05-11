@@ -16,7 +16,7 @@ it acts as a wrapper to all the other components
 */
 
 function HomePage() {
-  const [{ origin, data }, dispatch] = useStateContext();
+  const [{ origin }, dispatch] = useStateContext();
   const fetchData = (pos) => {
     let crd = pos.coords;
     let locationDoc = {
@@ -27,11 +27,11 @@ function HomePage() {
       Radius: 5,
       SortBy: "Oxygen",
     };
-    console.log("Request that will be going: ", locationDoc);
+    // console.log("Request that will be going: ", locationDoc);
     axios
       .post(`${origin}/getHealthCentres`, locationDoc)
       .then((response) => {
-        console.log(response);
+        // console.log(response);
         dispatch({
           type: "Update Data",
           data: response.data,
@@ -74,38 +74,67 @@ function HomePage() {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
   // console.log(origin);
-  // console.log(data || "NO DATA");
+  // console.log(data?.Centres || "NO DATA");
   // console.log(dispatch);
   //classname for the wrapper div
   //in future homepage__wrapper--dark will be used for dark theme
   //the classname should be generated procedualy in that case
   let wrapperDivClass = "homepage__wrapper homepage__wrapper--light";
 
+  const buildRouteToHospital = () => {
+    if (localStorage.getItem("refreshToken") === null) {
+      return "/login";
+    } else {
+      return "/hospitals";
+    }
+  };
+
+  const buildLoginText = () => {
+    if (localStorage.getItem("refreshToken") === null) {
+      return "Login";
+    } else {
+      return "Logout";
+    }
+  };
+  const buildLoginLink = () => {
+    if (localStorage.getItem("refreshToken") === null) {
+      return "/login";
+    } else {
+      return "/";
+    }
+  };
+
+  const handleLogout = () => {
+    if (localStorage.getItem("refreshToken") !== null) {
+      const x = window.confirm("Are you sure, you want to logout?");
+      if (x) {
+        try {
+          localStorage.removeItem("refreshToken");
+        } catch (err) {
+          console.log(err);
+        }
+        try {
+          sessionStorage.removeItem("accessToken");
+        } catch (err) {
+          console.log(err);
+        }
+      }
+    }
+  };
+
   return (
     <>
       <Navigation />
       <div className={wrapperDivClass}>
-        <Link to="/hospitals">
-          <div
-            style={{
-              position: "fixed",
-              bottom: "1em",
-              right: "1em",
-              padding: "1em 1.2em",
-              background: "#5600e7",
-              zIndex: "5",
-              borderRadius: "50%",
-              fontSize: "1.5rem",
-              color: "white",
-            }}
-          >
+        <Link to={buildRouteToHospital()}>
+          <div className="hospital--route">
             <FontAwesomeIcon icon={faPlus} />
           </div>
         </Link>
         {/* the top right profile icon */}
-        <Link to="/login">
+        <Link to={buildLoginLink()} onClick={handleLogout}>
           <div className="homepage__profile">
-            <div className="homepage__profile--tag">Hey, User</div>
+            <div className="homepage__profile--tag">{buildLoginText()}</div>
             <div className="homepage__profile--avatar" />
           </div>
         </Link>
