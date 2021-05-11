@@ -59,7 +59,6 @@ function Services() {
     );
   };
   useEffect(() => {
-    
     let options = {
       enableHighAccuracy: true,
       timeout: 30000,

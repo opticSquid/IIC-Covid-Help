@@ -73,7 +73,7 @@ const Form = ({ origin, dispatch, history }) => {
       }
     }
   };
-  
+
   return (
     <form className="form">
       <input
