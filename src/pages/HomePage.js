@@ -108,16 +108,27 @@ function HomePage() {
     if (localStorage.getItem("refreshToken") !== null) {
       const x = window.confirm("Are you sure, you want to logout?");
       if (x) {
-        try {
-          localStorage.removeItem("refreshToken");
-        } catch (err) {
-          console.log(err);
-        }
-        try {
-          sessionStorage.removeItem("accessToken");
-        } catch (err) {
-          console.log(err);
-        }
+        axios.delete(`${origin}/logout`,{headers:{accesstoken:sessionStorage.getItem("accessToken")}}).then((response)=>{
+          if(response.data.status==="Logged Out")
+          {
+            try {
+              localStorage.removeItem("refreshToken");
+            } catch (err) {
+              console.log(err);
+            }
+            try {
+              sessionStorage.removeItem("accessToken");
+            } catch (err) {
+              console.log(err);
+            }
+          }
+          else
+          {
+            alert("Could not Logout the user Try again.");
+          }
+        }).catch((error)=>{
+          alert("Could not send request to Servers for this reason",error);
+        })
       }
     }
   };
