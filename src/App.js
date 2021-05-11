@@ -3,6 +3,7 @@ import "./assets/styles/main.css";
 import HomePage from "./pages/HomePage";
 import Verify from "./EmailVerification/Verify";
 //import test from "./components/test";
+import {useStateContext} from "./contexts/ContextProvider"
 import {
   BrowserRouter as Router,
   Route,
@@ -15,13 +16,14 @@ import Signup from "./signInUpPages/SignUp";
 import AboutPage from "./pages/AboutPage";
 import Hospitals from "./components/hospitals/Hospitals";
 function App() {
+  const [{origin}] = useStateContext();
   useEffect(() => {
     console.log("AccessToken: ", sessionStorage.getItem("accessToken"));
     //If user is already logged in
     if(localStorage.getItem("refreshToken"))
     {
       // Regenerating new access token
-      checkJWT().then((res)=>{
+      checkJWT(origin).then((res)=>{
         if(res)
         {
           console.log("New access token generated");

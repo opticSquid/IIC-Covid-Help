@@ -1,8 +1,8 @@
 import Axios from "axios";
-const CheckToken = async () => {
+const CheckToken = async (origin) => {
   console.log("Real token: ", sessionStorage.getItem("accessToken"));
   console.log("In regenerating token");
-  await Axios.get("http://localhost:5000/checktoken", {
+  await Axios.get(`${origin}/checktoken`, {
     headers: {
       accesstoken: sessionStorage.getItem("accessToken"),
       refreshtoken: localStorage.getItem("refreshToken"),

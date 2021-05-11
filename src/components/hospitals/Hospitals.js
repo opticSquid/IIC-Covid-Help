@@ -285,7 +285,7 @@ function Hospitals() {
     console.log("New Centre", newCentre);
     if(localStorage.getItem("refreshToken")!==null)
     {
-      jwtCheck().then((resp)=>{
+      jwtCheck(origin).then((resp)=>{
         Axios.post(`${origin}/newHealthCentre`, newCentre, {
           headers: { accesstoken: sessionStorage.getItem("accessToken") },
         })
