@@ -59,7 +59,7 @@ function Services() {
     );
   };
   useEffect(() => {
-    console.log("fetching");
+    
     let options = {
       enableHighAccuracy: true,
       timeout: 30000,

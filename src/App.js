@@ -18,7 +18,7 @@ import Hospitals from "./components/hospitals/Hospitals";
 function App() {
   const [{origin}] = useStateContext();
   useEffect(() => {
-    console.log("AccessToken: ", sessionStorage.getItem("accessToken"));
+    
     //If user is already logged in
     if(localStorage.getItem("refreshToken"))
     {

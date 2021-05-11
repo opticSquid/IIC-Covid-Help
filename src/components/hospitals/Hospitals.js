@@ -33,10 +33,10 @@ function Hospitals() {
   const history = useHistory();
   const success = (pos) => {
     let crd = pos.coords;
-    console.log("Your current position is:");
-    console.log(`Latitude : ${crd.latitude}`);
-    console.log(`Longitude: ${crd.longitude}`);
-    console.log(`More or less ${crd.accuracy} meters.`);
+    
+    
+    
+    
     let locationDoc = {
       type: "Point",
       coordinates: [crd.longitude, crd.latitude],
@@ -45,7 +45,7 @@ function Hospitals() {
       type: "AddHospitalLocation",
       data: locationDoc
     });
-    console.log("Send Location ",locationDoc);
+    
   };
   const errors = (err) => {
     alert("Location Permission Denied! Emable permission to detect location",err);
@@ -282,7 +282,7 @@ function Hospitals() {
         },
       },
     };
-    console.log("New Centre", newCentre);
+    
     if(localStorage.getItem("refreshToken")!==null)
     {
       jwtCheck(origin).then((resp)=>{
@@ -290,7 +290,7 @@ function Hospitals() {
           headers: { accesstoken: sessionStorage.getItem("accessToken") },
         })
           .then((response) => {
-            console.log("Response from Backend", response);
+            
             history.push("/");
           })
           .catch((error) => {
