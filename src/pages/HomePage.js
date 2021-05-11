@@ -24,7 +24,7 @@ function HomePage() {
         type: "Point",
         coordinates: [crd.longitude, crd.latitude],
       },
-      Radius: 5000,
+      Radius: 5,
       SortBy: "Vaccines",
     };
     console.log("Request that will be going: ", locationDoc);
@@ -81,19 +81,60 @@ function HomePage() {
   //the classname should be generated procedualy in that case
   let wrapperDivClass = "homepage__wrapper homepage__wrapper--light";
 
+  const buildRouteToHospital = () => {
+    if (localStorage.getItem("refreshToken") === null) {
+      return "/login";
+    } else {
+      return "/hospitals";
+    }
+  };
+
+  const buildLoginText = () => {
+    if (localStorage.getItem("refreshToken") === null) {
+      return "Login";
+    } else {
+      return "Logout";
+    }
+  };
+  const buildLoginLink = () => {
+    if (localStorage.getItem("refreshToken") === null) {
+      return "/login";
+    } else {
+      return "/";
+    }
+  };
+
+  const handleLogout = () => {
+    if (localStorage.getItem("refreshToken") !== null) {
+      const x = window.confirm("Are you sure, you want to logout?");
+      if (x) {
+        try {
+          localStorage.removeItem("refreshToken");
+        } catch (err) {
+          console.log(err);
+        }
+        try {
+          sessionStorage.removeItem("accessToken");
+        } catch (err) {
+          console.log(err);
+        }
+      }
+    }
+  };
+
   return (
     <>
       <Navigation />
       <div className={wrapperDivClass}>
-        <Link to="/hospitals">
+        <Link to={buildRouteToHospital()}>
           <div className="hospital--route">
             <FontAwesomeIcon icon={faPlus} />
           </div>
         </Link>
         {/* the top right profile icon */}
-        <Link to="/login">
+        <Link to={buildLoginLink()} onClick={handleLogout}>
           <div className="homepage__profile">
-            <div className="homepage__profile--tag">Hey, User</div>
+            <div className="homepage__profile--tag">{buildLoginText()}</div>
             <div className="homepage__profile--avatar" />
           </div>
         </Link>
