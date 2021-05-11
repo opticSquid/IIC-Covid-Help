@@ -58,10 +58,10 @@ const reducer = (state, action) => {
         Quantity: action.data,
       };
     case "AddHospitalLocation":
-      return{
+      return {
         ...state,
         NewHospitalLocation: action.data,
-      }
+      };
     default:
       return state;
   }

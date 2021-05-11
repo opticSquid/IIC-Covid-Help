@@ -15,7 +15,17 @@ function Hospitals() {
   const [location, setLocation] = useState(false);
   const isTabletOrMobile = useMediaQuery({ query: "(max-width:750px)" });
   const [
-    { origin, Oxygen, Normal, Icu, Doctor, Available, VaccineName, Quantity, NewHospitalLocation },
+    {
+      origin,
+      Oxygen,
+      Normal,
+      Icu,
+      Doctor,
+      Available,
+      VaccineName,
+      Quantity,
+      NewHospitalLocation,
+    },
     dispatch,
   ] = useStateContext();
   const [Centre, setCentre] = useState({
@@ -41,12 +51,15 @@ function Hospitals() {
     };
     dispatch({
       type: "AddHospitalLocation",
-      data: locationDoc
+      data: locationDoc,
     });
-    console.log("Send Location ",locationDoc);
+    console.log("Send Location ", locationDoc);
   };
   const errors = (err) => {
-    alert("Location Permission Denied! Emable permission to detect location",err);
+    alert(
+      "Location Permission Denied! Emable permission to detect location",
+      err
+    );
   };
   useEffect(() => {
     let options = {
@@ -71,8 +84,8 @@ function Hospitals() {
     } else {
       alert("Sorry Not available!");
     }
-    
-  // eslint-disable-next-line react-hooks/exhaustive-deps
+
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [location]);
 
   function dropdown() {
