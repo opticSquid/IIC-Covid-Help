@@ -15,7 +15,7 @@ it acts as a wrapper to all the other components
 */
 
 function HomePage() {
-  const [{ origin,userName }, dispatch] = useStateContext();
+  const [{ origin, userName }, dispatch] = useStateContext();
   const fetchData = (pos) => {
     let crd = pos.coords;
     let locationDoc = {
@@ -117,7 +117,7 @@ function HomePage() {
                 sessionStorage.removeItem("accessToken");
                 localStorage.removeItem("refreshToken");
                 dispatch({
-                  type: "Remove name"
+                  type: "Remove name",
                 });
               } catch (err) {
                 console.log(err);
