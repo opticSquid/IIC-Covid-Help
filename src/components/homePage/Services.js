@@ -96,7 +96,7 @@ function Services() {
 
   const searchControl = () => {
     setRadius(radiusRef.current.value);
-    console.log(radiusRef.current.value);
+    // console.log(radiusRef.current.value);
   };
 
   const checkbox = (

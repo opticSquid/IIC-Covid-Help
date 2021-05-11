@@ -76,7 +76,7 @@ function BedCard(props) {
           </div> */}
         </div>
         <div className="status-wrapper">
-          <div className="status available">Available</div>
+          {isAvailable}
           {/* // unavailable part left */}
           <div className="updated">{calcTimeDiff(props.updated)} ago</div>
         </div>
