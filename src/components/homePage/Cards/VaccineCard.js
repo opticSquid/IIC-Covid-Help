@@ -7,8 +7,6 @@ import {
   faMapMarkerAlt,
   faStar,
   faAngleDown,
-  faEnvelope,
-  faUserMd,
   faSyringe,
   faPills,
 } from "@fortawesome/free-solid-svg-icons";

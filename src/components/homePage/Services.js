@@ -16,7 +16,7 @@ function Services() {
   const sortList = ["Oxygen", "Normal Bed", "ICU Bed", "Doctor", "Vaccine"];
 
   const [{ origin, data }, dispatch] = useStateContext();
-  console.log(data?.Centres || "NO DATA");
+  // console.log(data?.Centres || "NO DATA");
   /* this variable sets the active selection from diffrent categories
   like oxygen/beds/vaccines etc*/
   const [active, setActive] = useState(0);
@@ -38,11 +38,11 @@ function Services() {
       Radius: radius,
       SortBy: sortList[active],
     };
-    console.log("Request that will be going: ", locationDoc);
+    // console.log("Request that will be going: ", locationDoc);
     axios
       .post(`${origin}/getHealthCentres`, locationDoc)
       .then((response) => {
-        console.log(response);
+        // console.log(response);
         dispatch({
           type: "Update Data",
           data: response.data,

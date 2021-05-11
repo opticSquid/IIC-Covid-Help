@@ -25,9 +25,9 @@ function HomePage() {
         coordinates: [crd.longitude, crd.latitude],
       },
       Radius: 5,
-      SortBy: "Vaccines",
+      SortBy: "Oxygen",
     };
-    console.log("Request that will be going: ", locationDoc);
+    // console.log("Request that will be going: ", locationDoc);
     axios
       .post(`${origin}/getHealthCentres`, locationDoc)
       .then((response) => {
