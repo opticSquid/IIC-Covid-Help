@@ -20,6 +20,37 @@ function BedCard(props) {
     damping: 25,
     stiffness: 120,
   };
+  const calcTimeDiff = (time) => {
+    let now = new Date();
+    time = new Date(time);
+    let secdiff = (now.getTime() - time.getTime()) / 1000;
+    if (secdiff >= 86400) return `${Math.round(secdiff / 86400)} days`;
+    else if (secdiff >= 3600) return `${Math.round(secdiff / 3600)} hrs`;
+    else if (secdiff >= 60) return `${Math.round(secdiff / 60)} mins`;
+    else return `${Math.round(secdiff)} seconds`;
+  };
+  const bedData =
+    props.type === "ICU" ? (
+      <div className="oxygen tag">
+        <FontAwesomeIcon icon={faBed} color="#e21d2a" />
+        <span>{props.stock} ICU Beds left</span>
+      </div>
+    ) : (
+      <div className="oxygen tag">
+        <FontAwesomeIcon icon={faBed} color="#2196F3" />
+        <span>{props.stock} Beds left</span>
+      </div>
+    );
+  const isAvailable =
+    props.stock > 0 ? (
+      <div className="status available">Available</div>
+    ) : (
+      <div className="status">Unavailable</div>
+    );
+
+  const ratingSum = props.rating.reduce(function (a, b) {
+    return a + b;
+  }, 0);
 
   const animVarient = {
     in: {
@@ -47,7 +78,7 @@ function BedCard(props) {
         <div className="status-wrapper">
           <div className="status available">Available</div>
           {/* // unavailable part left */}
-          <div className="updated">updated {props.updated} ago</div>
+          <div className="updated">{calcTimeDiff(props.updated)} ago</div>
         </div>
       </div>
       <div className="HP__card--information">
@@ -62,13 +93,14 @@ function BedCard(props) {
         <div className="HP__cards--flex">
           <div className="stars tag">
             <FontAwesomeIcon icon={faStar} color="#FFFF00" />
-            <span>{props.rating}</span>
-          </div>
-          <div className="oxygen tag">
-            <FontAwesomeIcon icon={faBed} color="#2196F3" />
-            <span>{props.stock} Beds left</span>
+            <span>
+              {props.rating.length > 0
+                ? (ratingSum / props.rating.length).toFixed(2)
+                : (5.0).toString()}
+            </span>
           </div>
         </div>
+        {bedData}
       </div>
       <div className="HP__card--footer">
         <div>

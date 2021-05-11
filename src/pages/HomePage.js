@@ -86,19 +86,7 @@ function HomePage() {
       <Navigation />
       <div className={wrapperDivClass}>
         <Link to="/hospitals">
-          <div
-            style={{
-              position: "fixed",
-              bottom: "1em",
-              right: "1em",
-              padding: "1em 1.2em",
-              background: "#5600e7",
-              zIndex: "5",
-              borderRadius: "50%",
-              fontSize: "1.5rem",
-              color: "white",
-            }}
-          >
+          <div className="hospital--route">
             <FontAwesomeIcon icon={faPlus} />
           </div>
         </Link>

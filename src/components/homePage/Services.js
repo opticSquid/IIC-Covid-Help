@@ -1,14 +1,20 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, createRef } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faPlus, faSearch } from "@fortawesome/free-solid-svg-icons";
+import { faSearch } from "@fortawesome/free-solid-svg-icons";
 import OxygenCard from "./Cards/OxygenCard";
 import BedCard from "./Cards/BedCard";
 import axios from "axios";
 import { useStateContext } from "../../contexts/ContextProvider";
 import DoctorCard from "./Cards/DoctorCard";
 import VaccineCard from "./Cards/VaccineCard";
+import { v4 as uuidv4 } from "uuid";
 
 function Services() {
+  const checkboxRef = createRef();
+  const radiusRef = createRef();
+  const [radius, setRadius] = useState(5);
+  const sortList = ["Oxygen", "Normal Bed", "ICU Bed", "Doctor", "Vaccine"];
+
   const [{ origin, data }, dispatch] = useStateContext();
   console.log(data?.Centres || "NO DATA");
   /* this variable sets the active selection from diffrent categories
@@ -29,14 +35,14 @@ function Services() {
         type: "Point",
         coordinates: [crd.longitude, crd.latitude],
       },
-      Radius: 5000,
-      SortBy: "Vaccines",
+      Radius: radius,
+      SortBy: sortList[active],
     };
-    // console.log("Request that will be going: ", locationDoc);
+    console.log("Request that will be going: ", locationDoc);
     axios
       .post(`${origin}/getHealthCentres`, locationDoc)
       .then((response) => {
-        // console.log(response);
+        console.log(response);
         dispatch({
           type: "Update Data",
           data: response.data,
@@ -78,19 +84,35 @@ function Services() {
     }
 
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [active]);
+  }, [active, radius]);
 
-  // const btnBuilder =
-  //   /*data.isLogin ?*/ 1 === 1 ? (
-  //     <div className="HP__add">
-  //       <span style={{ margin: ".5rem" }}>
-  //         <FontAwesomeIcon icon={faPlus} />
-  //       </span>
-  //       ADD DATA
-  //     </div>
-  //   ) : (
-  //     ""
-  //   );
+  const checkboxControl = () => {
+    if (checkboxRef.current.checked) {
+      setActive(2);
+    } else {
+      setActive(1);
+    }
+  };
+
+  const searchControl = () => {
+    setRadius(radiusRef.current.value);
+    console.log(radiusRef.current.value);
+  };
+
+  const checkbox = (
+    <div className="icu">
+      <div>ICU BEDS</div>
+      <div>
+        <input
+          onChange={checkboxControl}
+          ref={checkboxRef}
+          type="checkbox"
+          id="switch"
+        />
+        <label htmlFor="switch">Toggle</label>
+      </div>
+    </div>
+  );
   //the following function makes the cards that are to be shown
   // data comes from oxygen context
   // dynamic : based on user selction
@@ -108,6 +130,38 @@ function Services() {
             location={card?.Address?.StreetAddress?.District}
             rating={card.Rating}
             stock={card?.Oxygen}
+          />
+        );
+      });
+    } else if (active === 1) {
+      return data?.Centres.map((card) => {
+        return (
+          <BedCard
+            key={card.uid}
+            place={card?.FacilityName}
+            updated={card?.updatedAt}
+            phone={card?.PhoneNumber}
+            location={card?.Address?.StreetAddress?.District}
+            rating={card?.Rating}
+            mail={card?.Email}
+            stock={card?.Beds?.Normal}
+            type="normal"
+          />
+        );
+      });
+    } else if (active === 2) {
+      return data?.Centres.map((card) => {
+        return (
+          <BedCard
+            key={uuidv4()}
+            place={card?.FacilityName}
+            updated={card?.updatedAt}
+            phone={card?.PhoneNumber}
+            location={card?.Address?.StreetAddress?.District}
+            rating={card?.Rating}
+            mail={card?.Email}
+            stock={card?.Beds?.ICU}
+            type="ICU"
           />
         );
       });
@@ -144,23 +198,6 @@ function Services() {
       });
     }
   };
-  //   } else if (active === 1) {
-  //     return data.bed.map((card) => {
-  //       return (
-  //         <BedCard
-  //           key={card.id}
-  //           place={card.place}
-  //           updated={card.updated}
-  //           available={card.available}
-  //           phone={card.phone}
-  //           location={card.location}
-  //           rating={card.rating}
-  //           stock={card.stock}
-  //         />
-  //       );
-  //     });
-  //   }
-  // };
 
   return (
     <>
@@ -168,7 +205,10 @@ function Services() {
         <div className={isActive(0)} onClick={() => setActive(0)}>
           Oxygen
         </div>
-        <div className={isActive(1)} onClick={() => setActive(1)}>
+        <div
+          className={isActive(1) || isActive(2)}
+          onClick={() => setActive(1)}
+        >
           Hospital Beds
         </div>
         <div className={isActive(3)} onClick={() => setActive(3)}>
@@ -178,31 +218,18 @@ function Services() {
           Vaccine
         </div>
       </div>
-      <div
-        className="HPCat__search--container"
-        //   style={{
-        //     width: "30em",
-        //     height: "3em",
-        //     boxShadow: "0px 0px 15px 0px rgba(0, 0, 0, 0.2)",
-        //     marginLeft: "17em",
-        //     marginRight: "22em",
-        //   }
-        // }
-      >
+      <div className="HPCat__search--container">
         <input
-          style={{ height: "3.3em" }}
+          ref={radiusRef}
           type="tel"
           placeholder="Enter Search Radius in Km"
         />
-        <div style={{ height: "3em" }}>
+        <div onClick={searchControl}>
           <FontAwesomeIcon icon={faSearch} />
         </div>
       </div>
       <h3 className="HPCat--h3">Nearby Places</h3>
-      <div>
-        ICU BEDS
-        <input type="checkbox" />
-      </div>
+      {active === 1 || active === 2 ? checkbox : ""}
       {/* {btnBuilder} */}
       <div className="HP__cards--container">{cardBuilder()}</div>
     </>

@@ -141,7 +141,7 @@
   -30px -30px 70px #00000025;
 }
 .HPCat__search--container div {
-  height: 2.2rem;
+  height: 3.0rem;
   width: 8rem;
   display: flex;
   justify-content: center;
@@ -166,7 +166,7 @@
   background: #fff;
   border-radius: 25px 0 0 25px;
   text-align: center;
-  height: 2.2rem;
+  height: 3rem;
   outline: none;
   border: none;
 }
@@ -176,7 +176,6 @@
 }
 
 .HPCat__search--container input:focus{
-  border: none;
   outline: springgreen;
 }
 
@@ -534,4 +533,89 @@
     padding-left: 1rem;
     padding-right: 1rem;
   }
+}
+
+/********************************************************************************************/
+
+.icu{
+  display: flex;
+  font-size: 1.4rem;
+  align-items: center;
+  margin-top: .6rem;
+  font-family: "google-sans";
+  color: #424242;
+}
+
+@media only screen and (max-width: 1000px) {
+.icu {
+  justify-content: center;
+}
+
+}
+
+.icu div{
+  display: flex;
+  align-items: center;
+}
+.icu div:nth-child(1){
+  padding-right: 1rem;
+}
+
+.icu input[type=checkbox] {
+  height: 0;
+  width: 0;
+  visibility: hidden;
+}
+
+.icu label {
+  cursor: pointer;
+  text-indent: -9999px;
+  width: 6rem;
+  height: 2rem;
+  background: grey;
+  display: block;
+  border-radius: 100px;
+  position: relative;
+  box-shadow: 20px 20px 50px #00000025;
+}
+
+.icu label:after {
+  content: '';
+  position: absolute;
+  left: 0px;
+  width: 2rem;
+  height: 2rem;
+  background: rgb(255, 255, 255);
+  border-radius: 90px;
+  transition: 0.4s;
+}
+
+.icu input:checked+label {
+  /* background: #bada55;
+   */
+   background: #00e676;
+}
+
+.icu input:checked+label:after {
+  left: calc(100% );
+  transform: translateX(-100%);
+}
+
+.icu label:active:after {
+  width: 7rem;
+}
+.hospital--route {
+  position: fixed;
+  bottom: 1em;
+  right: 1em;
+  padding: 1em 1.2em;
+  background: #5600e7;
+  z-index: 5;
+  border-radius: 50%;
+  font-size: 1.5rem;
+  color: white;
+}
+
+.HP__cards--container{
+  padding-bottom: 10rem;
 }
