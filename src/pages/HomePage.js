@@ -37,7 +37,7 @@ function HomePage() {
         });
       })
       .catch((error) => {
-        console.log("Error occoured while fetching data from backend", error);
+        
       });
   };
   const errors = (err) => {
@@ -120,7 +120,7 @@ function HomePage() {
                   type: "Remove name",
                 });
               } catch (err) {
-                console.log(err);
+                
               }
             } else {
               alert("Could not Logout the user Try again.");

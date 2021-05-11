@@ -18,7 +18,7 @@ import Hospitals from "./components/hospitals/Hospitals";
 function App() {
   const [{origin}] = useStateContext();
   useEffect(() => {
-    console.log("AccessToken: ", sessionStorage.getItem("accessToken"));
+    
     //If user is already logged in
     if(localStorage.getItem("refreshToken"))
     {
@@ -26,14 +26,14 @@ function App() {
       checkJWT(origin).then((res)=>{
         if(res)
         {
-          console.log("New access token generated");
+          
         }
         else
         {
-          console.log("New access token could not be granted");
+          
         }
       }).catch((error)=>{
-        console.log("Check jwt could not be called",error);
+        
       })
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps

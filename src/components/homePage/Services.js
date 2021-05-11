@@ -49,7 +49,7 @@ function Services() {
         });
       })
       .catch((error) => {
-        console.log("Error occoured while fetching data from backend", error);
+        
       });
   };
   const errors = (err) => {
@@ -59,7 +59,7 @@ function Services() {
     );
   };
   useEffect(() => {
-    console.log("fetching");
+    
     let options = {
       enableHighAccuracy: true,
       timeout: 30000,
