@@ -8,7 +8,6 @@ import { Link } from "react-router-dom";
 import axios from "axios";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPlus } from "@fortawesome/free-solid-svg-icons";
-
 /*
 this is the hopepage component
 it acts as a wrapper to all the other components
@@ -16,7 +15,7 @@ it acts as a wrapper to all the other components
 */
 
 function HomePage() {
-  const [{ origin }, dispatch] = useStateContext();
+  const [{ origin,userName }, dispatch] = useStateContext();
   const fetchData = (pos) => {
     let crd = pos.coords;
     let locationDoc = {
@@ -93,7 +92,7 @@ function HomePage() {
     if (localStorage.getItem("refreshToken") === null) {
       return "Login";
     } else {
-      return "Logout";
+      return `Hello, ${userName} click to logout`;
     }
   };
   const buildLoginLink = () => {
@@ -117,6 +116,9 @@ function HomePage() {
               try {
                 sessionStorage.removeItem("accessToken");
                 localStorage.removeItem("refreshToken");
+                dispatch({
+                  type: "Remove name"
+                });
               } catch (err) {
                 console.log(err);
               }

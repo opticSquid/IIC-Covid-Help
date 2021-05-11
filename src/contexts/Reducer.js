@@ -5,15 +5,20 @@ const reducer = (state, action) => {
         ...state,
         accessToken: action.data,
       };
+    case "Remove Token":
+      return {
+        ...state,
+        accessToken: undefined,
+      };
     case "Add name":
       return {
         ...state,
         userName: action.data,
       };
-    case "Remove Token":
+    case "Remove name":
       return {
         ...state,
-        accessToken: undefined,
+        userName: "",
       };
 
     case "Update Data":
@@ -58,10 +63,10 @@ const reducer = (state, action) => {
         Quantity: action.data,
       };
     case "AddHospitalLocation":
-      return{
+      return {
         ...state,
         NewHospitalLocation: action.data,
-      }
+      };
     default:
       return state;
   }
