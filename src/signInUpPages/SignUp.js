@@ -72,7 +72,8 @@ const Form = ({ origin, dispatch, history }) => {
                                 ) {
                                     history.push("/verify");
                                 } else {
-                                    // error signup
+                                    //signup error
+                                    history.push('error/0');
                                 }
                             })
                             .catch((error) => {

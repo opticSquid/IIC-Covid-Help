@@ -62,7 +62,8 @@ const Form = ({ origin, dispatch, history }) => {
               );
               history.push("/");
             } else {
-              //error sign in
+                //signin error
+                history.push('error/1');
             }
           })
           .catch((error) => {
