@@ -36,9 +36,7 @@ function HomePage() {
           data: response.data,
         });
       })
-      .catch((error) => {
-        
-      });
+      .catch((error) => {});
   };
   const errors = (err) => {
     alert(
@@ -119,9 +117,7 @@ function HomePage() {
                 dispatch({
                   type: "Remove name",
                 });
-              } catch (err) {
-                
-              }
+              } catch (err) {}
             } else {
               alert("Could not Logout the user Try again.");
             }

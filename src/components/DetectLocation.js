@@ -5,16 +5,11 @@ function DetectLocation() {
   const success = (pos) => {
     let crd = pos.coords;
 
-    
-    
-    
-    
     let locationDoc = {
       type: "Point",
       coordinates: [crd.longitude, crd.latitude],
     };
     location.push(locationDoc);
-    
   };
   const errors = (err) => {
     alert("Location Permission Denied! Emable permission to detect location");

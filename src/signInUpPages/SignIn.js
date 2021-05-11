@@ -43,7 +43,6 @@ const Form = ({ origin, dispatch, history }) => {
         let newUser = { Email: email, Password: password };
         Axios.post(`${origin}/login`, newUser)
           .then((response) => {
-            
             if (response.data.status === "Logged in successfully") {
               localStorage.setItem(
                 "refreshToken",
@@ -64,13 +63,12 @@ const Form = ({ origin, dispatch, history }) => {
           })
           .catch((error) => {
             if (error) {
-              
             }
           });
       }
     }
   };
-  
+
   return (
     <form className="form">
       <input

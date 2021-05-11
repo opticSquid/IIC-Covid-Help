@@ -38,7 +38,7 @@ const Form = ({ origin, dispatch, history }) => {
   const [email, Setemail] = useState("");
   const clickHandler = (e) => {
     e.preventDefault();
-    
+
     if (name === "") {
       alert("Please Enter Your Name");
     } else {
@@ -64,7 +64,6 @@ const Form = ({ origin, dispatch, history }) => {
               })
               .catch((error) => {
                 if (error) {
-                  
                 }
               });
           }
@@ -74,13 +73,11 @@ const Form = ({ origin, dispatch, history }) => {
   };
 
   if (password !== verifedPassword) {
-    
     VerifiedClass = wrong;
   } else {
-    
     VerifiedClass = IsOk;
   }
-  
+
   return (
     <form className="form1">
       <input

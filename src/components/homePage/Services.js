@@ -48,9 +48,7 @@ function Services() {
           data: response.data,
         });
       })
-      .catch((error) => {
-        
-      });
+      .catch((error) => {});
   };
   const errors = (err) => {
     alert(
@@ -59,7 +57,6 @@ function Services() {
     );
   };
   useEffect(() => {
-    
     let options = {
       enableHighAccuracy: true,
       timeout: 30000,

@@ -3,7 +3,7 @@ import "./assets/styles/main.css";
 import HomePage from "./pages/HomePage";
 import Verify from "./EmailVerification/Verify";
 //import test from "./components/test";
-import {useStateContext} from "./contexts/ContextProvider"
+import { useStateContext } from "./contexts/ContextProvider";
 import {
   BrowserRouter as Router,
   Route,
@@ -16,25 +16,18 @@ import Signup from "./signInUpPages/SignUp";
 import AboutPage from "./pages/AboutPage";
 import Hospitals from "./components/hospitals/Hospitals";
 function App() {
-  const [{origin}] = useStateContext();
+  const [{ origin }] = useStateContext();
   useEffect(() => {
-    
     //If user is already logged in
-    if(localStorage.getItem("refreshToken"))
-    {
+    if (localStorage.getItem("refreshToken")) {
       // Regenerating new access token
-      checkJWT(origin).then((res)=>{
-        if(res)
-        {
-          
-        }
-        else
-        {
-          
-        }
-      }).catch((error)=>{
-        
-      })
+      checkJWT(origin)
+        .then((res) => {
+          if (res) {
+          } else {
+          }
+        })
+        .catch((error) => {});
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);

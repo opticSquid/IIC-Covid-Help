@@ -1,7 +1,5 @@
 import Axios from "axios";
 const CheckToken = async (origin) => {
-  
-  
   await Axios.get(`${origin}/checktoken`, {
     headers: {
       accesstoken: sessionStorage.getItem("accessToken"),
@@ -9,12 +7,10 @@ const CheckToken = async (origin) => {
     },
   })
     .then((response) => {
-      
       sessionStorage.setItem("accessToken", response.data.accessToken);
       return true;
     })
     .catch((error) => {
-      
       return false;
     });
 };
