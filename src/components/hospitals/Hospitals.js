@@ -3,9 +3,10 @@ import "./Hospitals.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faChevronDown, faTimes } from "@fortawesome/free-solid-svg-icons";
 import Axios from "axios";
+import {useHistory} from "react-router-dom";
 import { useStateContext } from "../../contexts/ContextProvider";
 import { useMediaQuery } from "react-responsive";
-
+import jwtCheck from "../Checkjwt";
 function Hospitals() {
   const [show, setShow] = useState(false);
   const [show1, setShow1] = useState(false);
@@ -29,6 +30,7 @@ function Hospitals() {
   const setValues = (event) => {
     setCentre({ ...Centre, [event.target.name]: event.target.value });
   };
+  const history = useHistory();
   const success = (pos) => {
     let crd = pos.coords;
     console.log("Your current position is:");
@@ -281,15 +283,23 @@ function Hospitals() {
       },
     };
     console.log("New Centre", newCentre);
-    Axios.post(`${origin}/newHealthCentre`, newCentre, {
-      headers: { accesstoken: sessionStorage.getItem("accessToken") },
-    })
-      .then((response) => {
-        console.log("Response from Backend", response);
+    if(localStorage.getItem("refreshToken")!==null)
+    {
+      jwtCheck().then((resp)=>{
+        Axios.post(`${origin}/newHealthCentre`, newCentre, {
+          headers: { accesstoken: sessionStorage.getItem("accessToken") },
+        })
+          .then((response) => {
+            console.log("Response from Backend", response);
+            history.push("/");
+          })
+          .catch((error) => {
+            if (error) console.log("Error occoured while posting new hospital details", error);
+          });
+      }).catch((error)=>{
+        console.log("JWT check failed for new Hospitals",error);
       })
-      .catch((error) => {
-        if (error) console.log("Error occoured", error);
-      });
+    }
   };
   return (
     <div className="hospital--wrapper">
