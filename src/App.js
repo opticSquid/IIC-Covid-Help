@@ -19,7 +19,7 @@ function App() {
   const [{ origin }] = useStateContext();
   useEffect(() => {
     console.log("AccessToken: ", sessionStorage.getItem("accessToken"));
-    
+
     setInterval(() => {
       if (localStorage.getItem("refreshToken")) {
         console.log(
