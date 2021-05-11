@@ -3,7 +3,7 @@ import "./Hospitals.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faChevronDown, faTimes } from "@fortawesome/free-solid-svg-icons";
 import Axios from "axios";
-import {useHistory} from "react-router-dom";
+import { useHistory } from "react-router-dom";
 import { useStateContext } from "../../contexts/ContextProvider";
 import { useMediaQuery } from "react-responsive";
 import jwtCheck from "../Checkjwt";
@@ -16,7 +16,17 @@ function Hospitals() {
   const [location, setLocation] = useState(false);
   const isTabletOrMobile = useMediaQuery({ query: "(max-width:750px)" });
   const [
-    { origin, Oxygen, Normal, Icu, Doctor, Available, VaccineName, Quantity, NewHospitalLocation },
+    {
+      origin,
+      Oxygen,
+      Normal,
+      Icu,
+      Doctor,
+      Available,
+      VaccineName,
+      Quantity,
+      NewHospitalLocation,
+    },
     dispatch,
   ] = useStateContext();
   const [Centre, setCentre] = useState({
@@ -43,12 +53,15 @@ function Hospitals() {
     };
     dispatch({
       type: "AddHospitalLocation",
-      data: locationDoc
+      data: locationDoc,
     });
-    console.log("Send Location ",locationDoc);
+    console.log("Send Location ", locationDoc);
   };
   const errors = (err) => {
-    alert("Location Permission Denied! Emable permission to detect location",err);
+    alert(
+      "Location Permission Denied! Emable permission to detect location",
+      err
+    );
   };
   useEffect(() => {
     let options = {
@@ -73,8 +86,8 @@ function Hospitals() {
     } else {
       alert("Sorry Not available!");
     }
-    
-  // eslint-disable-next-line react-hooks/exhaustive-deps
+
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [location]);
 
   function dropdown() {
@@ -283,22 +296,27 @@ function Hospitals() {
       },
     };
     console.log("New Centre", newCentre);
-    if(localStorage.getItem("refreshToken")!==null)
-    {
-      jwtCheck(origin).then((resp)=>{
-        Axios.post(`${origin}/newHealthCentre`, newCentre, {
-          headers: { accesstoken: sessionStorage.getItem("accessToken") },
-        })
-          .then((response) => {
-            console.log("Response from Backend", response);
-            history.push("/");
+    if (localStorage.getItem("refreshToken") !== null) {
+      jwtCheck(origin)
+        .then((resp) => {
+          Axios.post(`${origin}/newHealthCentre`, newCentre, {
+            headers: { accesstoken: sessionStorage.getItem("accessToken") },
           })
-          .catch((error) => {
-            if (error) console.log("Error occoured while posting new hospital details", error);
-          });
-      }).catch((error)=>{
-        console.log("JWT check failed for new Hospitals",error);
-      })
+            .then((response) => {
+              console.log("Response from Backend", response);
+              history.push("/");
+            })
+            .catch((error) => {
+              if (error)
+                console.log(
+                  "Error occoured while posting new hospital details",
+                  error
+                );
+            });
+        })
+        .catch((error) => {
+          console.log("JWT check failed for new Hospitals", error);
+        });
     }
   };
   return (
