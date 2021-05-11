@@ -6,11 +6,15 @@
   box-sizing: border-box;
 }
 
-body {
-  display: grid;
-  place-items: center;
-  height: 100vh;
-  font-family: "Open Sans", sans-serif;
+
+
+.hospital--wrapper{
+display: grid;
+place-items: center;
+height: 100vh;
+width: 100%;
+font-family: "Open Sans",
+sans-serif;
 }
 
 .hospital h1 {

@@ -70,6 +70,8 @@ a {
   background-size: cover;
 }
 
+
+
 @media only screen and (max-width: 1200px) {
   .navigation {
     width: 9rem;
@@ -119,6 +121,10 @@ a {
   .navigation__logo {
     height: 60px;
     width: 60px;
+  }
+
+  .hospital--route{
+    bottom: 5rem;
   }
 }
 
