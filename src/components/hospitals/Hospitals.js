@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import "./Hospitals.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faChevronDown, faTimes } from "@fortawesome/free-solid-svg-icons";
@@ -14,10 +14,8 @@ function Hospitals() {
   const [show4, setShow4] = useState(false);
   const [location, setLocation] = useState(false);
   const isTabletOrMobile = useMediaQuery({ query: "(max-width:750px)" });
-
-  const sendLocation = [];
   const [
-    { origin, Oxygen, Normal, Icu, Doctor, Available, VaccineName, Quantity },
+    { origin, Oxygen, Normal, Icu, Doctor, Available, VaccineName, Quantity, NewHospitalLocation },
     dispatch,
   ] = useStateContext();
   const [Centre, setCentre] = useState({
@@ -31,17 +29,51 @@ function Hospitals() {
   const setValues = (event) => {
     setCentre({ ...Centre, [event.target.name]: event.target.value });
   };
-
-  function locations() {
-    // if (navigator.geolocation) {
-    navigator.geolocation.watchPosition(function (position) {
-      let locationDoc = {
-        type: "Point",
-        coordinates: [position.coords.longitude, position.coords.latitude],
-      };
-      sendLocation.push(locationDoc);
+  const success = (pos) => {
+    let crd = pos.coords;
+    console.log("Your current position is:");
+    console.log(`Latitude : ${crd.latitude}`);
+    console.log(`Longitude: ${crd.longitude}`);
+    console.log(`More or less ${crd.accuracy} meters.`);
+    let locationDoc = {
+      type: "Point",
+      coordinates: [crd.longitude, crd.latitude],
+    };
+    dispatch({
+      type: "AddHospitalLocation",
+      data: locationDoc
     });
-  }
+    console.log("Send Location ",locationDoc);
+  };
+  const errors = (err) => {
+    alert("Location Permission Denied! Emable permission to detect location",err);
+  };
+  useEffect(() => {
+    let options = {
+      enableHighAccuracy: true,
+      timeout: 30000,
+      maximumAge: 0,
+    };
+
+    if (navigator.geolocation) {
+      navigator.permissions.query({ name: "geolocation" }).then((result) => {
+        if (result.state === "granted") {
+          navigator.geolocation.getCurrentPosition(success);
+        } else if (result.state === "prompt") {
+          navigator.geolocation.getCurrentPosition(success, errors, options);
+        } else if (result.state === "denied") {
+          alert(
+            "Location Permission Denied! Emable permission to detect location"
+          );
+        }
+        result.onchange = function () {};
+      });
+    } else {
+      alert("Sorry Not available!");
+    }
+    
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [location]);
 
   function dropdown() {
     return (
@@ -240,7 +272,7 @@ function Hospitals() {
       },
       Doctors: Doctor,
       Address: {
-        Location: sendLocation,
+        Location: NewHospitalLocation,
         StreetAddress: {
           State: Centre.state,
           District: Centre.district,
@@ -313,7 +345,7 @@ function Hospitals() {
                   {!location ? "Detect Location" : "Location Detected"}
                 </div>
               </div>
-              {location ? locations() : null}
+              {/* {location ? locations() : null} */}
             </div>
 
             <div className="select__facility">
