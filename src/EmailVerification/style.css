@@ -1,42 +1,42 @@
-.verifiedBack{
-    width: 100vw;
-    height: 100vh;
-    background-image: url('../svgs/back.svg');
-    background-repeat: no-repeat;
-    background-size: 100% auto;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
+.verifiedBack {
+  width: 100vw;
+  height: 100vh;
+  background-image: url("../svgs/back.svg");
+  background-repeat: no-repeat;
+  background-size: 100% auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
 }
 
-.verifieddiv{
-    position: relative;
-    width: 100vw;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+.verifieddiv {
+  position: relative;
+  width: 100vw;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
-.Veri{
-    position: relative;
-    font-family: 'Open Sans', sans-serif;
-    font-size: 2rem;
+.Veri {
+  position: relative;
+  font-family: "Open Sans", sans-serif;
+  font-size: 2rem;
 }
 
-.okimg{
-    position: relative;;
-    transform-origin: center;
-    transform: scale(0.8);
+.okimg {
+  position: relative;
+  transform-origin: center;
+  transform: scale(0.8);
 }
 
 @media screen and (max-width: 800px) {
-    .Veri{
-        left: 0.5em;
-        font-size: 1.5rem;
-    }
-    .okimg{
-        left: 0.6em;
-        transform: scale(0.6);
-    }
+  .Veri {
+    left: 0.5em;
+    font-size: 1.5rem;
+  }
+  .okimg {
+    left: 0.6em;
+    transform: scale(0.6);
+  }
 }

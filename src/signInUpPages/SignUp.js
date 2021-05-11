@@ -56,10 +56,10 @@ const Form = ({ origin, dispatch, history }) => {
             let newUser = { Email: email, Name: name, Password: password };
             Axios.post(`${origin}/signup`, newUser)
               .then((response) => {
-                if(response.data.status==="Mail sent yet to be verified"){
-                    history.push("/");
-                }else{
-                    // error signup
+                if (response.data.status === "Mail sent yet to be verified") {
+                  history.push("/");
+                } else {
+                  // error signup
                 }
               })
               .catch((error) => {

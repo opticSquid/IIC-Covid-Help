@@ -10,7 +10,7 @@ const Signin = () => {
   const history = useHistory();
   return (
     <>
-      <div className='signIn'>
+      <div className="signIn">
         <Logo />
         <Form origin={origin} dispatch={dispatch} history={history} />
       </div>
@@ -21,8 +21,8 @@ const Signin = () => {
 const Logo = () => {
   return (
     <>
-      <section className='logoSignIn'>
-        <img src={logoImg} alt='Logo' />
+      <section className="logoSignIn">
+        <img src={logoImg} alt="Logo" />
         <h2>Helping people connect to the emergency services</h2>
       </section>
     </>
@@ -61,8 +61,8 @@ const Form = ({ origin, dispatch, history }) => {
                 response.data.tokens.accessToken
               );
               history.push("/");
-            }else{
-                //error sign in
+            } else {
+              //error sign in
             }
           })
           .catch((error) => {
@@ -75,31 +75,32 @@ const Form = ({ origin, dispatch, history }) => {
   };
   console.log(email, password);
   return (
-    <form className='form'>
+    <form className="form">
       <input
-        type='email'
+        type="email"
         onChange={(e) => SetEmail(e.target.value)}
-        className='input'
-        placeholder='Email'
+        className="input"
+        placeholder="Email"
         required
       />
       <input
-        type='password'
+        type="password"
         onChange={(e) => SetPassword(e.target.value)}
-        className='input'
-        placeholder='Password'
+        className="input"
+        placeholder="Password"
         required
       />
       <button
-        type='submit'
+        type="submit"
         onClick={(e) => submitHandler(e)}
-        className='signin'>
+        className="signin"
+      >
         Sign In
       </button>
-      <button className='forgetPassword'>Forget Password?</button>
+      <button className="forgetPassword">Forget Password?</button>
       <p>
         Don't Have an Account?{" "}
-        <Link to='/signup' className='signup'>
+        <Link to="/signup" className="signup">
           Sign Up
         </Link>
       </p>

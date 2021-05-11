@@ -137,11 +137,10 @@
   min-width: 20rem;
   align-items: center;
   border-radius: 25px;
-  box-shadow: 30px 30px 50px #00000025,
-  -30px -30px 70px #00000025;
+  box-shadow: 30px 30px 50px #00000025, -30px -30px 70px #00000025;
 }
 .HPCat__search--container div {
-  height: 3.0rem;
+  height: 3rem;
   width: 8rem;
   display: flex;
   justify-content: center;
@@ -170,12 +169,11 @@
   outline: none;
   border: none;
 }
-.HPCat__search--container:hover{
-  box-shadow: 20px 20px 50px #4e4e4e25,
-  -20px -20px 50px #57575725;
+.HPCat__search--container:hover {
+  box-shadow: 20px 20px 50px #4e4e4e25, -20px -20px 50px #57575725;
 }
 
-.HPCat__search--container input:focus{
+.HPCat__search--container input:focus {
   outline: springgreen;
 }
 
@@ -407,10 +405,12 @@
   }
 }
 @media only screen and (max-width: 1000px) {
-  .homepage__heading h2{
+  .homepage__heading h2 {
     display: block;
   }
-  .HPCat__search--container {width: 70%;}
+  .HPCat__search--container {
+    width: 70%;
+  }
   .HP__cards--container {
     grid-template-columns: repeat(2, 1fr);
   }
@@ -537,31 +537,30 @@
 
 /********************************************************************************************/
 
-.icu{
+.icu {
   display: flex;
   font-size: 1.4rem;
   align-items: center;
-  margin-top: .6rem;
+  margin-top: 0.6rem;
   font-family: "google-sans";
   color: #424242;
 }
 
 @media only screen and (max-width: 1000px) {
-.icu {
-  justify-content: center;
+  .icu {
+    justify-content: center;
+  }
 }
 
-}
-
-.icu div{
+.icu div {
   display: flex;
   align-items: center;
 }
-.icu div:nth-child(1){
+.icu div:nth-child(1) {
   padding-right: 1rem;
 }
 
-.icu input[type=checkbox] {
+.icu input[type="checkbox"] {
   height: 0;
   width: 0;
   visibility: hidden;
@@ -580,7 +579,7 @@
 }
 
 .icu label:after {
-  content: '';
+  content: "";
   position: absolute;
   left: 0px;
   width: 2rem;
@@ -590,14 +589,14 @@
   transition: 0.4s;
 }
 
-.icu input:checked+label {
+.icu input:checked + label {
   /* background: #bada55;
    */
-   background: #00e676;
+  background: #00e676;
 }
 
-.icu input:checked+label:after {
-  left: calc(100% );
+.icu input:checked + label:after {
+  left: calc(100%);
   transform: translateX(-100%);
 }
 
@@ -616,6 +615,6 @@
   color: white;
 }
 
-.HP__cards--container{
+.HP__cards--container {
   padding-bottom: 10rem;
 }

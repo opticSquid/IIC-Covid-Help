@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
 import "./assets/styles/main.css";
 import HomePage from "./pages/HomePage";
-import Verify from './EmailVerification/Verify';
+import Verify from "./EmailVerification/Verify";
 //import test from "./components/test";
 import {
   BrowserRouter as Router,
