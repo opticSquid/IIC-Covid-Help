@@ -289,6 +289,7 @@ function Hospitals() {
           District: Centre.district,
           City: Centre.city,
         },
+        verified: false,
       },
     };
 
