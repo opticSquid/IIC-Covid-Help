@@ -154,11 +154,7 @@ select {
 }
 
 #location__button {
-  position: absolute;
-  right: 31em;
-  bottom: 11.3em;
-  width: 10em;
-
+  width: 38vmax;
   height: 3em;
   padding-left: 1em;
   padding-top: 0.6em;

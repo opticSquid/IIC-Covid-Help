@@ -62,7 +62,8 @@ const Form = ({ origin, dispatch, history }) => {
               );
               history.push("/");
             } else {
-              //error sign in
+                //signin error
+                history.push('error/1');
             }
           })
           .catch((error) => {
@@ -73,7 +74,7 @@ const Form = ({ origin, dispatch, history }) => {
       }
     }
   };
-  console.log(email, password);
+
   return (
     <form className="form">
       <input
