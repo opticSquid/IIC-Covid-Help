@@ -26,7 +26,7 @@ function App() {
           if (res) {
             console.log("New access token generated");
           } else {
-            console.log("New access token could not be granted");
+            console.log("Old Access token still valid");
           }
         })
         .catch((error) => {

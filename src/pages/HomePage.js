@@ -15,7 +15,7 @@ it acts as a wrapper to all the other components
 */
 
 function HomePage() {
-  const [{ origin, userName }, dispatch] = useStateContext();
+  const [{ origin }, dispatch] = useStateContext();
   const fetchData = (pos) => {
     let crd = pos.coords;
     let locationDoc = {
@@ -92,7 +92,10 @@ function HomePage() {
     if (localStorage.getItem("refreshToken") === null) {
       return "Login";
     } else {
-      return `Hello, ${userName} click to logout`;
+      let user = localStorage.getItem("userName")
+        ? localStorage.getItem("userName").split(" ")
+        : "";
+      return `Hello ${user[0]}, click to logout`;
     }
   };
   const buildLoginLink = () => {
@@ -116,9 +119,7 @@ function HomePage() {
               try {
                 sessionStorage.removeItem("accessToken");
                 localStorage.removeItem("refreshToken");
-                dispatch({
-                  type: "Remove name",
-                });
+                localStorage.removeItem("userName");
               } catch (err) {
                 console.log(err);
               }

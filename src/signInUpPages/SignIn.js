@@ -43,23 +43,17 @@ const Form = ({ origin, dispatch, history }) => {
         let newUser = { Email: email, Password: password };
         Axios.post(`${origin}/login`, newUser)
           .then((response) => {
-            console.log({
-              refreshToken: response.data.refreshToken,
-              accessToken: response.data.accessToken,
-            });
+            console.log("login response",response.data.tokens.Name);
             if (response.data.status === "Logged in successfully") {
               localStorage.setItem(
                 "refreshToken",
                 response.data.tokens.refreshToken
               );
-              dispatch({
-                type: "Add name",
-                data: response.data.Name,
-              });
               sessionStorage.setItem(
                 "accessToken",
                 response.data.tokens.accessToken
               );
+              localStorage.setItem("userName",response.data.tokens.Name);
               history.push("/");
             } else {
               //error sign in
