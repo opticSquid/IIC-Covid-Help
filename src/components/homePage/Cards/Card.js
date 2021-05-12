@@ -10,8 +10,9 @@ import {
   faSyringe,
   faPills,
 } from "@fortawesome/free-solid-svg-icons";
+import "../../../assets/styles/card.css";
 
-function VaccineCard(props) {
+function Card(props) {
   const spring = {
     type: "spring",
     damping: 25,
@@ -26,7 +27,7 @@ function VaccineCard(props) {
     else if (secdiff >= 60) return `${Math.round(secdiff / 60)} mins`;
     else return `${Math.round(secdiff)} seconds`;
   };
-  const ratingSum = props.rating.reduce(function (a, b) {
+  const ratingSum = props?.rating?.reduce(function (a, b) {
     return a + b;
   }, 0);
   const isAvailable = props.available ? (
@@ -42,7 +43,6 @@ function VaccineCard(props) {
       opacity: 1,
     },
   };
-
   return (
     <motion.div
       transition={spring}
@@ -53,10 +53,8 @@ function VaccineCard(props) {
     >
       <div className="HP__card--header">
         <div>
-          <div className="location">{props.place}</div>
-          {/* <div className="verified">
-            <FontAwesomeIcon icon={faCheck} />
-          </div> */}
+          {/* <div className="location">{props.place}</div> */}
+          <div className="location">PMCH Hospital</div>
         </div>
         <div className="status-wrapper">
           {isAvailable}
@@ -67,23 +65,35 @@ function VaccineCard(props) {
         <a style={{ fontWeight: "400" }} href={"tel:" + props.phone}>
           <div className="phone tag">
             <FontAwesomeIcon icon={faPhoneAlt} color="#01C853" />
-            <span>{props.phone}</span>
+            {/* <span>{props.phone}</span> */}
+            <span>9113725640</span>
           </div>
         </a>
         <div className="location tag">
           <FontAwesomeIcon icon={faMapMarkerAlt} color="#2196F3" />
-          <span>{props.location}</span>
+          {/* <span>{props.location}</span> */}
+          <span>Dhanbad</span>
         </div>
         <div className="varient tag">
           <FontAwesomeIcon icon={faSyringe} color="#e21d2a" />
           <span>{props.vaccine}</span>
         </div>
         <div className="HP__cards--flex">
+          <div className="varient tag">
+            <FontAwesomeIcon icon={faSyringe} color="#e21d2a" />
+            <span>Covaxin</span>
+          </div>
+          <div className="oxygen tag">
+            <FontAwesomeIcon icon={faPills} color="#e21d2a" />
+            <span>7100  Dosage</span>
+          </div>
+        </div>
+        <div className="HP__cards--flex">
           <div className="stars tag">
             <FontAwesomeIcon icon={faStar} color="#FFFF00" />
             <span>
-              {props.rating.length > 0
-                ? (ratingSum / props.rating.length).toFixed(2)
+              {props?.rating?.length > 0
+                ? (ratingSum / props?.rating?.length).toFixed(2)
                 : (5.0).toString()}
             </span>
           </div>
@@ -108,4 +118,4 @@ function VaccineCard(props) {
   );
 }
 
-export default VaccineCard;
+export default Card;
