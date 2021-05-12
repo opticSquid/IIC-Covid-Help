@@ -347,6 +347,7 @@ function Hospitals() {
               className="phone__number"
               type="tel"
               placeholder=" Enter Phone Number"
+              maxlength = "10"
               required
               onChange={setValues}
             ></input>
