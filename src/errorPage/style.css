@@ -1,0 +1,42 @@
+.errorBack {
+  width: 100vw;
+  height: 100vh;
+  background-image: url("../svgs/logo1.svg");
+  background-repeat: no-repeat;
+  background-size: 100% auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.errorbox {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.ErrorImg {
+  position: relative;
+  transform-origin: center;
+  transform: scale(0.7);
+  top: 3px;
+}
+
+.ErrorHead {
+  font-family: "Open Sans", sans-serif;
+}
+
+.ErrorText {
+  color: #838383;
+  font-size: 1.2rem;
+}
+
+@media screen and (max-width: 850px) {
+  .ErrorText {
+    display: block;
+  }
+  .ErrorImg {
+    top: 1px;
+  }
+}

@@ -56,7 +56,8 @@ const Form = ({ origin, history }) => {
               localStorage.setItem("userName", response.data.tokens.Name);
               history.push("/");
             } else {
-              //error sign in
+              //signin error
+              history.push("error/1");
             }
           })
           .catch((error) => {

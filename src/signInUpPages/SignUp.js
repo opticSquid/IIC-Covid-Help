@@ -53,13 +53,22 @@ const Form = ({ origin, history }) => {
           } else if (verifedPassword !== password) {
             alert("Please Enter Correct Password");
           } else {
-            let newUser = { Email: email, Name: name, Password: password };
+            if (password.length < 8) {
+              alert("Password should be atleast 8 characters long");
+              return;
+            }
+            let newUser = {
+              Email: email,
+              Name: name,
+              Password: password,
+            };
             Axios.post(`${origin}/signup`, newUser)
               .then((response) => {
                 if (response.data.status === "Mail sent yet to be verified") {
                   history.push("/verify");
                 } else {
-                  // error signup
+                  //signup error
+                  history.push("error/0");
                 }
               })
               .catch((error) => {
@@ -72,11 +81,14 @@ const Form = ({ origin, history }) => {
       }
     }
   };
-
-  if (password !== verifedPassword) {
-    VerifiedClass = wrong;
+  if (verifedPassword === "") {
+    VerifiedClass = "none";
   } else {
-    VerifiedClass = IsOk;
+    if (password !== verifedPassword) {
+      VerifiedClass = wrong;
+    } else {
+      VerifiedClass = IsOk;
+    }
   }
 
   return (
@@ -105,12 +117,12 @@ const Form = ({ origin, history }) => {
       <div className="verify">
         <input
           type="password"
-          className={`input1 ${VerifiedClass}`}
+          className={`input1`}
           onChange={(e) => SetVerifiedPassword(e.target.value)}
           placeholder="Verified Password"
           required
         ></input>
-        <img src={VerifiedClass} alt="default text" />
+        <img src={VerifiedClass} className={`${VerifiedClass}`} alt="default" />
       </div>
       <button type="submit" className="signup1" onClick={clickHandler}>
         Sign Up
