@@ -62,8 +62,8 @@ const Form = ({ origin, dispatch, history }) => {
               );
               history.push("/");
             } else {
-                //signin error
-                history.push('error/1');
+              //signin error
+              history.push("error/1");
             }
           })
           .catch((error) => {
