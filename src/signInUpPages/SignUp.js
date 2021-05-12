@@ -8,12 +8,12 @@ import Axios from "axios";
 import "./signup.css";
 
 const Signup = () => {
-  const [{ origin }, dispatch] = useStateContext();
+  const [{ origin }] = useStateContext();
   const history = useHistory();
   return (
     <div className="signUp1">
       <Logo />
-      <Form origin={origin} dispatch={dispatch} history={history} />
+      <Form origin={origin}  history={history} />
     </div>
   );
 };
@@ -29,7 +29,7 @@ const Logo = () => {
   );
 };
 
-const Form = ({ origin, dispatch, history }) => {
+const Form = ({ origin, history }) => {
   let VerifiedClass = null;
   //const [flag,Setflag] = useState("");
   const [verifedPassword, SetVerifiedPassword] = useState("");
