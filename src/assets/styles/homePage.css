@@ -288,7 +288,17 @@
 .HP__card--footer > div:nth-child(1):hover {
   color: #000;
 }
-.HP__card--footer > div:nth-child(2) {
+.HP__card--footer>div:nth-child(2) {
+  background-color: #fff;
+  padding : .2rem .5rem;
+  box-shadow: 30px 30px 50px #00000025;
+  width: fit-content;
+  border-radius: 25px;
+  color: #707070;
+  display: flex;
+
+}
+.HP__card--footer > div:nth-child(3) {
   width: 25px;
   height: 25px;
   background-color: #2196f3;
