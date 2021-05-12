@@ -73,7 +73,7 @@ const Form = ({ origin, dispatch, history }) => {
       }
     }
   };
-  console.log(email, password);
+
   return (
     <form className="form">
       <input

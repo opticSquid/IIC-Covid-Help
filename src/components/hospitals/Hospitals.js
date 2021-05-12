@@ -1,11 +1,12 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import "./Hospitals.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faChevronDown, faTimes } from "@fortawesome/free-solid-svg-icons";
 import Axios from "axios";
+import { useHistory } from "react-router-dom";
 import { useStateContext } from "../../contexts/ContextProvider";
 import { useMediaQuery } from "react-responsive";
-
+import jwtCheck from "../Checkjwt";
 function Hospitals() {
   const [show, setShow] = useState(false);
   const [show1, setShow1] = useState(false);
@@ -14,10 +15,18 @@ function Hospitals() {
   const [show4, setShow4] = useState(false);
   const [location, setLocation] = useState(false);
   const isTabletOrMobile = useMediaQuery({ query: "(max-width:750px)" });
-
-  const sendLocation = [];
   const [
-    { origin, Oxygen, Normal, Icu, Doctor, Available, VaccineName, Quantity },
+    {
+      origin,
+      Oxygen,
+      Normal,
+      Icu,
+      Doctor,
+      Available,
+      VaccineName,
+      Quantity,
+      NewHospitalLocation,
+    },
     dispatch,
   ] = useStateContext();
   const [Centre, setCentre] = useState({
@@ -31,17 +40,51 @@ function Hospitals() {
   const setValues = (event) => {
     setCentre({ ...Centre, [event.target.name]: event.target.value });
   };
+  const history = useHistory();
+  const success = (pos) => {
+    let crd = pos.coords;
 
-  function locations() {
-    // if (navigator.geolocation) {
-    navigator.geolocation.watchPosition(function (position) {
-      let locationDoc = {
-        type: "Point",
-        coordinates: [position.coords.longitude, position.coords.latitude],
-      };
-      sendLocation.push(locationDoc);
+    let locationDoc = {
+      type: "Point",
+      coordinates: [crd.longitude, crd.latitude],
+    };
+    dispatch({
+      type: "AddHospitalLocation",
+      data: locationDoc,
     });
-  }
+  };
+  const errors = (err) => {
+    alert(
+      "Location Permission Denied! Emable permission to detect location",
+      err
+    );
+  };
+  useEffect(() => {
+    let options = {
+      enableHighAccuracy: true,
+      timeout: 30000,
+      maximumAge: 0,
+    };
+
+    if (navigator.geolocation) {
+      navigator.permissions.query({ name: "geolocation" }).then((result) => {
+        if (result.state === "granted") {
+          navigator.geolocation.getCurrentPosition(success);
+        } else if (result.state === "prompt") {
+          navigator.geolocation.getCurrentPosition(success, errors, options);
+        } else if (result.state === "denied") {
+          alert(
+            "Location Permission Denied! Emable permission to detect location"
+          );
+        }
+        result.onchange = function () {};
+      });
+    } else {
+      alert("Sorry Not available!");
+    }
+
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [location]);
 
   function dropdown() {
     return (
@@ -240,24 +283,37 @@ function Hospitals() {
       },
       Doctors: Doctor,
       Address: {
-        Location: sendLocation,
+        Location: NewHospitalLocation,
         StreetAddress: {
           State: Centre.state,
           District: Centre.district,
           City: Centre.city,
         },
+        verified: false,
       },
     };
-    console.log("New Centre", newCentre);
-    Axios.post(`${origin}/newHealthCentre`, newCentre, {
-      headers: { accesstoken: sessionStorage.getItem("accessToken") },
-    })
-      .then((response) => {
-        console.log("Response from Backend", response);
-      })
-      .catch((error) => {
-        if (error) console.log("Error occoured", error);
-      });
+
+    if (localStorage.getItem("refreshToken") !== null) {
+      jwtCheck(origin)
+        .then((resp) => {
+          Axios.post(`${origin}/newHealthCentre`, newCentre, {
+            headers: { accesstoken: sessionStorage.getItem("accessToken") },
+          })
+            .then((response) => {
+              history.push("/");
+            })
+            .catch((error) => {
+              if (error)
+                console.log(
+                  "Error occoured while posting new hospital details",
+                  error
+                );
+            });
+        })
+        .catch((error) => {
+          console.log("JWT check failed for new Hospitals", error);
+        });
+    }
   };
   return (
     <div className="hospital--wrapper">
@@ -313,7 +369,7 @@ function Hospitals() {
                   {!location ? "Detect Location" : "Location Detected"}
                 </div>
               </div>
-              {location ? locations() : null}
+              {/* {location ? locations() : null} */}
             </div>
 
             <div className="select__facility">

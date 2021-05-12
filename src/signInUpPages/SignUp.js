@@ -38,7 +38,7 @@ const Form = ({ origin, dispatch, history }) => {
   const [email, Setemail] = useState("");
   const clickHandler = (e) => {
     e.preventDefault();
-    console.log(verifedPassword, password, name, email);
+
     if (name === "") {
       alert("Please Enter Your Name");
     } else {
@@ -57,7 +57,7 @@ const Form = ({ origin, dispatch, history }) => {
             Axios.post(`${origin}/signup`, newUser)
               .then((response) => {
                 if (response.data.status === "Mail sent yet to be verified") {
-                  history.push("/");
+                  history.push("/verify");
                 } else {
                   // error signup
                 }
@@ -74,13 +74,11 @@ const Form = ({ origin, dispatch, history }) => {
   };
 
   if (password !== verifedPassword) {
-    console.log("wrong");
     VerifiedClass = wrong;
   } else {
-    console.log("ok");
     VerifiedClass = IsOk;
   }
-  console.log("a");
+
   return (
     <form className="form1">
       <input

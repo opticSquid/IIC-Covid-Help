@@ -8,7 +8,6 @@ import { Link } from "react-router-dom";
 import axios from "axios";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPlus } from "@fortawesome/free-solid-svg-icons";
-
 /*
 this is the hopepage component
 it acts as a wrapper to all the other components
@@ -16,7 +15,7 @@ it acts as a wrapper to all the other components
 */
 
 function HomePage() {
-  const [{ origin }, dispatch] = useStateContext();
+  const [{ origin, userName }, dispatch] = useStateContext();
   const fetchData = (pos) => {
     let crd = pos.coords;
     let locationDoc = {
@@ -93,7 +92,7 @@ function HomePage() {
     if (localStorage.getItem("refreshToken") === null) {
       return "Login";
     } else {
-      return "Logout";
+      return `Hello, ${userName} click to logout`;
     }
   };
   const buildLoginLink = () => {
@@ -108,16 +107,28 @@ function HomePage() {
     if (localStorage.getItem("refreshToken") !== null) {
       const x = window.confirm("Are you sure, you want to logout?");
       if (x) {
-        try {
-          localStorage.removeItem("refreshToken");
-        } catch (err) {
-          console.log(err);
-        }
-        try {
-          sessionStorage.removeItem("accessToken");
-        } catch (err) {
-          console.log(err);
-        }
+        axios
+          .delete(`${origin}/logout`, {
+            headers: { accesstoken: sessionStorage.getItem("accessToken") },
+          })
+          .then((response) => {
+            if (response.data.status === "Logged Out") {
+              try {
+                sessionStorage.removeItem("accessToken");
+                localStorage.removeItem("refreshToken");
+                dispatch({
+                  type: "Remove name",
+                });
+              } catch (err) {
+                console.log(err);
+              }
+            } else {
+              alert("Could not Logout the user Try again.");
+            }
+          })
+          .catch((error) => {
+            alert("Could not send request to Servers for this reason", error);
+          });
       }
     }
   };
