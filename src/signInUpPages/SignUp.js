@@ -13,7 +13,7 @@ const Signup = () => {
   return (
     <div className="signUp1">
       <Logo />
-      <Form origin={origin}  history={history} />
+      <Form origin={origin} history={history} />
     </div>
   );
 };
