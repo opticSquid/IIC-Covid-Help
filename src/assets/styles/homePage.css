@@ -288,15 +288,14 @@
 .HP__card--footer > div:nth-child(1):hover {
   color: #000;
 }
-.HP__card--footer>div:nth-child(2) {
+.HP__card--footer > div:nth-child(2) {
   background-color: #fff;
-  padding : .2rem .5rem;
+  padding: 0.2rem 0.5rem;
   box-shadow: 30px 30px 50px #00000025;
   width: fit-content;
   border-radius: 25px;
   color: #707070;
   display: flex;
-
 }
 .HP__card--footer > div:nth-child(3) {
   width: 25px;
@@ -638,21 +637,21 @@
   font-weight: 200;
 }
 
-.HP__noData h4{
+.HP__noData h4 {
   font-size: 1.8rem;
 }
-.HP__noData h5{
+.HP__noData h5 {
   font-size: 1.4rem;
 }
 
-.card__EDIT{
+.card__EDIT {
   display: flex;
   background-color: #2196f3;
   text-align: center;
   color: #fefefe;
   align-items: center;
   justify-content: center;
-  padding: .4rem .3rem;
+  padding: 0.4rem 0.3rem;
   font-family: "google-sans";
   font-size: 1.1rem;
   font-weight: 200;
@@ -660,11 +659,11 @@
   cursor: pointer;
   letter-spacing: 2px;
   margin: 0 auto;
-  margin-top: .6rem; 
-  
+  margin-top: 0.6rem;
+
   border-radius: 25px;
 }
-.card__EDIT:hover{
+.card__EDIT:hover {
   background-color: #5600e7;
   color: #fff;
 }
