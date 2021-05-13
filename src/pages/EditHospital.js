@@ -8,7 +8,7 @@ import { useStateContext } from "../contexts/ContextProvider";
 import jwtCheck from "../components/Checkjwt";
 function EditHospital(props) {
   const { uid } = props.match.params;
-  const [{ origin, data }, dispatch] = useStateContext();
+  const [{ origin, data }] = useStateContext();
   const hospitalData = data?.Centres.filter((x) => x.uid === uid)[0];
   const history = useHistory();
 
@@ -86,7 +86,7 @@ function EditHospital(props) {
   return (
     <div className="EH--wrapper">
       <Link to="/">
-        <img src={logo}></img>
+        <img src={logo} alt="logo"></img>
       </Link>
 
       <h2>EDIT DATA</h2>
