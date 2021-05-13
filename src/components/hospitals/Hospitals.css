@@ -22,63 +22,10 @@
   font-family: "Open Sans", sans-serif;
 }
 
-.desktop__homepage__icon {
-  height: 100px;
-  width: 100px;
-  border-radius: 50%;
-  background: #5600e7;
-  margin-left: 28px;
-  margin-top: 25px;
-  position: relative;
-}
-
-.desktop__homepage__icon h1 {
-  font-size: 5rem;
-  color: white;
-  padding-left: 10px;
-  position: absolute;
-  top: -0.1em;
-}
-
-.desktop__homepage__icon h3 {
-  position: absolute;
-  top: 2em;
-  left: 2em;
-  color: white;
-  white-space: nowrap;
-}
-
-.mobile__homepage__icon {
-  height: 80px;
-  width: 80px;
-  border-radius: 50%;
-  background: #5600e7;
-  margin-left: 28px;
-  margin-top: 25px;
-  position: relative;
-}
-
-.mobile__homepage__icon h1 {
-  font-size: 4rem;
-  color: white;
-  padding-left: 10px;
-  position: absolute;
-  top: -0.1em;
-}
-
-.mobile__homepage__icon h3 {
-  position: absolute;
-  top: 1.8em;
-  left: 1.5em;
-  color: white;
-  white-space: nowrap;
-  font-size: 1rem;
-}
-
 .hospital__icon {
   position: absolute;
-  left: 0;
-  top: 0;
+  left: 0.5em;
+  top: 0.5em;
 }
 
 .information {
