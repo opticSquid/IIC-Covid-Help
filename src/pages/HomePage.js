@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
 import "../assets/styles/homePage.css";
-import SelectLocation from "../components/homePage/SelectLocation";
+//import SelectLocation from "../components/homePage/SelectLocation";
 import Services from "../components/homePage/Services";
 import { useStateContext } from "../contexts/ContextProvider";
 import Navigation from "../components/homePage/Navigation";
@@ -102,7 +102,7 @@ function HomePage() {
     if (localStorage.getItem("refreshToken") === null) {
       return "/login";
     } else {
-      return "/";
+      return "/login";
     }
   };
 
@@ -158,7 +158,7 @@ function HomePage() {
         {/* (select option to select location and the cards based on categories )
         separated into thier own components
       */}
-        <SelectLocation />
+        {/* <SelectLocation /> */}
         <Services />
       </div>
     </>

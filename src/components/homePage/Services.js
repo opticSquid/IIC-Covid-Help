@@ -1,13 +1,9 @@
 import React, { useState, useEffect, createRef } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faSearch } from "@fortawesome/free-solid-svg-icons";
-import OxygenCard from "./Cards/OxygenCard";
-import BedCard from "./Cards/BedCard";
 import axios from "axios";
 import { useStateContext } from "../../contexts/ContextProvider";
-import DoctorCard from "./Cards/DoctorCard";
-import VaccineCard from "./Cards/VaccineCard";
-import { v4 as uuidv4 } from "uuid";
+import Card from "./Cards/Card";
 
 function Services() {
   const checkboxRef = createRef();
@@ -35,7 +31,7 @@ function Services() {
         type: "Point",
         coordinates: [crd.longitude, crd.latitude],
       },
-      Radius: radius,
+      Radius: parseInt(radius),
       SortBy: sortList[active],
     };
     // console.log("Request that will be going: ", locationDoc);
@@ -58,6 +54,8 @@ function Services() {
       err
     );
   };
+
+  // useeffect to fetch data
   useEffect(() => {
     let options = {
       enableHighAccuracy: true,
@@ -85,6 +83,7 @@ function Services() {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [active, radius]);
 
+  //controlled checkbox input
   const checkboxControl = () => {
     if (checkboxRef.current.checked) {
       setActive(2);
@@ -93,11 +92,13 @@ function Services() {
     }
   };
 
+  // controlled input for radius
   const searchControl = () => {
     setRadius(radiusRef.current.value);
     // console.log(radiusRef.current.value);
   };
 
+  // this function builds the checkbox to show icu beds
   const checkbox = (
     <div className="icu">
       <div>ICU BEDS</div>
@@ -112,89 +113,22 @@ function Services() {
       </div>
     </div>
   );
-  //the following function makes the cards that are to be shown
-  // data comes from oxygen context
-  // dynamic : based on user selction
-  // only oxygen works as of now
 
+  //the following function builds the cards
   const cardBuilder = () => {
-    if (active === 0) {
-      return data?.Centres.map((card) => {
-        return (
-          <OxygenCard
-            key={card.uid}
-            place={card?.FacilityName}
-            updated={card?.updatedAt}
-            phone={card?.PhoneNumber}
-            location={card?.Address?.StreetAddress?.District}
-            rating={card.Rating}
-            stock={card?.Oxygen}
-          />
-        );
-      });
-    } else if (active === 1) {
-      return data?.Centres.map((card) => {
-        return (
-          <BedCard
-            key={card.uid}
-            place={card?.FacilityName}
-            updated={card?.updatedAt}
-            phone={card?.PhoneNumber}
-            location={card?.Address?.StreetAddress?.District}
-            rating={card?.Rating}
-            mail={card?.Email}
-            stock={card?.Beds?.Normal}
-            type="normal"
-          />
-        );
-      });
-    } else if (active === 2) {
-      return data?.Centres.map((card) => {
-        return (
-          <BedCard
-            key={uuidv4()}
-            place={card?.FacilityName}
-            updated={card?.updatedAt}
-            phone={card?.PhoneNumber}
-            location={card?.Address?.StreetAddress?.District}
-            rating={card?.Rating}
-            mail={card?.Email}
-            stock={card?.Beds?.ICU}
-            type="ICU"
-          />
-        );
-      });
-    } else if (active === 3) {
-      return data?.Centres.map((card) => {
-        return (
-          <DoctorCard
-            key={card.uid}
-            place={card?.FacilityName}
-            updated={card?.updatedAt}
-            phone={card?.PhoneNumber}
-            location={card?.Address?.StreetAddress?.District}
-            rating={card?.Rating}
-            mail={card?.Email}
-            stock={card?.Doctors}
-          />
-        );
-      });
-    } else if (active === 4) {
-      return data?.Centres.map((card) => {
-        return (
-          <VaccineCard
-            key={card.uid}
-            place={card?.FacilityName}
-            updated={card?.updatedAt}
-            phone={card?.PhoneNumber}
-            location={card?.Address?.StreetAddress?.District}
-            rating={card?.Rating}
-            vaccine={card?.CovidVaccines?.VaccineName}
-            stock={card?.CovidVaccines?.Quantity}
-            available={card?.CovidVaccines?.Available}
-          />
-        );
-      });
+    return data?.Centres.map((cardData) => {
+      return <Card key={cardData.uid} active={active} data={cardData} />;
+    });
+  };
+
+  const noneBuilder = () => {
+    if (data?.Centres?.length === 0) {
+      return (
+        <div className="HP__noData">
+          <h4>No Data Found</h4>
+          <h5>Please enter a larger search radius.</h5>
+        </div>
+      );
     }
   };
 
@@ -220,7 +154,7 @@ function Services() {
       <div className="HPCat__search--container">
         <input
           ref={radiusRef}
-          type="tel"
+          type="number"
           placeholder="Enter Search Radius in Km"
         />
         <div onClick={searchControl}>
@@ -230,6 +164,7 @@ function Services() {
       <h3 className="HPCat--h3">Nearby Places</h3>
       {active === 1 || active === 2 ? checkbox : ""}
       {/* {btnBuilder} */}
+      {noneBuilder()}
       <div className="HP__cards--container">{cardBuilder()}</div>
     </>
   );
