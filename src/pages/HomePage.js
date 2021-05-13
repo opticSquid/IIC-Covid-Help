@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
 import "../assets/styles/homePage.css";
-import SelectLocation from "../components/homePage/SelectLocation";
+//import SelectLocation from "../components/homePage/SelectLocation";
 import Services from "../components/homePage/Services";
 import { useStateContext } from "../contexts/ContextProvider";
 import Navigation from "../components/homePage/Navigation";
@@ -8,6 +8,7 @@ import { Link } from "react-router-dom";
 import axios from "axios";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPlus } from "@fortawesome/free-solid-svg-icons";
+import { useHistory } from "react-router-dom";
 /*
 this is the hopepage component
 it acts as a wrapper to all the other components
@@ -16,6 +17,7 @@ it acts as a wrapper to all the other components
 
 function HomePage() {
   const [{ origin }, dispatch] = useStateContext();
+  const history = useHistory();
   const fetchData = (pos) => {
     let crd = pos.coords;
     let locationDoc = {
@@ -102,7 +104,7 @@ function HomePage() {
     if (localStorage.getItem("refreshToken") === null) {
       return "/login";
     } else {
-      return "/login";
+      return "#";
     }
   };
 
@@ -130,6 +132,9 @@ function HomePage() {
           .catch((error) => {
             alert("Could not send request to Servers for this reason", error);
           });
+        history.push("/login");
+      } else {
+        history.push("/");
       }
     }
   };
@@ -158,7 +163,7 @@ function HomePage() {
         {/* (select option to select location and the cards based on categories )
         separated into thier own components
       */}
-        <SelectLocation />
+        {/* <SelectLocation /> */}
         <Services />
       </div>
     </>

@@ -7,6 +7,9 @@ import { useHistory } from "react-router-dom";
 import { useStateContext } from "../../contexts/ContextProvider";
 import { useMediaQuery } from "react-responsive";
 import jwtCheck from "../Checkjwt";
+import logo from "./bondhu.png";
+import { Link } from "react-router-dom";
+
 function Hospitals() {
   const [show, setShow] = useState(false);
   const [show1, setShow1] = useState(false);
@@ -319,18 +322,13 @@ function Hospitals() {
     <div className="hospital--wrapper">
       <div className="hospital">
         <div className="hospital__icon">
-          <div
-            className={
-              isTabletOrMobile
-                ? "mobile__homepage__icon"
-                : "desktop__homepage__icon"
-            }
-          >
-            <h1>C</h1>
-            <h3>
-              <span>O</span> Help
-            </h3>
-          </div>
+          <Link to="/">
+            <img
+              style={{ maxWidth: "20em", cursor: "pointer" }}
+              src={logo}
+              alt="Logo"
+            ></img>
+          </Link>
         </div>
         <h1>Add a new hostipal:</h1>
         <form>
@@ -348,7 +346,7 @@ function Hospitals() {
               className="phone__number"
               type="tel"
               placeholder=" Enter Phone Number"
-              maxlength="10"
+              maxLength="10"
               required
               onChange={setValues}
             ></input>

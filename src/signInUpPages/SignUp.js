@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import logoImg from "../svgs/logo.svg";
+import logoImg from "../svgs/bondhu.png";
 import { Link, useHistory } from "react-router-dom";
 import IsOk from "../svgs/ok.svg";
 import wrong from "../svgs/wrong.svg";
@@ -22,7 +22,11 @@ const Logo = () => {
   return (
     <>
       <section className="logoSignUp1">
-        <img src={logoImg} alt="logo img" />
+        <img
+          style={{ maxWidth: "30em", paddingBottom: "4em" }}
+          src={logoImg}
+          alt="Logo"
+        />
         <h2>Helping people connect to the emergency services</h2>
       </section>
     </>
