@@ -31,7 +31,7 @@ function Services() {
         type: "Point",
         coordinates: [crd.longitude, crd.latitude],
       },
-      Radius: radius,
+      Radius: parseInt(radius),
       SortBy: sortList[active],
     };
     // console.log("Request that will be going: ", locationDoc);
@@ -154,7 +154,7 @@ function Services() {
       <div className="HPCat__search--container">
         <input
           ref={radiusRef}
-          type="tel"
+          type="number"
           placeholder="Enter Search Radius in Km"
         />
         <div onClick={searchControl}>
