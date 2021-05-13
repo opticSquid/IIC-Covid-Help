@@ -24,7 +24,11 @@ const Logo = () => {
       <section className="logoSignIn">
         <Link to="/">
           <img
-            style={{ maxWidth: "30em", paddingBottom: "4em", cursor:"pointer"}}
+            style={{
+              maxWidth: "30em",
+              paddingBottom: "4em",
+              cursor: "pointer",
+            }}
             src={logoImg}
             alt="Logo"
           />
