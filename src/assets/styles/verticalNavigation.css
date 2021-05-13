@@ -65,9 +65,10 @@ a {
 
 .navigation__logo {
   height: 5rem;
-  width: 5rem;
-  background: url("../images//vector/logo.svg");
-  background-size: cover;
+  width: 10em;
+  background: url("../images/bondhu.png");
+  background-size: contain;
+  background-repeat: no-repeat;
 }
 
 @media only screen and (max-width: 1200px) {
