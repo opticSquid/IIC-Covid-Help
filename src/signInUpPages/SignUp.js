@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import logoImg from "../svgs/logo.svg";
+import logoImg from "../svgs/bondhu.png";
 import { Link, useHistory } from "react-router-dom";
 import IsOk from "../svgs/ok.svg";
 import wrong from "../svgs/wrong.svg";
@@ -11,7 +11,7 @@ const Signup = () => {
   const [{ origin }] = useStateContext();
   const history = useHistory();
   return (
-    <div className="signUp1">
+    <div className='signUp1'>
       <Logo />
       <Form origin={origin} history={history} />
     </div>
@@ -21,8 +21,12 @@ const Signup = () => {
 const Logo = () => {
   return (
     <>
-      <section className="logoSignUp1">
-        <img src={logoImg} alt="logo img" />
+      <section className='logoSignUp1'>
+        <img
+          style={{ maxWidth: "30em", paddingBottom: "4em" }}
+          src={logoImg}
+          alt='Logo'
+        />
         <h2>Helping people connect to the emergency services</h2>
       </section>
     </>
@@ -92,45 +96,45 @@ const Form = ({ origin, history }) => {
   }
 
   return (
-    <form className="form1">
+    <form className='form1'>
       <input
-        type="text"
-        className="input1"
+        type='text'
+        className='input1'
         onChange={(e) => Setname(e.target.value)}
-        placeholder="Your Name"
+        placeholder='Your Name'
         required
       ></input>
       <input
-        type="email"
-        className="input1"
+        type='email'
+        className='input1'
         onChange={(e) => Setemail(e.target.value)}
-        placeholder="Email"
+        placeholder='Email'
         required
       ></input>
       <input
-        type="password"
-        className="input1"
+        type='password'
+        className='input1'
         onChange={(e) => Setpassword(e.target.value)}
-        placeholder="Password"
+        placeholder='Password'
         required
       ></input>
-      <div className="verify">
+      <div className='verify'>
         <input
-          type="password"
+          type='password'
           className={`input1`}
           onChange={(e) => SetVerifiedPassword(e.target.value)}
-          placeholder="Verified Password"
+          placeholder='Verified Password'
           required
         ></input>
-        <img src={VerifiedClass} className={`${VerifiedClass}`} alt="default" />
+        <img src={VerifiedClass} className={`${VerifiedClass}`} alt='default' />
       </div>
-      <button type="submit" className="signup1" onClick={clickHandler}>
+      <button type='submit' className='signup1' onClick={clickHandler}>
         Sign Up
       </button>
-      <button className="fp">Forget Password?</button>
-      <p className="p1">
+      <button className='fp'>Forget Password?</button>
+      <p className='p1'>
         Already Have an Account?{" "}
-        <Link to="/login" className="signin1">
+        <Link to='/login' className='signin1'>
           {" "}
           Sign In
         </Link>

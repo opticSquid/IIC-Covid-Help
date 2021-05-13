@@ -162,7 +162,7 @@
   display: none;
 }
 
-@media screen and (max-width: 850px) {
+@media screen and (max-width: 890px) {
   .signUp1 {
     flex-direction: column;
     align-items: center;
