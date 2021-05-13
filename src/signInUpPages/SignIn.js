@@ -22,7 +22,13 @@ const Logo = () => {
   return (
     <>
       <section className="logoSignIn">
-        <img style= {{maxWidth:"30em", paddingBottom:"4em"}} src={logoImg} alt="Logo" />
+        <Link to="/">
+          <img
+            style={{ maxWidth: "30em", paddingBottom: "4em", cursor:"pointer"}}
+            src={logoImg}
+            alt="Logo"
+          />
+        </Link>
         <h2>Helping people connect to the emergency services</h2>
       </section>
     </>

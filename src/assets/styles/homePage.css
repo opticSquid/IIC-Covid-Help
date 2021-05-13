@@ -72,7 +72,7 @@
 }
 .homepage__profile--tag {
   width: fit-content;
-  padding:0 1em;
+  padding: 0 1em;
   border-radius: 25px 0 0px 25px;
   font-family: "Open Sans", sans-serif;
   font-weight: 600;
@@ -533,7 +533,7 @@
 
   .homepage__profile--tag {
     width: fit-content;
-    padding:0 1em;
+    padding: 0 1em;
     font-weight: 600;
     height: 30px;
     font-size: 0.8rem;
@@ -626,7 +626,7 @@
   color: white;
 }
 
-@media screen and (max-width:850px) {
+@media screen and (max-width: 850px) {
   .hospital--route {
     font-size: 1rem;
   }
