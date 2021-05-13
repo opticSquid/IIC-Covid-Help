@@ -9,6 +9,6 @@ export const InitialState = {
   Available: false,
   VaccineName: "",
   Quantity: "",
-  userName: "",
+  userName: undefined,
   NewHospitalLocation: undefined,
 };

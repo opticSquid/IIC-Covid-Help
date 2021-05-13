@@ -295,11 +295,11 @@ function Hospitals() {
 
     if (localStorage.getItem("refreshToken") !== null) {
       jwtCheck(origin)
-        .then((resp) => {
+        .then(() => {
           Axios.post(`${origin}/newHealthCentre`, newCentre, {
             headers: { accesstoken: sessionStorage.getItem("accessToken") },
           })
-            .then((response) => {
+            .then(() => {
               history.push("/");
             })
             .catch((error) => {
@@ -348,6 +348,7 @@ function Hospitals() {
               className="phone__number"
               type="tel"
               placeholder=" Enter Phone Number"
+              maxlength="10"
               required
               onChange={setValues}
             ></input>

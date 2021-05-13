@@ -18,7 +18,7 @@ const reducer = (state, action) => {
     case "Remove name":
       return {
         ...state,
-        userName: "",
+        userName: undefined,
       };
 
     case "Update Data":

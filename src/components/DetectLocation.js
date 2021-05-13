@@ -11,7 +11,7 @@ function DetectLocation() {
     };
     location.push(locationDoc);
   };
-  const errors = (err) => {
+  const errors = () => {
     alert("Location Permission Denied! Emable permission to detect location");
   };
   useEffect(() => {

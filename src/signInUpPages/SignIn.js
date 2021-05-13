@@ -6,13 +6,13 @@ import Axios from "axios";
 import "./signIn.css";
 
 const Signin = () => {
-  const [{ origin }, dispatch] = useStateContext();
+  const [{ origin }] = useStateContext();
   const history = useHistory();
   return (
     <>
       <div className="signIn">
         <Logo />
-        <Form origin={origin} dispatch={dispatch} history={history} />
+        <Form origin={origin} history={history} />
       </div>
     </>
   );
@@ -29,7 +29,7 @@ const Logo = () => {
   );
 };
 
-const Form = ({ origin, dispatch, history }) => {
+const Form = ({ origin, history }) => {
   const [email, SetEmail] = useState("");
   const [password, SetPassword] = useState("");
   const submitHandler = (e) => {
@@ -43,26 +43,21 @@ const Form = ({ origin, dispatch, history }) => {
         let newUser = { Email: email, Password: password };
         Axios.post(`${origin}/login`, newUser)
           .then((response) => {
-            console.log({
-              refreshToken: response.data.refreshToken,
-              accessToken: response.data.accessToken,
-            });
+            console.log("login response", response.data.tokens.Name);
             if (response.data.status === "Logged in successfully") {
               localStorage.setItem(
                 "refreshToken",
                 response.data.tokens.refreshToken
               );
-              dispatch({
-                type: "Add name",
-                data: response.data.Name,
-              });
               sessionStorage.setItem(
                 "accessToken",
                 response.data.tokens.accessToken
               );
+              localStorage.setItem("userName", response.data.tokens.Name);
               history.push("/");
             } else {
-              //error sign in
+              //signin error
+              history.push("error/1");
             }
           })
           .catch((error) => {

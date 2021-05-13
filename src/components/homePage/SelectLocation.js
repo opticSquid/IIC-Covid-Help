@@ -4,7 +4,7 @@ import React from "react";
 to be made dynamic in future based on backend
 */
 
-function SelectLocation(props) {
+function SelectLocation() {
   return (
     <div className="homepage__select">
       <select>

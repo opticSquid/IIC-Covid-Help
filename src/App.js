@@ -1,21 +1,23 @@
-import React, { useEffect } from "react";
+import React, { useEffect, Suspense, lazy } from "react";
 import "./assets/styles/main.css";
-import HomePage from "./pages/HomePage";
-import Verify from "./EmailVerification/Verify";
-//import test from "./components/test";
 import { useStateContext } from "./contexts/ContextProvider";
+import checkJWT from "./components/Checkjwt";
 import {
   BrowserRouter as Router,
   Route,
   Switch,
   Redirect,
 } from "react-router-dom";
-import checkJWT from "./components/Checkjwt";
-import Login from "./signInUpPages/SignIn";
-import Signup from "./signInUpPages/SignUp";
-import AboutPage from "./pages/AboutPage";
-import Hospitals from "./components/hospitals/Hospitals";
-import EditHospital from "./pages/EditHospital";
+
+// Lazy loading the components on demand to load faster
+const HomePage = lazy(() => import("./pages/HomePage"));
+const Verify = lazy(() => import("./EmailVerification/Verify"));
+const Login = lazy(() => import("./signInUpPages/SignIn"));
+const Signup = lazy(() => import("./signInUpPages/SignUp"));
+const AboutPage = lazy(() => import("./pages/AboutPage"));
+const Hospitals = lazy(() => import("./components/hospitals/Hospitals"));
+const EditHospital = lazy(() => import("./pages/EditHospital"));
+const Error = lazy(() => import("./errorPage/error"));
 function App() {
   const [{ origin }] = useStateContext();
   useEffect(() => {
@@ -27,7 +29,7 @@ function App() {
           if (res) {
             console.log("New access token generated");
           } else {
-            console.log("New access token could not be granted");
+            console.log("Old Access token still valid");
           }
         })
         .catch((error) => {
@@ -37,20 +39,28 @@ function App() {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
   return (
-    <>
-      <Router>
+    <Router>
+      <Suspense
+        fallback={
+          //Put some loading animation here later
+          <div>
+            <h1>Loading...</h1>
+          </div>
+        }
+      >
         <Switch>
+          <Route exact path="/" component={HomePage} />
           <Route path="/about" component={AboutPage} />
           <Route path="/login" component={Login} />
           <Route path="/signup" component={Signup} />
           <Route path="/hospitals" component={Hospitals} />
           <Route path="/verify" component={Verify} />
           <Route path="/edit/:uid" component={EditHospital} />
-          <Route path="/" component={HomePage} />
+          <Route path="/error/:id" children={<Error />} />
           <Redirect to="/" />
         </Switch>
-      </Router>
-    </>
+      </Suspense>
+    </Router>
   );
 }
 
