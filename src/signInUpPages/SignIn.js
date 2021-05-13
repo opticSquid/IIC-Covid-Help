@@ -24,7 +24,11 @@ const Logo = () => {
       <section className="logoSignIn">
         <Link to="/">
           <img
-            style={{ maxWidth: "30em", paddingBottom: "4em", cursor:"pointer"}}
+            style={{
+              maxWidth: "30em",
+              paddingBottom: "4em",
+              cursor: "pointer",
+            }}
             src={logoImg}
             alt="Logo"
           />
@@ -49,7 +53,7 @@ const Form = ({ origin, history }) => {
         let newUser = { Email: email, Password: password };
         Axios.post(`${origin}/login`, newUser)
           .then((response) => {
-            console.log("login response", response.data.tokens.Name);
+            //console.log("login response", response.data.tokens.Name);
             if (response.data.status === "Logged in successfully") {
               localStorage.setItem(
                 "refreshToken",
