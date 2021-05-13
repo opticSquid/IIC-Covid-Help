@@ -8,6 +8,7 @@ import {
   Switch,
   Redirect,
 } from "react-router-dom";
+
 // Lazy loading the components on demand to load faster
 const HomePage = lazy(() => import("./pages/HomePage"));
 const Verify = lazy(() => import("./EmailVerification/Verify"));
@@ -15,6 +16,7 @@ const Login = lazy(() => import("./signInUpPages/SignIn"));
 const Signup = lazy(() => import("./signInUpPages/SignUp"));
 const AboutPage = lazy(() => import("./pages/AboutPage"));
 const Hospitals = lazy(() => import("./components/hospitals/Hospitals"));
+const EditHospital = lazy(() => import("./pages/EditHospital"));
 const Error = lazy(() => import("./errorPage/error"));
 function App() {
   const [{ origin }] = useStateContext();
@@ -53,6 +55,7 @@ function App() {
           <Route path="/signup" component={Signup} />
           <Route path="/hospitals" component={Hospitals} />
           <Route path="/verify" component={Verify} />
+          <Route path="/edit/:uid" component={EditHospital} />
           <Route path="/error/:id" children={<Error />} />
           <Redirect to="/" />
         </Switch>
