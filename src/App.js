@@ -8,6 +8,7 @@ import {
   Switch,
   Redirect,
 } from "react-router-dom";
+//import loading from "./svgs/loading.gif";
 
 // Lazy loading the components on demand to load faster
 const HomePage = lazy(() => import("./pages/HomePage"));
@@ -44,7 +45,7 @@ function App() {
         fallback={
           //Put some loading animation here later
           <div>
-            <h1>Loading...</h1>
+            <h2>Loading...</h2>
           </div>
         }
       >
