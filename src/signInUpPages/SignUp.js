@@ -6,6 +6,7 @@ import wrong from "../svgs/wrong.svg";
 import { useStateContext } from "../contexts/ContextProvider";
 import Axios from "axios";
 import "./signup.css";
+import Loading from "../components/Loading";
 
 const Signup = () => {
   const [{ origin }] = useStateContext();
@@ -41,7 +42,7 @@ const Logo = () => {
 
 const Form = ({ origin, history }) => {
   let VerifiedClass = null;
-  //const [flag,Setflag] = useState("");
+  const [IsLoading,SetIsLoading] = useState(false);
   const [verifedPassword, SetVerifiedPassword] = useState("");
   const [password, Setpassword] = useState("");
   const [name, Setname] = useState("");
@@ -75,7 +76,8 @@ const Form = ({ origin, history }) => {
             Axios.post(`${origin}/signup`, newUser)
               .then((response) => {
                 if (response.data.status === "Mail sent yet to be verified") {
-                  history.push("/verify");
+                  {IsLoading ?<Loading/>:history.push("/verify");}
+                  SetIsLoading=(true);
                 } else {
                   //signup error
                   history.push("error/0");
@@ -85,7 +87,7 @@ const Form = ({ origin, history }) => {
                 if (error) {
                   console.log("Error occoured while signing up", error);
                 }
-              });
+              }); 
           }
         }
       }
