@@ -1,6 +1,7 @@
 import React from "react";
 import { motion } from "framer-motion";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { Link } from "react-router-dom";
 import {
   faCheck,
   faPhoneAlt,
@@ -15,7 +16,6 @@ import {
 import "../../../assets/styles/card.css";
 
 function Card(props) {
-  console.log(props);
   const spring = {
     type: "spring",
     damping: 25,
@@ -128,6 +128,17 @@ function Card(props) {
       );
     }
   };
+  const editLink = `/edit/${props.data.uid}`;
+  const buildEdit = () => {
+    let refTk = localStorage.getItem("refreshToken");
+    if (refTk !== null && refTk !== undefined) {
+      return (
+        <Link to={editLink}>
+          <div className="card__EDIT">EDIT</div>
+        </Link>
+      );
+    }
+  };
 
   return (
     <motion.div
@@ -188,6 +199,7 @@ function Card(props) {
           </div>
         </div> */}
       </div>
+      {buildEdit()}
       <div className="HP__card--footer">
         <div>
           <span>

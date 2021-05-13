@@ -15,6 +15,7 @@ import Login from "./signInUpPages/SignIn";
 import Signup from "./signInUpPages/SignUp";
 import AboutPage from "./pages/AboutPage";
 import Hospitals from "./components/hospitals/Hospitals";
+import EditHospital from "./pages/EditHospital";
 function App() {
   const [{ origin }] = useStateContext();
   useEffect(() => {
@@ -44,6 +45,7 @@ function App() {
           <Route path="/signup" component={Signup} />
           <Route path="/hospitals" component={Hospitals} />
           <Route path="/verify" component={Verify} />
+          <Route path="/edit/:uid" component={EditHospital} />
           <Route path="/" component={HomePage} />
           <Redirect to="/" />
         </Switch>

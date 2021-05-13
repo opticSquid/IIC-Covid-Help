@@ -99,7 +99,7 @@ function HomePage() {
     if (localStorage.getItem("refreshToken") === null) {
       return "/login";
     } else {
-      return "/";
+      return "/login";
     }
   };
 

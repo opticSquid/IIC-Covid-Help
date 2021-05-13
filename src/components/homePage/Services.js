@@ -121,6 +121,17 @@ function Services() {
     });
   };
 
+  const noneBuilder = () => {
+    if (data?.Centres?.length === 0) {
+      return (
+        <div className="HP__noData">
+          <h4>No Data Found</h4>
+          <h5>Please enter a larger search radius.</h5>
+        </div>
+      );
+    }
+  };
+
   return (
     <>
       <div className="HPCat__selector">
@@ -153,6 +164,7 @@ function Services() {
       <h3 className="HPCat--h3">Nearby Places</h3>
       {active === 1 || active === 2 ? checkbox : ""}
       {/* {btnBuilder} */}
+      {noneBuilder()}
       <div className="HP__cards--container">{cardBuilder()}</div>
     </>
   );

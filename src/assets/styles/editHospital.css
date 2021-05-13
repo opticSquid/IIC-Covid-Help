@@ -1,0 +1,121 @@
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;700&display=swap');
+
+.EH--wrapper{
+    width: 100%;
+    /* background-color: springgreen; */
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    color: #707070;
+    align-items: center;
+    padding-top: 2rem;
+     font-family: 'Open Sans',sans-serif,"google-sans";
+    font-weight: 400;
+}
+.EH--wrapper img{
+    max-height: 80px;
+}
+
+.EH--wrapper h2{
+    padding-top: 1rem;
+    font-size: 2rem;
+    
+}
+.EH--wrapper form{
+    width: 60%;
+}
+.EH--wrapper .form{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: max-content;
+    /* justify-content: center; */
+}
+.EH--wrapper .form .EH__form--group{
+    /* border: 2px solid seagreen; */
+    margin: 3rem 0;
+}
+.EH--wrapper .form .EH__input--group{
+    /* border : 1px solid red; */
+    margin-bottom: 1rem;
+    margin-top: .5rem;
+}
+.EH--wrapper .form .EH__input--group--flex {
+    display: flex;
+    margin-bottom: 1rem;
+    margin-top: .5rem;
+}
+.EH--wrapper .form .EH__input--group--flex div{
+    width: 100%;
+}
+.EH--wrapper .form .EH__input--group--flex div:nth-child(1){
+    margin-right: .5rem;
+}
+.EH--wrapper form label{
+        font-size: 16px;
+        color: #555;
+        text-transform: capitalize;
+        display: block;
+        margin-bottom: 5px;
+    
+}
+.EH--wrapper form input,select{
+    width: 100%;
+    
+     font-size: 1.7rem; 
+     font-family: 'Open Sans', sans-serif; 
+     height: 2.8em; 
+     border: none; 
+     color: #1f1f1f; 
+     box-shadow:none;
+
+     line-height: 50px;
+     background: #fafafa;
+     -webkit-box-shadow: inset 0 1px 3px 0 rgb(0 0 0 / 8%);
+     -moz-box-shadow: inset 0 1px 3px 0 rgba(0, 0, 0, .08);
+     box-shadow: inset 0 1px 3px 0 rgb(0 0 0 / 8%);
+     -webkit-border-radius: 5px;
+     -moz-border-radius: 5px;
+     border-radius: 5px;
+     padding: 0 20px;
+     padding-left: 20px;
+     padding-right: 2px;
+     font-size: 16px;
+     color: #666;
+     -webkit-transition: all .4s ease;
+     -o-transition: all .4s ease;
+     -moz-transition: all .4s ease;
+     transition: all .4s ease;
+}
+.EH--wrapper form input:focus{
+    color: #000;
+    border: 1px solid rgba(46, 139, 86, 0.459);
+}
+
+.EH--wrapper form input[type="submit"]{
+    background-color: seagreen;
+    color: seashell;
+    margin-bottom: 3rem;
+    font-weight: 400;
+    text-transform: uppercase;
+    transition: .2s;
+}
+.EH--wrapper form input[type="submit"]:hover{
+    color: #fff;
+    background-color: rgb(35, 105, 78)
+}
+
+@media screen and (max-width: 560px) {
+    .EH--wrapper form {
+        width: 75%;
+    }
+    .EH--wrapper .form .EH__input--group--flex {
+        display: flex;
+        flex-direction: column;
+        margin-bottom: 1rem;
+        margin-top: .5rem;
+    }
+    .EH--wrapper .form .EH__input--group--flex div:nth-child(1) {
+        margin-bottom: 1rem;
+    }
+}
