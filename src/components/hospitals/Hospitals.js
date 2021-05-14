@@ -101,7 +101,39 @@ function Hospitals() {
         alert("Sorry Not available!");
       }
     }
-    //console.log("UseEffect firing");
+    dispatch({
+      type: "AddOxygen",
+      data: "",
+    });
+    dispatch({
+      type: "AddNormalBeds",
+      data: "",
+    });
+    dispatch({
+      type: "AddICUBeds",
+      data: "",
+    });
+    dispatch({
+      type: "AddDoctors",
+      data: "",
+    });
+    dispatch({
+      type: "AddVaccineAvailable",
+      data: false,
+    });
+    dispatch({
+      type: "AddVaccineName",
+      data: "",
+    });
+    dispatch({
+      type: "AddQuantity",
+      data: "",
+    });
+    dispatch({
+      type: "AddHospitalLocation",
+      data: undefined,
+    });
+    console.log("UseEffect firing");
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [show5]);
 

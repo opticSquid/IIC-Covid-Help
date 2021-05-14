@@ -23,7 +23,32 @@ function Services() {
       return "active";
     }
   };
-
+  // If location permission is denied this function will work
+  const defultonPermissionDenied = () => {
+    let locationDoc = {
+      //Setting location to point to TMSL
+      Location: {
+        type: "Point",
+        coordinates: [88.427389, 22.575944],
+      },
+      //Radius to be 50km
+      Radius: 50,
+      SortBy: sortList[active],
+    };
+    // console.log("Request that will be going: ", locationDoc);
+    axios
+      .post(`${origin}/getHealthCentres`, locationDoc)
+      .then((response) => {
+        // console.log(response);
+        dispatch({
+          type: "Update Data",
+          data: response.data,
+        });
+      })
+      .catch((error) => {
+        console.log("Error occoured while fetching data from backend", error);
+      });
+  };
   const fetchData = (pos) => {
     let crd = pos.coords;
     let locationDoc = {
@@ -73,11 +98,13 @@ function Services() {
           alert(
             "Location Permission Denied! Emable permission to detect location"
           );
+          defultonPermissionDenied();
         }
         result.onchange = function () {};
       });
     } else {
-      alert("Sorry Not available!");
+      alert("Sorry no location feature available!");
+      defultonPermissionDenied();
     }
 
     // eslint-disable-next-line react-hooks/exhaustive-deps
