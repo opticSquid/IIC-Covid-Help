@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { Fragment, useState } from "react";
 import logoImg from "../svgs/bondhu.png";
 import { Link, useHistory } from "react-router-dom";
 import { useStateContext } from "../contexts/ContextProvider";
@@ -21,27 +21,25 @@ const Signin = () => {
 
 const Logo = () => {
   return (
-    <>
-      <section className="logoSignIn">
-        <Link to="/">
-          <img
-            style={{
-              maxWidth: "30em",
-              paddingBottom: "4em",
-              cursor: "pointer",
-            }}
-            src={logoImg}
-            alt="Logo"
-          />
-        </Link>
-        <h2>Helping people connect to the emergency services</h2>
-      </section>
-    </>
+    <section className="logoSignIn">
+      <Link to="/">
+        <img
+          style={{
+            maxWidth: "30em",
+            paddingBottom: "4em",
+            cursor: "pointer",
+          }}
+          src={logoImg}
+          alt="Logo"
+        />
+      </Link>
+      <h2>Helping people connect to the emergency services</h2>
+    </section>
   );
 };
 
 const Form = ({ origin, history }) => {
-  const [IsLoading, SetIsLoading]= useState(false);
+  const [IsLoading, SetIsLoading] = useState(false);
   const [email, SetEmail] = useState("");
   const [password, SetPassword] = useState("");
   const submitHandler = (e) => {
@@ -52,9 +50,11 @@ const Form = ({ origin, history }) => {
       if (password === "") {
         alert("Please enter the password");
       } else {
+        SetIsLoading(true);
         let newUser = { Email: email, Password: password };
         Axios.post(`${origin}/login`, newUser)
           .then((response) => {
+            SetIsLoading(false);
             //console.log("login response", response.data.tokens.Name);
             if (response.data.status === "Logged in successfully") {
               localStorage.setItem(
@@ -66,8 +66,7 @@ const Form = ({ origin, history }) => {
                 response.data.tokens.accessToken
               );
               localStorage.setItem("userName", response.data.tokens.Name);
-              {IsLoading ? <Loading />: history.push("/");}
-              SetIsLoading(true);
+              history.push("/");
             } else {
               //signin error
               history.push("error/1");
@@ -83,36 +82,42 @@ const Form = ({ origin, history }) => {
   };
 
   return (
-    <form className="form">
-      <input
-        type="email"
-        onChange={(e) => SetEmail(e.target.value)}
-        className="input"
-        placeholder="Email"
-        required
-      />
-      <input
-        type="password"
-        onChange={(e) => SetPassword(e.target.value)}
-        className="input"
-        placeholder="Password"
-        required
-      />
-      <button
-        type="submit"
-        onClick={(e) => submitHandler(e)}
-        className="signin"
-      >
-        Sign In
-      </button>
-      <button className="forgetPassword">Forget Password?</button>
-      <p>
-        Don't Have an Account?{" "}
-        <Link to="/signup" className="signup">
-          Sign Up
-        </Link>
-      </p>
-    </form>
+    <Fragment>
+      {IsLoading ? (
+        <Loading />
+      ) : (
+        <form className="form">
+          <input
+            type="email"
+            onChange={(e) => SetEmail(e.target.value)}
+            className="input"
+            placeholder="Email"
+            required
+          />
+          <input
+            type="password"
+            onChange={(e) => SetPassword(e.target.value)}
+            className="input"
+            placeholder="Password"
+            required
+          />
+          <button
+            type="submit"
+            onClick={(e) => submitHandler(e)}
+            className="signin"
+          >
+            Sign In
+          </button>
+          <button className="forgetPassword">Forget Password?</button>
+          <p>
+            Don't Have an Account?{" "}
+            <Link to="/signup" className="signup">
+              Sign Up
+            </Link>
+          </p>
+        </form>
+      )}
+    </Fragment>
   );
 };
 
