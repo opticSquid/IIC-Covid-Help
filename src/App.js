@@ -8,6 +8,7 @@ import {
   Switch,
   Redirect,
 } from "react-router-dom";
+import Loading from "./components/Loading";
 //import loading from "./svgs/loading.gif";
 
 // Lazy loading the components on demand to load faster
@@ -44,9 +45,7 @@ function App() {
       <Suspense
         fallback={
           //Put some loading animation here later
-          <div>
-            <h2>Loading...</h2>
-          </div>
+          <Loading />
         }
       >
         <Switch>
