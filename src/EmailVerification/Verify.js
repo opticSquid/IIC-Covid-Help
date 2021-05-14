@@ -7,8 +7,10 @@ const Verifyemail = () => {
   return (
     <div className="verifiedBack">
       <div className="verifieddiv">
-        <h3 className="Veri">Verification Mail sent to your inbox please remember to check your spam folder also.</h3>
+        <h3 className="Veri">Verification mail sent also please remember to check your spam folder
         <img src={IsOk} alt="ok text" className="okimg"></img>
+        </h3>
+        
       </div>
       <Link to="/">Home</Link>
     </div>
