@@ -36,12 +36,21 @@ function Navigation() {
               <div />
             </div>
           </Link>
+<<<<<<< HEAD
           {/* <div onClick={() => setCount(1)} className={isActive(1)}>
             Saved
             <br />
             Places
             <div />
           </div> */}
+=======
+//           <div onClick={() => setCount(1)} className={isActive(1)}>
+//             Saved
+//             <br />
+//             Places
+//             <div />
+//           </div>
+>>>>>>> bf6d32ad9e89a24bafc4f68cda481f81ceb950c1
           <Link to="/about">
             <div onClick={() => setCount(2)} className={isActive(2)}>
               About
@@ -50,12 +59,21 @@ function Navigation() {
               <div />
             </div>
           </Link>
+<<<<<<< HEAD
           {/* <div onClick={() => setCount(3)} className={isActive(3)}>
             Contact
             <br />
             Us
             <div />
           </div> */}
+=======
+//           <div onClick={() => setCount(3)} className={isActive(3)}>
+//             Contact
+//             <br />
+//             Us
+//             <div />
+//           </div>
+>>>>>>> bf6d32ad9e89a24bafc4f68cda481f81ceb950c1
         </div>
       </nav>
       <nav className="navigation--horizontal">
