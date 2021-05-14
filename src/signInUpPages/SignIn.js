@@ -4,6 +4,7 @@ import { Link, useHistory } from "react-router-dom";
 import { useStateContext } from "../contexts/ContextProvider";
 import Axios from "axios";
 import "./signIn.css";
+import Loading from "../components/Loading";
 
 const Signin = () => {
   const [{ origin }] = useStateContext();
@@ -40,6 +41,7 @@ const Logo = () => {
 };
 
 const Form = ({ origin, history }) => {
+  const [IsLoading, SetIsLoading]= useState(false);
   const [email, SetEmail] = useState("");
   const [password, SetPassword] = useState("");
   const submitHandler = (e) => {
@@ -64,7 +66,8 @@ const Form = ({ origin, history }) => {
                 response.data.tokens.accessToken
               );
               localStorage.setItem("userName", response.data.tokens.Name);
-              history.push("/");
+              {IsLoading ? <Loading />: history.push("/");}
+              SetIsLoading(true);
             } else {
               //signin error
               history.push("error/1");
