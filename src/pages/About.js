@@ -19,9 +19,9 @@ class About extends Component {
                 idea competitions etc. Our motto is to support innovative ideas so well that it can evolve into start-ups.
                 </h2>
                 <div className="logos">
-                    <img src={Logo1}></img>
-                    <img src={Logo2}></img>
-                    <img src={Logo3}></img>
+                    <img src={Logo1} alt="logo1"></img>
+                    <img src={Logo2} alt="logo2"></img>
+                    <img src={Logo3} alt="logo3"></img>
                 </div>
             </div>
          );

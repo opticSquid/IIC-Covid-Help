@@ -1,7 +1,6 @@
 import React, { useEffect } from "react";
 import "../assets/styles/homePage.css";
 //import SelectLocation from "../components/homePage/SelectLocation";
-import Services from "../components/homePage/Services";
 import { useStateContext } from "../contexts/ContextProvider";
 import Navigation from "../components/homePage/Navigation";
 import { Link } from "react-router-dom";
