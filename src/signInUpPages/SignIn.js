@@ -67,7 +67,7 @@ const Form = ({ origin, history }) => {
               );
               localStorage.setItem("userName", response.data.tokens.Name);
               {IsLoading ? <Loading />: history.push("/");}
-              SetIsLoading=(true);
+              SetIsLoading(true);
             } else {
               //signin error
               history.push("error/1");

@@ -76,8 +76,8 @@ const Form = ({ origin, history }) => {
             Axios.post(`${origin}/signup`, newUser)
               .then((response) => {
                 if (response.data.status === "Mail sent yet to be verified") {
-                  {IsLoading ?<Loading/>:history.push("/verify");}
-                  SetIsLoading=(true);
+                  SetIsLoading(!IsLoading);
+                  {IsLoading ?<Loading />:history.push("/verify")} 
                 } else {
                   //signup error
                   history.push("error/0");
