@@ -103,10 +103,10 @@ function Hospitals() {
     }
     dispatch({
       type: "AddOxygen",
-      data: ""
+      data: "",
     });
     dispatch({
-      type:"AddNormalBeds",
+      type: "AddNormalBeds",
       data: "",
     });
     dispatch({
@@ -114,7 +114,7 @@ function Hospitals() {
       data: "",
     });
     dispatch({
-      type:  "AddDoctors",
+      type: "AddDoctors",
       data: "",
     });
     dispatch({
