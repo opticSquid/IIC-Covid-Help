@@ -16,6 +16,7 @@ function Hospitals() {
   const [show2, setShow2] = useState(false);
   const [show3, setShow3] = useState(false);
   const [show4, setShow4] = useState(false);
+  const [show5, setShow5] = useState(false);
   const [location, setLocation] = useState(false);
   const isTabletOrMobile = useMediaQuery({ query: "(max-width:750px)" });
   const [
@@ -91,21 +92,21 @@ function Hospitals() {
 
   function dropdown() {
     return (
-      <div className="resources">
+      <div className='resources'>
         <div
           style={{ cursor: "pointer" }}
-          id="cross"
+          id='cross'
           onClick={() => setShow(!show)}
         >
           <FontAwesomeIcon icon={faTimes} />
         </div>
         <ul style={{ listStyle: "none" }}>
           <li>
-            <label className="options">
+            <label className='options'>
               <div>
-                <input onClick={() => setShow1(!show1)} type="radio"></input>
+                <input onClick={() => setShow1(!show1)} type='radio'></input>
               </div>
-              <div style={{ cursor: "pointer" }} className="oxygen radio">
+              <div style={{ cursor: "pointer" }} className='oxygen radio'>
                 Oxygen
               </div>
             </label>
@@ -118,8 +119,8 @@ function Hospitals() {
                   outline: "none",
                   paddingLeft: "1em",
                 }}
-                type="number"
-                placeholder="Enter the amount of oxygen"
+                type='number'
+                placeholder='Enter the amount of oxygen'
                 onChange={(e) => {
                   dispatch({
                     type: "AddOxygen",
@@ -130,11 +131,11 @@ function Hospitals() {
             ) : null}
           </li>
           <li>
-            <label className="options">
+            <label className='options'>
               <div>
-                <input type="radio" onClick={() => setShow2(!show2)}></input>
+                <input type='radio' onClick={() => setShow2(!show2)}></input>
               </div>
-              <div style={{ cursor: "pointer" }} className="bed radio">
+              <div style={{ cursor: "pointer" }} className='bed radio'>
                 Hospital Bed
               </div>
             </label>
@@ -148,8 +149,8 @@ function Hospitals() {
                     outline: "none",
                     paddingLeft: "1em",
                   }}
-                  type="number"
-                  placeholder="Enter number of normal beds"
+                  type='number'
+                  placeholder='Enter number of normal beds'
                   onChange={(e) => {
                     dispatch({
                       type: "AddNormalBeds",
@@ -172,18 +173,18 @@ function Hospitals() {
                       data: e.target.value,
                     });
                   }}
-                  type="number"
-                  placeholder="Enter number of normal beds"
+                  type='number'
+                  placeholder='Enter number of icu beds'
                 ></input>
               </div>
             ) : null}
           </li>
           <li>
-            <label className="options">
+            <label className='options'>
               <div>
-                <input onClick={() => setShow3(!show3)} type="radio"></input>
+                <input onClick={() => setShow3(!show3)} type='radio'></input>
               </div>
-              <div style={{ cursor: "pointer" }} className="doctor radio">
+              <div style={{ cursor: "pointer" }} className='doctor radio'>
                 Doctor
               </div>
             </label>
@@ -202,17 +203,17 @@ function Hospitals() {
                     data: e.target.value,
                   });
                 }}
-                type="number"
-                placeholder="Enter number of doctors"
+                type='number'
+                placeholder='Enter number of doctors'
               ></input>
             ) : null}
           </li>
           <li>
-            <label className="options">
+            <label className='options'>
               <div>
-                <input type="radio" onClick={() => setShow4(!show4)}></input>
+                <input type='radio' onClick={() => setShow4(!show4)}></input>
               </div>
-              <div style={{ cursor: "pointer" }} className="covid19 radio">
+              <div style={{ cursor: "pointer" }} className='covid19 radio'>
                 Covid-19 Vaccine
               </div>
             </label>
@@ -226,8 +227,8 @@ function Hospitals() {
                     outline: "none",
                     paddingLeft: "1em",
                   }}
-                  type="text"
-                  placeholder="Enter the name of the vaccine"
+                  type='text'
+                  placeholder='Enter the name of the vaccine'
                   onChange={(e) => {
                     dispatch({
                       type: "AddVaccineAvailable",
@@ -248,8 +249,8 @@ function Hospitals() {
                     paddingLeft: "1em",
                     marginLeft: "1em",
                   }}
-                  type="number"
-                  placeholder="Enter the quantity of vaccine"
+                  type='number'
+                  placeholder='Enter the quantity of vaccine'
                   onChange={(e) => {
                     dispatch({
                       type: "AddVaccineAvailable",
@@ -319,89 +320,111 @@ function Hospitals() {
     }
   };
   return (
-    <div className="hospital--wrapper">
-      <div className="hospital">
-        <div className="hospital__icon">
-          <Link to="/">
+    <div className='hospital--wrapper'>
+      <div className='hospital'>
+        <div className='hospital__icon'>
+          <Link to='/'>
             <img
               style={{ maxWidth: "20em", cursor: "pointer" }}
               src={logo}
-              alt="Logo"
+              alt='Logo'
             ></img>
           </Link>
         </div>
         <h1>Add a new hostipal:</h1>
         <form>
-          <div className="information">
+          <div className='information'>
             <input
-              name="facility"
-              className="facility__name"
-              type="text"
-              placeholder="Enter Facility Name"
+              name='facility'
+              className='facility__name'
+              type='text'
+              placeholder='Enter Facility Name'
               required
               onChange={setValues}
             ></input>
             <input
-              name="phone"
-              className="phone__number"
-              type="tel"
-              placeholder=" Enter Phone Number"
-              maxLength="10"
+              name='phone'
+              className='phone__number'
+              type='tel'
+              placeholder=' Enter Phone Number'
+              maxLength='10'
               required
               onChange={setValues}
             ></input>
             <input
-              name="email"
-              className="phone__number"
-              type="email"
-              placeholder=" Enter email"
+              name='email'
+              className='email'
+              type='email'
+              placeholder=' Enter email'
               required
               onChange={setValues}
             ></input>
 
-            <div>
-              <div
-                onClick={() => setLocation(!location)}
-                id={location ? "success__button" : "location__button"}
-              >
-                <div style={{ color: location ? "black" : "white" }}>
-                  {!location ? "Detect Location" : "Location Detected"}
-                </div>
-              </div>
-              {/* {location ? locations() : null} */}
+            <div style={{ display: "flex", marginRight: "auto" }}>
+              <input
+                onClick={() => {
+                  setShow5(!show5);
+                }}
+                type='checkbox'
+              ></input>
+              <p style={{ paddingLeft: "1em" }}>Add location automatically</p>
             </div>
 
-            <div className="select__facility">
-              <div className="facility" onClick={() => setShow(!show)}>
+            {!show5 ? (
+              <input
+                name='location'
+                className='location'
+                type='text'
+                placeholder=' Enter Location(longitude,latitude)'
+                required
+                onChange={setValues}
+              ></input>
+            ) : null}
+
+            {show5 ? (
+              <div>
+                <div
+                  onClick={() => setLocation(!location)}
+                  id={location ? "success__button" : "location__button"}
+                >
+                  <div style={{ color: location ? "black" : "white" }}>
+                    {!location ? "Detect Location" : "Location Detected"}
+                  </div>
+                </div>
+              </div>
+            ) : null}
+
+            <div className='select__facility'>
+              <div className='facility' onClick={() => setShow(!show)}>
                 Select the type of Facility
               </div>
-              <div id="chevronDown" onClick={() => setShow(!show)}>
+              <div id='chevronDown' onClick={() => setShow(!show)}>
                 <FontAwesomeIcon icon={faChevronDown} />
               </div>
             </div>
             {show ? dropdown() : null}
 
-            <div className="street__location">
+            <div className='street__location'>
               <input
-                name="state"
-                id="state"
+                name='state'
+                id='state'
                 onChange={setValues}
-                type="text"
-                placeholder="State"
+                type='text'
+                placeholder='State'
               ></input>
               <input
-                name="district"
-                id="district"
-                type="text"
+                name='district'
+                id='district'
+                type='text'
                 onChange={setValues}
-                placeholder="District"
+                placeholder='District'
               ></input>
               <input
-                name="city"
-                id="city"
-                type="text"
+                name='city'
+                id='city'
+                type='text'
                 onChange={setValues}
-                placeholder="City"
+                placeholder='City'
               ></input>
             </div>
 
