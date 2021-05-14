@@ -21,22 +21,33 @@
 .Veri {
   position: relative;
   font-family: "Open Sans", sans-serif;
-  font-size: 2rem;
+  font-size: 1.5rem;
 }
 
 .okimg {
   position: relative;
   transform-origin: center;
-  transform: scale(0.8);
+  transform: scale(0.55);
+  top: 0.9rem;
 }
 
-@media screen and (max-width: 800px) {
-  .Veri {
-    left: 0.5em;
-    font-size: 1.5rem;
-  }
-  .okimg {
-    left: 0.6em;
-    transform: scale(0.6);
-  }
+@media screen and (max-width: 850px) {
+    .Veri{
+        font-size: 0.9rem;
+        font-family: "Open Sans", sans-serif;
+        text-align: center;
+        padding-inline: 1.2em;
+        
+    }
+    .okimg {
+        transform: scale(0.4);
+        top: 1.2em;
+        left: -0.4em;
+    }
+}
+
+@media screen and (max-width: 600px) {
+    .okimg{
+        display: none;
+    }
 }
