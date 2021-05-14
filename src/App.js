@@ -56,7 +56,7 @@ function App() {
           <Route path="/hospitals" component={Hospitals} />
           <Route path="/verify" component={Verify} />
           <Route path="/edit/:uid" component={EditHospital} />
-          <Route path="/error/:id" children={<Error />} />
+          <Route path="/error/:id" component={Error} />
           <Redirect to="/" />
         </Switch>
       </Suspense>
