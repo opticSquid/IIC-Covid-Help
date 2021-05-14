@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { Fragment, useState } from "react";
 import logoImg from "../svgs/bondhu.png";
 import { Link, useHistory } from "react-router-dom";
 import IsOk from "../svgs/ok.svg";
@@ -21,35 +21,32 @@ const Signup = () => {
 
 const Logo = () => {
   return (
-    <>
-      <section className="logoSignUp1">
-        <Link to="/">
-          <img
-            style={{
-              maxWidth: "30em",
-              paddingBottom: "4em",
-              cursor: "pointer",
-            }}
-            src={logoImg}
-            alt="Logo"
-          />
-        </Link>
-        <h2>Helping people connect to the emergency services</h2>
-      </section>
-    </>
+    <section className="logoSignUp1">
+      <Link to="/">
+        <img
+          style={{
+            maxWidth: "30em",
+            paddingBottom: "4em",
+            cursor: "pointer",
+          }}
+          src={logoImg}
+          alt="Logo"
+        />
+      </Link>
+      <h2>Helping people connect to the emergency services</h2>
+    </section>
   );
 };
 
 const Form = ({ origin, history }) => {
   let VerifiedClass = null;
-  const [IsLoading,SetIsLoading] = useState(false);
+  const [IsLoading, SetIsLoading] = useState(false);
   const [verifedPassword, SetVerifiedPassword] = useState("");
   const [password, Setpassword] = useState("");
   const [name, Setname] = useState("");
   const [email, Setemail] = useState("");
   const clickHandler = (e) => {
     e.preventDefault();
-
     if (name === "") {
       alert("Please Enter Your Name");
     } else {
@@ -68,6 +65,7 @@ const Form = ({ origin, history }) => {
               alert("Password should be atleast 8 characters long");
               return;
             }
+            SetIsLoading(true);
             let newUser = {
               Email: email,
               Name: name,
@@ -75,9 +73,9 @@ const Form = ({ origin, history }) => {
             };
             Axios.post(`${origin}/signup`, newUser)
               .then((response) => {
+                SetIsLoading(false);
                 if (response.data.status === "Mail sent yet to be verified") {
-                  SetIsLoading(!IsLoading);
-                  {IsLoading ?<Loading />:history.push("/verify")} 
+                  history.push("/verify");
                 } else {
                   //signup error
                   history.push("error/0");
@@ -87,7 +85,7 @@ const Form = ({ origin, history }) => {
                 if (error) {
                   console.log("Error occoured while signing up", error);
                 }
-              }); 
+              });
           }
         }
       }
@@ -104,50 +102,60 @@ const Form = ({ origin, history }) => {
   }
 
   return (
-    <form className="form1">
-      <input
-        type="text"
-        className="input1"
-        onChange={(e) => Setname(e.target.value)}
-        placeholder="Your Name"
-        required
-      ></input>
-      <input
-        type="email"
-        className="input1"
-        onChange={(e) => Setemail(e.target.value)}
-        placeholder="Email"
-        required
-      ></input>
-      <input
-        type="password"
-        className="input1"
-        onChange={(e) => Setpassword(e.target.value)}
-        placeholder="Password"
-        required
-      ></input>
-      <div className="verify">
-        <input
-          type="password"
-          className={`input1`}
-          onChange={(e) => SetVerifiedPassword(e.target.value)}
-          placeholder="Verified Password"
-          required
-        ></input>
-        <img src={VerifiedClass} className={`${VerifiedClass}`} alt="default" />
-      </div>
-      <button type="submit" className="signup1" onClick={clickHandler}>
-        Sign Up
-      </button>
-      <button className="fp">Forget Password?</button>
-      <p className="p1">
-        Already Have an Account?{" "}
-        <Link to="/login" className="signin1">
-          {" "}
-          Sign In
-        </Link>
-      </p>
-    </form>
+    <Fragment>
+      {IsLoading ? (
+        <Loading />
+      ) : (
+        <form className="form1">
+          <input
+            type="text"
+            className="input1"
+            onChange={(e) => Setname(e.target.value)}
+            placeholder="Your Name"
+            required
+          ></input>
+          <input
+            type="email"
+            className="input1"
+            onChange={(e) => Setemail(e.target.value)}
+            placeholder="Email"
+            required
+          ></input>
+          <input
+            type="password"
+            className="input1"
+            onChange={(e) => Setpassword(e.target.value)}
+            placeholder="Password"
+            required
+          ></input>
+          <div className="verify">
+            <input
+              type="password"
+              className={`input1`}
+              onChange={(e) => SetVerifiedPassword(e.target.value)}
+              placeholder="Verified Password"
+              required
+            ></input>
+            <img
+              src={VerifiedClass}
+              className={`${VerifiedClass}`}
+              alt="default"
+            />
+          </div>
+          <button type="submit" className="signup1" onClick={clickHandler}>
+            Sign Up
+          </button>
+          <button className="fp">Forget Password?</button>
+          <p className="p1">
+            Already Have an Account?{" "}
+            <Link to="/login" className="signin1">
+              {" "}
+              Sign In
+            </Link>
+          </p>
+        </form>
+      )}
+    </Fragment>
   );
 };
 
