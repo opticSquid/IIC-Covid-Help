@@ -16,6 +16,7 @@ function Hospitals() {
   const [show2, setShow2] = useState(false);
   const [show3, setShow3] = useState(false);
   const [show4, setShow4] = useState(false);
+  const [show5, setShow5] = useState(false);
   const [location, setLocation] = useState(false);
   const isTabletOrMobile = useMediaQuery({ query: "(max-width:750px)" });
   const [
@@ -43,6 +44,18 @@ function Hospitals() {
   const setValues = (event) => {
     setCentre({ ...Centre, [event.target.name]: event.target.value });
   };
+  const setMaualLocation = (e) => {
+    //console.log("Maual location");
+    let location = e.target.value.split(",");
+    let locationDoc = {
+      type: "Point",
+      coordinates: [parseFloat(location[1]), parseFloat(location[0])],
+    };
+    dispatch({
+      type: "AddHospitalLocation",
+      data: locationDoc,
+    });
+  };
   const history = useHistory();
   const success = (pos) => {
     let crd = pos.coords;
@@ -51,6 +64,7 @@ function Hospitals() {
       type: "Point",
       coordinates: [crd.longitude, crd.latitude],
     };
+    console.log(locationDoc);
     dispatch({
       type: "AddHospitalLocation",
       data: locationDoc,
@@ -63,31 +77,33 @@ function Hospitals() {
     );
   };
   useEffect(() => {
-    let options = {
-      enableHighAccuracy: true,
-      timeout: 30000,
-      maximumAge: 0,
-    };
+    if (show5 === true) {
+      let options = {
+        enableHighAccuracy: true,
+        timeout: 30000,
+        maximumAge: 0,
+      };
 
-    if (navigator.geolocation) {
-      navigator.permissions.query({ name: "geolocation" }).then((result) => {
-        if (result.state === "granted") {
-          navigator.geolocation.getCurrentPosition(success);
-        } else if (result.state === "prompt") {
-          navigator.geolocation.getCurrentPosition(success, errors, options);
-        } else if (result.state === "denied") {
-          alert(
-            "Location Permission Denied! Emable permission to detect location"
-          );
-        }
-        result.onchange = function () {};
-      });
-    } else {
-      alert("Sorry Not available!");
+      if (navigator.geolocation) {
+        navigator.permissions.query({ name: "geolocation" }).then((result) => {
+          if (result.state === "granted") {
+            navigator.geolocation.getCurrentPosition(success);
+          } else if (result.state === "prompt") {
+            navigator.geolocation.getCurrentPosition(success, errors, options);
+          } else if (result.state === "denied") {
+            alert(
+              "Location Permission Denied! Emable permission to detect location"
+            );
+          }
+          result.onchange = function () {};
+        });
+      } else {
+        alert("Sorry Not available!");
+      }
     }
-
+    //console.log("UseEffect firing");
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [location]);
+  }, [show5]);
 
   function dropdown() {
     return (
@@ -173,7 +189,7 @@ function Hospitals() {
                     });
                   }}
                   type="number"
-                  placeholder="Enter number of normal beds"
+                  placeholder="Enter number of ICU beds"
                 ></input>
               </div>
             ) : null}
@@ -295,7 +311,7 @@ function Hospitals() {
         verified: false,
       },
     };
-
+    console.log("Document to send", newCentre);
     if (localStorage.getItem("refreshToken") !== null) {
       jwtCheck(origin)
         .then(() => {
@@ -352,24 +368,46 @@ function Hospitals() {
             ></input>
             <input
               name="email"
-              className="phone__number"
+              className="email"
               type="email"
               placeholder=" Enter email"
               required
               onChange={setValues}
             ></input>
 
-            <div>
-              <div
-                onClick={() => setLocation(!location)}
-                id={location ? "success__button" : "location__button"}
-              >
-                <div style={{ color: location ? "black" : "white" }}>
-                  {!location ? "Detect Location" : "Location Detected"}
+            <div style={{ display: "flex", marginRight: "auto" }}>
+              <input
+                onClick={() => {
+                  setShow5(!show5);
+                }}
+                type="checkbox"
+              ></input>
+              <p style={{ paddingLeft: "1em" }}>Add location automatically</p>
+            </div>
+
+            {!show5 ? (
+              <input
+                name="location"
+                className="location"
+                type="text"
+                placeholder=" Enter Location(longitude,latitude)"
+                required
+                onBlur={setMaualLocation}
+              ></input>
+            ) : null}
+
+            {show5 ? (
+              <div>
+                <div
+                  onClick={() => setLocation(!location)}
+                  id={location ? "success__button" : "location__button"}
+                >
+                  <div style={{ color: location ? "black" : "white" }}>
+                    {!location ? "Detect Location" : "Location Detected"}
+                  </div>
                 </div>
               </div>
-              {/* {location ? locations() : null} */}
-            </div>
+            ) : null}
 
             <div className="select__facility">
               <div className="facility" onClick={() => setShow(!show)}>
@@ -409,6 +447,7 @@ function Hospitals() {
               className={
                 isTabletOrMobile ? "mobile__submit" : "desktop__submit"
               }
+              type="submit"
               onClick={submitHandler}
             >
               Submit

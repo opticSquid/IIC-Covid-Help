@@ -39,11 +39,13 @@
 .resources__available,
 .facility__name,
 .phone__number,
+.email,
+.location,
 #location {
   border-radius: 30px;
   border: none;
   outline: none;
-  height: 4em;
+  height: 3.8em;
   width: 38vmax;
   padding-left: 1.5em;
   box-shadow: 5px 3px 10px 5px rgba(0, 0, 0, 0.15);
