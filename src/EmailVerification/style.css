@@ -32,22 +32,21 @@
 }
 
 @media screen and (max-width: 850px) {
-    .Veri{
-        font-size: 0.9rem;
-        font-family: "Open Sans", sans-serif;
-        text-align: center;
-        padding-inline: 1.2em;
-        
-    }
-    .okimg {
-        transform: scale(0.4);
-        top: 1.2em;
-        left: -0.4em;
-    }
+  .Veri {
+    font-size: 0.9rem;
+    font-family: "Open Sans", sans-serif;
+    text-align: center;
+    padding-inline: 1.2em;
+  }
+  .okimg {
+    transform: scale(0.4);
+    top: 1.2em;
+    left: -0.4em;
+  }
 }
 
 @media screen and (max-width: 600px) {
-    .okimg{
-        display: none;
-    }
+  .okimg {
+    display: none;
+  }
 }
