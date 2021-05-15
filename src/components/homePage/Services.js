@@ -1,4 +1,4 @@
-import React, { useState, useEffect, createRef } from "react";
+import React, { useState, useEffect, createRef, Fragment } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faSearch } from "@fortawesome/free-solid-svg-icons";
 import axios from "axios";
@@ -11,7 +11,7 @@ function Services() {
   const radiusRef = createRef();
   const [radius, setRadius] = useState(5);
   const sortList = ["Oxygen", "Normal Bed", "ICU Bed", "Doctor", "Vaccine"];
-  const [Loading,setLoading] = useState(false);
+  const [isLoading, setLoading] = useState(false);
   const [{ origin, data }, dispatch] = useStateContext();
   // console.log(data?.Centres || "NO DATA");
   /* this variable sets the active selection from diffrent categories
@@ -41,6 +41,7 @@ function Services() {
       .post(`${origin}/getHealthCentres`, locationDoc)
       .then((response) => {
         // console.log(response);
+        setLoading(false);
         dispatch({
           type: "Update Data",
           data: response.data,
@@ -65,6 +66,7 @@ function Services() {
       .post(`${origin}/getHealthCentres`, locationDoc)
       .then((response) => {
         // console.log(response);
+        setLoading(false);
         dispatch({
           type: "Update Data",
           data: response.data,
@@ -75,6 +77,7 @@ function Services() {
       });
   };
   const errors = (err) => {
+    setLoading(false);
     alert(
       "Location Permission Denied! Emable permission to detect location",
       err
@@ -154,7 +157,7 @@ function Services() {
     if (data?.Centres?.length === 0) {
       return (
         <div className="HP__noData">
-          <h4>No Data Found</h4>
+          <h4>No Health Centres Found within 5 km search Radius</h4>
           <h5>Please enter a larger search radius.</h5>
         </div>
       );
@@ -162,40 +165,46 @@ function Services() {
   };
 
   return (
-    <>
-      <div className="HPCat__selector">
-        <div className={isActive(0)} onClick={() => setActive(0)}>
-          Oxygen
-        </div>
-        <div
-          className={isActive(1) || isActive(2)}
-          onClick={() => setActive(1)}
-        >
-          Hospital Beds
-        </div>
-        <div className={isActive(3)} onClick={() => setActive(3)}>
-          Doctors
-        </div>
-        <div className={isActive(4)} onClick={() => setActive(4)}>
-          Vaccine
-        </div>
-      </div>
-      <div className="HPCat__search--container">
-        <input
-          ref={radiusRef}
-          type="number"
-          placeholder="Enter Search Radius in Km"
-        />
-        <div onClick={searchControl}>
-          <FontAwesomeIcon icon={faSearch} />
-        </div>
-      </div>
-      <h3 className="HPCat--h3">Nearby Places</h3>
-      {active === 1 || active === 2 ? checkbox : ""}
-      {/* {btnBuilder} */}
-      {noneBuilder()}
-      <div className="HP__cards--container">{cardBuilder()}</div>
-    </>
+    <Fragment>
+      {isLoading ? (
+        <Loading />
+      ) : (
+        <>
+          <div className="HPCat__selector">
+            <div className={isActive(0)} onClick={() => setActive(0)}>
+              Oxygen
+            </div>
+            <div
+              className={isActive(1) || isActive(2)}
+              onClick={() => setActive(1)}
+            >
+              Hospital Beds
+            </div>
+            <div className={isActive(3)} onClick={() => setActive(3)}>
+              Doctors
+            </div>
+            <div className={isActive(4)} onClick={() => setActive(4)}>
+              Vaccine
+            </div>
+          </div>
+          <div className="HPCat__search--container">
+            <input
+              ref={radiusRef}
+              type="number"
+              placeholder="Enter Search Radius in Km"
+            />
+            <div onClick={searchControl}>
+              <FontAwesomeIcon icon={faSearch} />
+            </div>
+          </div>
+          <h3 className="HPCat--h3">Nearby Places</h3>
+          {active === 1 || active === 2 ? checkbox : ""}
+          {/* {btnBuilder} */}
+          {noneBuilder()}
+          <div className="HP__cards--container">{cardBuilder()}</div>
+        </>
+      )}
+    </Fragment>
   );
 }
 
