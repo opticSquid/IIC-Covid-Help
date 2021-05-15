@@ -79,7 +79,7 @@ function Services() {
   const errors = (err) => {
     setLoading(false);
     alert(
-      "Location Permission Denied! Emable permission to detect location",
+      "Location Permission Denied! Enable permission to detect location",
       err
     );
   };
@@ -101,7 +101,7 @@ function Services() {
           navigator.geolocation.getCurrentPosition(fetchData, errors, options);
         } else if (result.state === "denied") {
           alert(
-            "Location Permission Denied! Emable permission to detect location"
+            "Location Permission Denied! Enable permission to detect location"
           );
           defultonPermissionDenied();
         }

@@ -3,10 +3,10 @@ import "../../assets/styles/verticalNavigation.css";
 import { Link, useLocation } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
-  faCommentDots,
+  // faCommentDots,
   faHome,
   faInfoCircle,
-  faMapMarkedAlt,
+  // faMapMarkedAlt,
 } from "@fortawesome/free-solid-svg-icons";
 
 /* the vertical location bar */
@@ -59,20 +59,22 @@ function Navigation() {
         </div>
       </nav>
       <nav className="navigation--horizontal">
-        <div>
-          <FontAwesomeIcon icon={faHome} />
-        </div>
-        <div>
+        <Link to="/">
+          <div>
+            <FontAwesomeIcon icon={faHome} />
+          </div>
+        </Link>
+        {/* <div>
           <FontAwesomeIcon icon={faMapMarkedAlt} />
-        </div>
+        </div> */}
         <Link to="/about">
           <div>
             <FontAwesomeIcon icon={faInfoCircle} />
           </div>
         </Link>
-        <div>
+        {/* <div>
           <FontAwesomeIcon icon={faCommentDots} />
-        </div>
+        </div> */}
       </nav>
     </>
   );
