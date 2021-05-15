@@ -5,13 +5,73 @@
     color:rgb(48, 46, 46);
 }
 
+#about_bondhu {
+    font-family: 'Varela Round', sans-serif;
+    color:rgb(48, 46, 46);
+    margin-top:2em;
+}
+
 .logos {
     display: flex;
     justify-content: space-around;
 }
 
 .logos img {
-    width:12em;
-    height: 12em;
+    max-width:12em;
+    max-height: 12em;
     object-fit: contain;
 }
+
+.contributors {
+    display: flex;
+    justify-content: space-around;
+}
+
+.contributors img {
+    max-width:10em;
+    max-height: 10em;
+    object-fit: contain;
+    border-radius: 50%;
+    border:2px solid #5600e7;
+    object-fit: cover;
+}
+
+@media screen and (max-width:900px) {
+    #about,
+    #about_bondhu
+     {
+        font-size: 1.2rem;
+    }
+
+    .logos img{
+        max-width:10em;
+        max-height: 10em;
+    }
+
+    .contributors img {
+        max-width:6em;
+        max-height: 6em;
+    }
+
+    .name,
+    .position {
+        font-size:0.5rem;
+    }
+
+    .contributors {
+        margin-bottom:8em;
+    }
+}
+
+@media screen and (max-width:400px) {
+    .logos img{
+        max-width:6em;
+        max-height: 6em;
+    }
+
+    .contributors img {
+        max-width:4em;
+        max-height: 4em;
+    }
+}
+
