@@ -2,6 +2,7 @@ import React, { useState, useEffect, createRef } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faSearch } from "@fortawesome/free-solid-svg-icons";
 import axios from "axios";
+import Loading from "../Loading";
 import { useStateContext } from "../../contexts/ContextProvider";
 import Card from "./Cards/Card";
 
@@ -10,7 +11,7 @@ function Services() {
   const radiusRef = createRef();
   const [radius, setRadius] = useState(5);
   const sortList = ["Oxygen", "Normal Bed", "ICU Bed", "Doctor", "Vaccine"];
-
+  const [Loading,setLoading] = useState(false);
   const [{ origin, data }, dispatch] = useStateContext();
   // console.log(data?.Centres || "NO DATA");
   /* this variable sets the active selection from diffrent categories
@@ -57,6 +58,7 @@ function Services() {
 
   // useeffect to fetch data
   useEffect(() => {
+    setLoading(true);
     let options = {
       enableHighAccuracy: true,
       timeout: 30000,
