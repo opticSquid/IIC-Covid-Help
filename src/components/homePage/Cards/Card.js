@@ -3,10 +3,10 @@ import { motion } from "framer-motion";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { Link } from "react-router-dom";
 import {
-  faCheck,
+  // faCheck,
   faPhoneAlt,
   faMapMarkerAlt,
-  faStar,
+  // faStar,
   faAngleDown,
   faSyringe,
   faPumpMedical,
@@ -30,9 +30,9 @@ function Card(props) {
     else if (secdiff >= 60) return `${Math.round(secdiff / 60)} mins`;
     else return `${Math.round(secdiff)} seconds`;
   };
-  const ratingSum = props?.rating?.reduce(function (a, b) {
-    return a + b;
-  }, 0);
+  // const ratingSum = props?.rating?.reduce(function (a, b) {
+  //   return a + b;
+  // }, 0);
   // const isAvailable = props.available ? (
   //   <div className="status available">Available</div>
   // ) : (
@@ -208,18 +208,18 @@ function Card(props) {
           More Details
         </div>
 
-        <div>
+        {/* <div>
           <FontAwesomeIcon icon={faStar} color="#FFFF00" />
           <span>
             {props?.rating?.length > 0
               ? (ratingSum / props?.rating?.length).toFixed(2)
               : (5.0).toString()}
           </span>
-        </div>
+        </div> */}
 
-        <div>
+        {/* <div>
           <FontAwesomeIcon icon={faCheck} color="#fff" />
-        </div>
+        </div> */}
       </div>
     </motion.div>
   );
