@@ -1,5 +1,6 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, Fragment } from "react";
 import "./Hospitals.css";
+import Loading from "../Loading";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faChevronDown, faTimes } from "@fortawesome/free-solid-svg-icons";
 import Axios from "axios";
@@ -41,6 +42,7 @@ function Hospitals() {
     district: "",
     city: "",
   });
+  const [isLoading, setLoading] = useState(false);
   const setValues = (event) => {
     setCentre({ ...Centre, [event.target.name]: event.target.value });
   };
@@ -318,6 +320,7 @@ function Hospitals() {
   }
   const submitHandler = (e) => {
     e.preventDefault();
+    setLoading(true);
     let newCentre = {
       FacilityName: Centre.facility,
       PhoneNumber: Centre.phone,
@@ -351,143 +354,152 @@ function Hospitals() {
             headers: { accesstoken: sessionStorage.getItem("accessToken") },
           })
             .then(() => {
+              setLoading(false);
               history.push("/");
             })
             .catch((error) => {
               if (error)
-                console.log(
+                alert(
                   "Error occoured while posting new hospital details",
                   error
                 );
             });
         })
         .catch((error) => {
-          console.log("JWT check failed for new Hospitals", error);
+          console.log("Your Login Session Ended", error);
         });
     }
   };
   return (
-    <div className="hospital--wrapper">
-      <div className="hospital">
-        <div className="hospital__icon">
-          <Link to="/">
-            <img
-              style={{ maxWidth: "20em", cursor: "pointer" }}
-              src={logo}
-              alt="Logo"
-            ></img>
-          </Link>
-        </div>
-        <h1>Add a new hostipal:</h1>
-        <form>
-          <div className="information">
-            <input
-              name="facility"
-              className="facility__name"
-              type="text"
-              placeholder="Enter Facility Name"
-              required
-              onChange={setValues}
-            ></input>
-            <input
-              name="phone"
-              className="phone__number"
-              type="tel"
-              placeholder=" Enter Phone Number"
-              maxLength="10"
-              required
-              onChange={setValues}
-            ></input>
-            <input
-              name="email"
-              className="email"
-              type="email"
-              placeholder=" Enter email"
-              required
-              onChange={setValues}
-            ></input>
-
-            <div style={{ display: "flex", marginRight: "auto" }}>
-              <input
-                onClick={() => {
-                  setShow5(!show5);
-                }}
-                type="checkbox"
-              ></input>
-              <p style={{ paddingLeft: "1em" }}>Add location automatically</p>
+    <Fragment>
+      {isLoading ? (
+        <Loading />
+      ) : (
+        <div className="hospital--wrapper">
+          <div className="hospital">
+            <div className="hospital__icon">
+              <Link to="/">
+                <img
+                  style={{ maxWidth: "20em", cursor: "pointer" }}
+                  src={logo}
+                  alt="Logo"
+                ></img>
+              </Link>
             </div>
+            <h1>Add a new hostipal:</h1>
+            <form>
+              <div className="information">
+                <input
+                  name="facility"
+                  className="facility__name"
+                  type="text"
+                  placeholder="Enter Facility Name"
+                  required
+                  onChange={setValues}
+                ></input>
+                <input
+                  name="phone"
+                  className="phone__number"
+                  type="tel"
+                  placeholder=" Enter Phone Number"
+                  maxLength="10"
+                  required
+                  onChange={setValues}
+                ></input>
+                <input
+                  name="email"
+                  className="email"
+                  type="email"
+                  placeholder=" Enter email"
+                  required
+                  onChange={setValues}
+                ></input>
 
-            {!show5 ? (
-              <input
-                name="location"
-                className="location"
-                type="text"
-                placeholder=" Enter Location(longitude,latitude)"
-                required
-                onBlur={setMaualLocation}
-              ></input>
-            ) : null}
+                <div style={{ display: "flex", marginRight: "auto" }}>
+                  <input
+                    onClick={() => {
+                      setShow5(!show5);
+                    }}
+                    type="checkbox"
+                  ></input>
+                  <p style={{ paddingLeft: "1em" }}>
+                    Add location automatically
+                  </p>
+                </div>
 
-            {show5 ? (
-              <div>
-                <div
-                  onClick={() => setLocation(!location)}
-                  id={location ? "success__button" : "location__button"}
-                >
-                  <div style={{ color: location ? "black" : "white" }}>
-                    {!location ? "Detect Location" : "Location Detected"}
+                {!show5 ? (
+                  <input
+                    name="location"
+                    className="location"
+                    type="text"
+                    placeholder=" Enter Location(longitude,latitude)"
+                    required
+                    onBlur={setMaualLocation}
+                  ></input>
+                ) : null}
+
+                {show5 ? (
+                  <div>
+                    <div
+                      onClick={() => setLocation(!location)}
+                      id={location ? "success__button" : "location__button"}
+                    >
+                      <div style={{ color: location ? "black" : "white" }}>
+                        {!location ? "Detect Location" : "Location Detected"}
+                      </div>
+                    </div>
+                  </div>
+                ) : null}
+
+                <div className="select__facility">
+                  <div className="facility" onClick={() => setShow(!show)}>
+                    Select the type of Facility
+                  </div>
+                  <div id="chevronDown" onClick={() => setShow(!show)}>
+                    <FontAwesomeIcon icon={faChevronDown} />
                   </div>
                 </div>
-              </div>
-            ) : null}
+                {show ? dropdown() : null}
 
-            <div className="select__facility">
-              <div className="facility" onClick={() => setShow(!show)}>
-                Select the type of Facility
-              </div>
-              <div id="chevronDown" onClick={() => setShow(!show)}>
-                <FontAwesomeIcon icon={faChevronDown} />
-              </div>
-            </div>
-            {show ? dropdown() : null}
+                <div className="street__location">
+                  <input
+                    name="state"
+                    id="state"
+                    onChange={setValues}
+                    type="text"
+                    placeholder="State"
+                  ></input>
+                  <input
+                    name="district"
+                    id="district"
+                    type="text"
+                    onChange={setValues}
+                    placeholder="District"
+                  ></input>
+                  <input
+                    name="city"
+                    id="city"
+                    type="text"
+                    onChange={setValues}
+                    placeholder="City"
+                  ></input>
+                </div>
 
-            <div className="street__location">
-              <input
-                name="state"
-                id="state"
-                onChange={setValues}
-                type="text"
-                placeholder="State"
-              ></input>
-              <input
-                name="district"
-                id="district"
-                type="text"
-                onChange={setValues}
-                placeholder="District"
-              ></input>
-              <input
-                name="city"
-                id="city"
-                type="text"
-                onChange={setValues}
-                placeholder="City"
-              ></input>
-            </div>
-
-            <button
-              className={
-                isTabletOrMobile ? "mobile__submit" : "desktop__submit"
-              }
-              type="submit"
-              onClick={submitHandler}
-            >
-              Submit
-            </button>
+                <button
+                  className={
+                    isTabletOrMobile ? "mobile__submit" : "desktop__submit"
+                  }
+                  type="submit"
+                  onClick={submitHandler}
+                >
+                  Submit
+                </button>
+              </div>
+            </form>
           </div>
-        </form>
-      </div>
-    </div>
+        </div>
+      )}
+    </Fragment>
   );
 }
 
