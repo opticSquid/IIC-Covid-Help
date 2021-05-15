@@ -59,10 +59,10 @@ function Navigation() {
         </div>
       </nav>
       <nav className="navigation--horizontal">
-      <Link to="/">
-        <div>
-          <FontAwesomeIcon icon={faHome} />
-        </div>
+        <Link to="/">
+          <div>
+            <FontAwesomeIcon icon={faHome} />
+          </div>
         </Link>
         {/* <div>
           <FontAwesomeIcon icon={faMapMarkedAlt} />

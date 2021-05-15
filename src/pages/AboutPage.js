@@ -8,7 +8,7 @@ import axios from "axios";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPlus } from "@fortawesome/free-solid-svg-icons";
 import { useHistory } from "react-router-dom";
-import About from './About';
+import About from "./About";
 /*
 this is the hopepage component
 it acts as a wrapper to all the other components
