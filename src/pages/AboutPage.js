@@ -44,7 +44,7 @@ function HomePage() {
   };
   const errors = (err) => {
     alert(
-      "Location Permission Denied! Emable permission to detect location",
+      "Location Permission Denied! Enable permission to detect location",
       err
     );
   };
@@ -63,7 +63,7 @@ function HomePage() {
           navigator.geolocation.getCurrentPosition(fetchData, errors, options);
         } else if (result.state === "denied") {
           alert(
-            "Location Permission Denied! Emable permission to detect location"
+            "Location Permission Denied! Enable permission to detect location"
           );
         }
         result.onchange = function () {};
