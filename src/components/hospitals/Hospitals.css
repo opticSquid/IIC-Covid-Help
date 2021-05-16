@@ -149,6 +149,7 @@ select {
   font-size: 1rem;
   font-family: "Open Sans", sans-serif;
 }
+
 #district {
   width: 12vmax;
   height: 3em;
@@ -161,6 +162,7 @@ select {
   font-size: 1rem;
   font-family: "Open Sans", sans-serif;
 }
+
 #city {
   width: 12vmax;
   height: 3em;
@@ -222,4 +224,32 @@ select {
   border-radius: 20px;
   box-shadow: 5px 3px 10px 15px rgba(0, 0, 0, 0.15);
   padding: 2em 4em;
+}
+
+@media screen and (max-width:750px) {
+  .resources__available,
+  .facility__name,
+  .phone__number,
+  .email,
+  .location,
+  #location {
+    margin:0.7em 0;
+  }
+
+  .select__facility {
+    margin: 0.7em 0;
+  }
+
+  #state,#district,#city {
+    margin:0.7em 0;
+  }
+
+  .hospital--wrapper {
+    margin: 5em 0;
+  }
+
+  .mobile__submit {
+    margin:0.7em 0;
+    padding:0.7em 0;
+  }
 }

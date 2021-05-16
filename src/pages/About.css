@@ -14,6 +14,7 @@
 .logos {
     display: flex;
     justify-content: space-around;
+    padding:0 2em;
 }
 
 .logos img {
@@ -25,15 +26,22 @@
 .contributors {
     display: flex;
     justify-content: space-around;
+    flex-wrap: wrap;
+    flex:1 1 5em;
+    margin-top:2em;
+    padding-bottom:8em;
 }
 
 .contributors img {
     max-width:10em;
     max-height: 10em;
-    object-fit: contain;
     border-radius: 50%;
     border:2px solid #5600e7;
     object-fit: cover;
+}
+
+#rohit {
+    background: black;
 }
 
 @media screen and (max-width:900px) {
@@ -57,16 +65,15 @@
     .position {
         font-size:0.5rem;
     }
-
-    .contributors {
-        margin-bottom:8em;
-    }
 }
 
-@media screen and (max-width:400px) {
+@media screen and (max-width:500px) {
+    #about, #about_bondhu {
+        font-size: 1rem;
+    }
     .logos img{
-        max-width:6em;
-        max-height: 6em;
+        max-width:5em;
+        max-height: 5em;
     }
 
     .contributors img {
