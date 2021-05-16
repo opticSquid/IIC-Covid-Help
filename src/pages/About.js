@@ -51,7 +51,7 @@ class About extends Component {
             <p className="position" style={{maxWidth:"10em"}}>Backend Developer and  Database Admin</p>
           </div>
           <div style={{display:"flex", flexDirection:"column", textAlign:"center"}}>
-            <img src={Rohit} alt='pic2'></img>
+            <img id="rohit" src={Rohit} alt='pic2'></img>
             <h3 className="name">Rohit</h3>
             <p className="position" style={{maxWidth:"10em"}}>Front end Developer</p>
           </div>
