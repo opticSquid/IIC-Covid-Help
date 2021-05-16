@@ -27,7 +27,7 @@
     display: flex;
     justify-content: space-around;
     flex-wrap: wrap;
-    flex:0 0 minmax(5em, auto);
+    flex:1 1 5em;
     margin-top:2em;
     padding-bottom:8em;
 }
@@ -65,13 +65,12 @@
     .position {
         font-size:0.5rem;
     }
-
-    .contributors {
-        margin-bottom:8em;
-    }
 }
 
 @media screen and (max-width:500px) {
+    #about, #about_bondhu {
+        font-size: 1rem;
+    }
     .logos img{
         max-width:5em;
         max-height: 5em;

@@ -371,56 +371,6 @@ function Hospitals() {
     }
   };
   return (
-<<<<<<< HEAD
-    <div className="hospital--wrapper">
-      <div className="hospital">
-        <div className="hospital__icon">
-          <Link to="/">
-            <img
-              style={{ maxWidth: "15em", cursor: "pointer", objectFit:"contain" }}
-              src={logo}
-              alt="Logo"
-            ></img>
-          </Link>
-        </div>
-        <h1>Add a new hostipal:</h1>
-        <form>
-          <div className="information">
-            <input
-              name="facility"
-              className="facility__name"
-              type="text"
-              placeholder="Enter Facility Name"
-              required
-              onChange={setValues}
-            ></input>
-            <input
-              name="phone"
-              className="phone__number"
-              type="tel"
-              placeholder=" Enter Phone Number"
-              maxLength="10"
-              required
-              onChange={setValues}
-            ></input>
-            <input
-              name="email"
-              className="email"
-              type="email"
-              placeholder=" Enter email"
-              required
-              onChange={setValues}
-            ></input>
-
-            <div style={{ display: "flex", marginRight: "auto" }}>
-              <input
-                onClick={() => {
-                  setShow5(!show5);
-                }}
-                type="checkbox"
-              ></input>
-              <p style={{ paddingLeft: "1em" }}>Add location automatically</p>
-=======
     <Fragment>
       {isLoading ? (
         <Loading />
@@ -430,12 +380,11 @@ function Hospitals() {
             <div className="hospital__icon">
               <Link to="/">
                 <img
-                  style={{ maxWidth: "20em", cursor: "pointer" }}
+                  style={{ maxWidth: "15em", cursor: "pointer", objectFit:"contain" }}
                   src={logo}
                   alt="Logo"
                 ></img>
               </Link>
->>>>>>> a3e6ab04b55431ca30fa1518a9c9d7f3460c65b8
             </div>
             <h1>Add a new hostipal:</h1>
             <form>
