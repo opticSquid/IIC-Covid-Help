@@ -277,7 +277,7 @@
   color: #707070;
   font-size: 0.9rem;
   display: flex;
-  justify-content: space-between;
+  justify-content: center;
   align-items: center;
   font-weight: lighter;
 }
