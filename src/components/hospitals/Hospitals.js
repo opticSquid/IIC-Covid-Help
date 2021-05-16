@@ -380,7 +380,11 @@ function Hospitals() {
             <div className="hospital__icon">
               <Link to="/">
                 <img
-                  style={{ maxWidth: "15em", cursor: "pointer", objectFit:"contain" }}
+                  style={{
+                    maxWidth: "15em",
+                    cursor: "pointer",
+                    objectFit: "contain",
+                  }}
                   src={logo}
                   alt="Logo"
                 ></img>
