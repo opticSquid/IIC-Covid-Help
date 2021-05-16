@@ -8,7 +8,7 @@ import axios from "axios";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPlus } from "@fortawesome/free-solid-svg-icons";
 import { useHistory } from "react-router-dom";
-import About from './About';
+import About from "./About";
 /*
 this is the hopepage component
 it acts as a wrapper to all the other components
@@ -44,7 +44,7 @@ function HomePage() {
   };
   const errors = (err) => {
     alert(
-      "Location Permission Denied! Emable permission to detect location",
+      "Location Permission Denied! Enable permission to detect location",
       err
     );
   };
@@ -63,7 +63,7 @@ function HomePage() {
           navigator.geolocation.getCurrentPosition(fetchData, errors, options);
         } else if (result.state === "denied") {
           alert(
-            "Location Permission Denied! Emable permission to detect location"
+            "Location Permission Denied! Enable permission to detect location"
           );
         }
         result.onchange = function () {};

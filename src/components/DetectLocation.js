@@ -12,7 +12,7 @@ function DetectLocation() {
     location.push(locationDoc);
   };
   const errors = () => {
-    alert("Location Permission Denied! Emable permission to detect location");
+    alert("Location Permission Denied! Enable permission to detect location");
   };
   useEffect(() => {
     let options = {
@@ -29,7 +29,7 @@ function DetectLocation() {
           navigator.geolocation.getCurrentPosition(success, errors, options);
         } else if (result.state === "denied") {
           alert(
-            "Location Permission Denied! Emable permission to detect location"
+            "Location Permission Denied! Enable permission to detect location"
           );
         }
         result.onchange = function () {};
