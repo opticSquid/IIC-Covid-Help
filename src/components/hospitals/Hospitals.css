@@ -226,22 +226,24 @@ select {
   padding: 2em 4em;
 }
 
-@media screen and (max-width:750px) {
+@media screen and (max-width: 750px) {
   .resources__available,
   .facility__name,
   .phone__number,
   .email,
   .location,
   #location {
-    margin:0.7em 0;
+    margin: 0.7em 0;
   }
 
   .select__facility {
     margin: 0.7em 0;
   }
 
-  #state,#district,#city {
-    margin:0.7em 0;
+  #state,
+  #district,
+  #city {
+    margin: 0.7em 0;
   }
 
   .hospital--wrapper {
@@ -249,7 +251,7 @@ select {
   }
 
   .mobile__submit {
-    margin:0.7em 0;
-    padding:0.7em 0;
+    margin: 0.7em 0;
+    padding: 0.7em 0;
   }
 }

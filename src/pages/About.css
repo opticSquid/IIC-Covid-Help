@@ -1,84 +1,83 @@
-@import url('https://fonts.googleapis.com/css2?family=Varela+Round&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Varela+Round&display=swap");
 
 #about {
-    font-family: 'Varela Round', sans-serif;
-    color:rgb(48, 46, 46);
+  font-family: "Varela Round", sans-serif;
+  color: rgb(48, 46, 46);
 }
 
 #about_bondhu {
-    font-family: 'Varela Round', sans-serif;
-    color:rgb(48, 46, 46);
-    margin-top:2em;
+  font-family: "Varela Round", sans-serif;
+  color: rgb(48, 46, 46);
+  margin-top: 2em;
 }
 
 .logos {
-    display: flex;
-    justify-content: space-around;
-    padding:0 2em;
+  display: flex;
+  justify-content: space-around;
+  padding: 0 2em;
 }
 
 .logos img {
-    max-width:12em;
-    max-height: 12em;
-    object-fit: contain;
+  max-width: 12em;
+  max-height: 12em;
+  object-fit: contain;
 }
 
 .contributors {
-    display: flex;
-    justify-content: space-around;
-    flex-wrap: wrap;
-    flex:1 1 5em;
-    margin-top:2em;
-    padding-bottom:8em;
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap;
+  flex: 1 1 5em;
+  margin-top: 2em;
+  padding-bottom: 8em;
 }
 
 .contributors img {
-    max-width:10em;
-    max-height: 10em;
-    border-radius: 50%;
-    border:2px solid #5600e7;
-    object-fit: cover;
+  max-width: 10em;
+  max-height: 10em;
+  border-radius: 50%;
+  border: 2px solid #5600e7;
+  object-fit: cover;
 }
 
 #rohit {
-    background: black;
+  background: black;
 }
 
-@media screen and (max-width:900px) {
-    #about,
-    #about_bondhu
-     {
-        font-size: 1.2rem;
-    }
+@media screen and (max-width: 900px) {
+  #about,
+  #about_bondhu {
+    font-size: 1.2rem;
+  }
 
-    .logos img{
-        max-width:10em;
-        max-height: 10em;
-    }
+  .logos img {
+    max-width: 10em;
+    max-height: 10em;
+  }
 
-    .contributors img {
-        max-width:6em;
-        max-height: 6em;
-    }
+  .contributors img {
+    max-width: 6em;
+    max-height: 6em;
+  }
 
-    .name,
-    .position {
-        font-size:0.5rem;
-    }
+  .name,
+  .position {
+    font-size: 0.5rem;
+  }
 }
 
-@media screen and (max-width:500px) {
-    #about, #about_bondhu {
-        font-size: 1rem;
-    }
-    .logos img{
-        max-width:5em;
-        max-height: 5em;
-    }
+@media screen and (max-width: 500px) {
+  #about,
+  #about_bondhu {
+    font-size: 1rem;
+  }
+  .logos img {
+    max-width: 5em;
+    max-height: 5em;
+  }
 
-    .contributors img {
-        max-width:4em;
-        max-height: 4em;
-    }
+  .contributors img {
+    max-width: 4em;
+    max-height: 4em;
+  }
 }
-

@@ -14,8 +14,8 @@ class About extends Component {
   state = {};
   render() {
     return (
-      <div style={{ maxWidth: "70em", marginTop: "2em"}}>
-        <h2 id='about' style={{ lineHeight: "1.5em" }}>
+      <div style={{ maxWidth: "70em", marginTop: "2em" }}>
+        <h2 id="about" style={{ lineHeight: "1.5em" }}>
           About IIC Inspired by the objectives and vision of IIC, a MHRD
           initiative, we have established IIC TMSL which is the start-up support
           system of Techno Main Slatlake. This cell will be conducting various
@@ -26,7 +26,7 @@ class About extends Component {
           competitions etc. Our motto is to support innovative ideas so well
           that it can evolve into start-ups.
         </h2>
-        <h2 id='about_bondhu' style={{ lineHeight: "1.5em" }}>
+        <h2 id="about_bondhu" style={{ lineHeight: "1.5em" }}>
           myBondhu has always been by the side of people in times of need and
           emerged as a prominent social welfare tool in the recent pandemic
           situation across the city and beyond. With this new initiative,
@@ -38,42 +38,90 @@ class About extends Component {
           the social initiatives that call upon us, as duty, in these difficult
           times.
         </h2>
-        <div className='logos'>
-          <img src={Logo1} alt='logo1'></img>
-          <img src={Logo2} alt='logo2'></img>
-          <img src={Logo3} alt='logo3'></img>
+        <div className="logos">
+          <img src={Logo1} alt="logo1"></img>
+          <img src={Logo2} alt="logo2"></img>
+          <img src={Logo3} alt="logo3"></img>
         </div>
-        <h2 style={{marginBottom:"1em"}}>Contributors:</h2>
-        <div className='contributors'>
-          <div style={{display:"flex", flexDirection:"column", textAlign:"center"}}>
-            <img src={Soumalya} alt='pic1'></img>
+        <h2 style={{ marginBottom: "1em" }}>Contributors:</h2>
+        <div className="contributors">
+          <div
+            style={{
+              display: "flex",
+              flexDirection: "column",
+              textAlign: "center",
+            }}
+          >
+            <img src={Soumalya} alt="pic1"></img>
             <h3 className="name">Soumalya</h3>
-            <p className="position" style={{maxWidth:"10em"}}>Backend Developer and  Database Admin</p>
+            <p className="position" style={{ maxWidth: "10em" }}>
+              Backend Developer and Database Admin
+            </p>
           </div>
-          <div style={{display:"flex", flexDirection:"column", textAlign:"center"}}>
-            <img id="rohit" src={Rohit} alt='pic2'></img>
+          <div
+            style={{
+              display: "flex",
+              flexDirection: "column",
+              textAlign: "center",
+            }}
+          >
+            <img id="rohit" src={Rohit} alt="pic2"></img>
             <h3 className="name">Rohit</h3>
-            <p className="position" style={{maxWidth:"10em"}}>Front end Developer</p>
+            <p className="position" style={{ maxWidth: "10em" }}>
+              Front end Developer
+            </p>
           </div>
-          <div style={{display:"flex", flexDirection:"column", textAlign:"center"}}>
-            <img src={Vikas} alt='pic3'></img>
+          <div
+            style={{
+              display: "flex",
+              flexDirection: "column",
+              textAlign: "center",
+            }}
+          >
+            <img src={Vikas} alt="pic3"></img>
             <h3 className="name">Vikas</h3>
-            <p className="position" style={{maxWidth:"10em"}}>Front end Developer</p>
+            <p className="position" style={{ maxWidth: "10em" }}>
+              Front end Developer
+            </p>
           </div>
-          <div style={{display:"flex", flexDirection:"column", textAlign:"center"}}>
-            <img src={Sayan} alt='pic4'></img>
+          <div
+            style={{
+              display: "flex",
+              flexDirection: "column",
+              textAlign: "center",
+            }}
+          >
+            <img src={Sayan} alt="pic4"></img>
             <h3 className="name">Sayan</h3>
-            <p className="position" style={{maxWidth:"10em"}}>Front end Developer</p>
+            <p className="position" style={{ maxWidth: "10em" }}>
+              Front end Developer
+            </p>
           </div>
-          <div style={{display:"flex", flexDirection:"column", textAlign:"center"}}>
-            <img src={Indranil} alt='pic5'></img>
+          <div
+            style={{
+              display: "flex",
+              flexDirection: "column",
+              textAlign: "center",
+            }}
+          >
+            <img src={Indranil} alt="pic5"></img>
             <h3 className="name">Indranil</h3>
-            <p className="position" style={{maxWidth:"10em"}}>Desktop UI Designer</p>
+            <p className="position" style={{ maxWidth: "10em" }}>
+              Desktop UI Designer
+            </p>
           </div>
-          <div style={{display:"flex", flexDirection:"column", textAlign:"center"}}>
-            <img src={Payel} alt='pic6'></img>
+          <div
+            style={{
+              display: "flex",
+              flexDirection: "column",
+              textAlign: "center",
+            }}
+          >
+            <img src={Payel} alt="pic6"></img>
             <h3 className="name">Payel</h3>
-            <p className="position" style={{maxWidth:"10em"}}>Mobile UI Designer</p>
+            <p className="position" style={{ maxWidth: "10em" }}>
+              Mobile UI Designer
+            </p>
           </div>
         </div>
       </div>
