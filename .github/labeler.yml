@@ -1,21 +1,16 @@
-# This workflow will triage pull requests and apply a label based on the
-# paths that are modified in the pull request.
-#
-# To use this workflow, you will need to set up a .github/labeler.yml
-# file with configuration.  For more information, see:
-# https://github.com/actions/labeler
-
-name: Labeler
-on: [pull_request]
-
-jobs:
-  label:
-    runs-on: ubuntu-latest
-    permissions:
-      contents: read
-      pull-requests: write
-
-    steps:
-    - uses: actions/labeler@v2
-      with:
-        repo-token: "${{ secrets.LABELLER_TOKEN }}"
+# Add 'repo' label to any root file changes
+repo:
+  - ./*
+# Add assets label to any changes in the asset folder
+assets:
+- src/assets/**
+# Add app.js label to any change in app.js
+app.js:
+- any: ['src/app.js']
+# Add Dependecy Changed label to any change in package.json file
+package.json:
+- src/package.json
+# Add 'src` label to any change to *.js files as long as the `main.js` hasn't changed
+src:
+- any: ['src/**']
+# all: ['!src/main.js']
