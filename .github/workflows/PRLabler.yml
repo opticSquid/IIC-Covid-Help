@@ -7,7 +7,7 @@ jobs:
     steps:
     - uses: actions/labeler@main
       with:
-        repo-token: "${{ secrets.LABELLER_TOKEN }}"
+        repo-token: ${{ secrets.repotoken }}
   label:
     runs-on: ubuntu-latest
     permissions:
@@ -16,4 +16,4 @@ jobs:
     steps:
     - uses: actions/labeler@v2
       with:
-        repo-token: "${{ secrets.LABELLER_TOKEN }}"
+        repo-token: ${{ secrets.GITHUB_TOKEN }}
