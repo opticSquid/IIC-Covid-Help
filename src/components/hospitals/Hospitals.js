@@ -353,9 +353,23 @@ function Hospitals() {
           Axios.post(`${origin}/newHealthCentre`, newCentre, {
             headers: { accesstoken: sessionStorage.getItem("accessToken") },
           })
-            .then(() => {
+            .then((response) => {
               setLoading(false);
-              history.push("/");
+              if (response.data.status === "New Health Centre Added to DB") {
+                history.push("/");
+              } else if (
+                response.data.status ===
+                "New Health Centre could not be Added to DB"
+              ) {
+                history.push("/error/1");
+              } else if (
+                response.data.status ===
+                "An existing facility was found in this location"
+              ) {
+                history.push("/error/2");
+              } else {
+                history.push("/error/1");
+              }
             })
             .catch((error) => {
               if (error)

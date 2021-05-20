@@ -13,13 +13,37 @@ const Error = () => {
       </div>
       {id === "0" ? (
         <Link to="/signup" className="ErrorText">
-          Please try again
+          Error while Signing Up
         </Link>
       ) : (
         <Link to="/login" className="ErrorText">
-          Please try again
+          Email or Password wrong please try again
         </Link>
       )}
+      {/* {() => {
+        switch (id) {
+          case "0":
+            <Link to="/signup" className="ErrorText">
+              Error while Signing Up
+            </Link>;
+            break;
+          case "1":
+            <Link to="/hospitals" className="ErrorText">
+              New Hospital could not be addded try again
+            </Link>;
+            break;
+          case "2":
+            <Link to="/hospitals" className="ErrorText">
+              A hospital already exists in that location
+            </Link>;
+            break;
+          default:
+            <Link to="/login" className="ErrorText">
+              Email or Password wrong please try again
+            </Link>;
+            break;
+        }
+      }} */}
     </div>
   );
 };
