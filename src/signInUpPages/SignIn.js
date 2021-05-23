@@ -69,12 +69,12 @@ const Form = ({ origin, history }) => {
               history.push("/");
             } else {
               //signin error
-              history.push("error/1");
+              history.push(`error/${response.data.status}`);
             }
           })
           .catch((error) => {
             if (error) {
-              console.log("Error occoured while signing up", error);
+              console.error("Error occoured while signing in", error);
             }
           });
       }

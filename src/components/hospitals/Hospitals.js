@@ -357,18 +357,8 @@ function Hospitals() {
               setLoading(false);
               if (response.data.status === "New Health Centre Added to DB") {
                 history.push("/");
-              } else if (
-                response.data.status ===
-                "New Health Centre could not be Added to DB"
-              ) {
-                history.push("/error/1");
-              } else if (
-                response.data.status ===
-                "An existing facility was found in this location"
-              ) {
-                history.push("/error/2");
               } else {
-                history.push("/error/1");
+                history.push(`/error/${response.data.status}`);
               }
             })
             .catch((error) => {
