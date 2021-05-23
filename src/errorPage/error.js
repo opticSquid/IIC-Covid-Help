@@ -11,9 +11,9 @@ const Error = () => {
         <h1 className="ErrorHead">Error</h1>
         <img className="ErrorImg" src={wrong} alt="default text" />
       </div>
-        <Link to="/" className="ErrorText">
-          {errmsg}
-        </Link>
+      <Link to="/" className="ErrorText">
+        {errmsg}
+      </Link>
     </div>
   );
 };
