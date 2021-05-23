@@ -56,7 +56,7 @@ function App() {
           <Route path="/hospitals" component={Hospitals} />
           <Route path="/verify" component={Verify} />
           <Route path="/edit/:uid" component={EditHospital} />
-          <Route path="/error/:id" component={error} />
+          <Route path="/error/:errmsg" component={error} />
           <Redirect to="/" />
         </Switch>
       </Suspense>

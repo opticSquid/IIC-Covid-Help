@@ -78,7 +78,8 @@ const Form = ({ origin, history }) => {
                   history.push("/verify");
                 } else {
                   //signup error
-                  history.push("error/0");
+
+                  history.push(`error/${response.data.status}`);
                 }
               })
               .catch((error) => {
