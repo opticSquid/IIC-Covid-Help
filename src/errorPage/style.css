@@ -27,6 +27,11 @@
   font-family: "Open Sans", sans-serif;
 }
 
+.ErrorPara{
+    padding: 0px 2em;
+    text-align: center;
+}
+
 .ErrorText {
   color: #838383;
   font-size: 1.2rem;

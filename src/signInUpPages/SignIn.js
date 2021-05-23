@@ -55,7 +55,7 @@ const Form = ({ origin, history }) => {
         Axios.post(`${origin}/login`, newUser)
           .then((response) => {
             SetIsLoading(false);
-            //console.log("login response", response.data.tokens.Name);
+            console.log("login response", response.data.tokens.Name);
             if (response.data.status === "Logged in successfully") {
               localStorage.setItem(
                 "refreshToken",
