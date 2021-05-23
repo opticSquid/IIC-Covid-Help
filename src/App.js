@@ -54,7 +54,7 @@ function App() {
           <Route path="/login" component={Login} />
           <Route path="/signup" component={Signup} />
           <Route path="/hospitals" component={Hospitals} />
-          <Route path="/verify" component={Verify} />
+          <Route path="/verify/:vmsg" component={Verify} />
           <Route path="/edit/:uid" component={EditHospital} />
           <Route path="/error/:errmsg" component={error} />
           <Redirect to="/" />

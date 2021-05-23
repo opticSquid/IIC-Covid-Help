@@ -75,7 +75,7 @@ const Form = ({ origin, history }) => {
               .then((response) => {
                 SetIsLoading(false);
                 if (response.data.status === "Mail sent yet to be verified") {
-                  history.push("/verify");
+                  history.push(`/verify/${response.data.status}`);
                 } else {
                   //signup error
 

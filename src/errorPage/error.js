@@ -9,11 +9,10 @@ const Error = () => {
     <div className="errorBack">
       <div className="errorbox">
         <h1 className="ErrorHead">Error</h1>
-        <img className="ErrorImg" src={wrong} alt="default text" />
+        <img className="ErrorImg" src={wrong} alt="Error icon" />
       </div>
-      <Link to="/" className="ErrorText">
-        {errmsg}
-      </Link>
+      <div className="ErrorText">{errmsg}</div>
+      <Link to="/">Home</Link>
     </div>
   );
 };
