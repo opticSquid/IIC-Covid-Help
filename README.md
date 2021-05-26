@@ -32,6 +32,8 @@ The work of these and many more people made this app a possibility.
 
 ![](./images/contributors.png)
 
+### Our team really wishes the best for you and we hope that you will find the best resources in emergency so, that you don't have to lose a loved one.
+
 ## Learn More
 
 You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
