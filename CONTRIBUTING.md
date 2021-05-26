@@ -15,9 +15,11 @@
  ![Folder Structure image](https://github.com/soumalyatheking22012001/IIC-Covid-Help/blob/main/src/assets/images/Project%20Structure.png "Folder Structure image")
 
 4. Clone this repo inside the `Website` folder.
-5. Clone the server repo with this command inside the `Server` folder.
+5. Pull the server repo with this command inside the `Server` folder.
 ```bash
-git clone "https://github.com/soumalyatheking22012001/IICCovidHelpServer.git"
+git remote add origin "https://github.com/soumalyatheking22012001/IICCovidHelpServer.git"
+
+git pull origin main
 ```
 6. Come inside the `Website` folder go to `src/contexts/InitialState.js`
 7. Comment this line:
@@ -26,7 +28,7 @@ origin: "https://vast-scrubland-97353.herokuapp.com",
 ```
 8. Uncomment this line:
 ```bash
- dev_origin: "http://localhost:5000",
+ origin: "http://localhost:5000",
 ```
 9. Save Changes to the file.
 10. Install all dependencies by running the below command in both `Website` & `Server` folder.
@@ -48,6 +50,6 @@ origin: "https://vast-scrubland-97353.herokuapp.com",
 ```
 3. Comment this line:
 ```bash
- dev_origin: "http://localhost:5000",
+ origin: "http://localhost:5000",
 ```
 4. Create a pull request in `dev` branch.
