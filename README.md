@@ -1,4 +1,4 @@
-# Getting Started with Create React App
+# myBondhu Covid App
 
 [![DeepSource](https://deepsource.io/gh/soumalyatheking22012001/IIC-Covid-Help.svg/?label=active+issues&show_trend=true)](https://deepsource.io/gh/soumalyatheking22012001/IIC-Covid-Help/?ref=repository-badge)
 [![DeepSource](https://deepsource.io/gh/soumalyatheking22012001/IIC-Covid-Help.svg/?label=resolved+issues&show_trend=true)](https://deepsource.io/gh/soumalyatheking22012001/IIC-Covid-Help/?ref=repository-badge)
@@ -6,42 +6,31 @@
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
-## Available Scripts
+### _Are you tired of searching for sources of hospitals having oxygen availability or ICU beds ?_
 
-In the project directory, you can run:
+### Then you have come to the perfect place because this is the one step solution for all your searches.
 
-### `npm start`
+### Presenting you the [myBondhu App](www.mybondhu.in) where searching for covid resources is as simple as walking in the park.
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+![](./images/Homepage.png)
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+### You just have to signup with an email and signin with the same.
 
-### `npm test`
+![](./images/SignUp.png)
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+### Then just type the search radius within which you want to find the hospitals and within seconds you will get all the information you are looking for.
 
-### `npm run build`
+![](./images/hospital_info.png)
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+### If you know any location which provide with the Covid Aid resources or you are a member of a hospital using this app then you can add your resource to our portal by clicking on the `+` icon on the homepage and filling out a simple form to save people who are in need.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+![](./images/hospital.png)
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+## Contributors
 
-### `npm run eject`
+The work of these and many more people made this app a possibility.
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+![](./images/contributors.png)
 
 ## Learn More
 
