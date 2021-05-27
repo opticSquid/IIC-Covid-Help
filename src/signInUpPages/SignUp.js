@@ -7,12 +7,13 @@ import { useStateContext } from "../contexts/ContextProvider";
 import Axios from "axios";
 import "./signup.css";
 import Loading from "../components/Loading";
+// import GoogleLogin from "react-google-login";
 
 const Signup = () => {
   const [{ origin }] = useStateContext();
   const history = useHistory();
   return (
-    <div className="signUp1">
+    <div className='signUp1'>
       <Logo />
       <Form origin={origin} history={history} />
     </div>
@@ -21,8 +22,8 @@ const Signup = () => {
 
 const Logo = () => {
   return (
-    <section className="logoSignUp1">
-      <Link to="/">
+    <section className='logoSignUp1'>
+      <Link to='/'>
         <img
           style={{
             maxWidth: "30em",
@@ -30,7 +31,7 @@ const Logo = () => {
             cursor: "pointer",
           }}
           src={logoImg}
-          alt="Logo"
+          alt='Logo'
         />
       </Link>
       <h2>Helping people connect to the emergency services</h2>
@@ -105,54 +106,88 @@ const Form = ({ origin, history }) => {
     }
   }
 
+  // const responseGoogle = (res) => {
+  //   console.log(res.profileObj.name)
+  //   SetIsLoading(true);
+  //   let newUser = {
+  //     Email: res.profileObj.email,
+  //     Name: res.profileObj.name,
+  //     Password: res.profileObj.googleId,
+  //   };
+  //   Axios.post(`${origin}/signup`, newUser)
+  //     .then((response) => {
+  //       SetIsLoading(false);
+  //       if (response.data.status === "Mail sent yet to be verified") {
+  //         history.push(`/verify/${response.data.status}`);
+  //       } else {
+  //         //signup error
+
+  //         history.push(`error/${response.data.status}`);
+  //       }
+  //     })
+  //     .catch((error) => {
+  //       if (error) {
+  //         console.log("Error occoured while signing up", error);
+  //       }
+  //     });
+  // };
+
   return (
     <Fragment>
       {IsLoading ? (
         <Loading />
       ) : (
-        <form className="form1">
+        <form className='form1'>
           <input
-            type="text"
-            className="input1"
+            type='text'
+            className='input1'
             onChange={(e) => Setname(e.target.value)}
-            placeholder="Your Name"
+            placeholder='Your Name'
             required
           ></input>
           <input
-            type="email"
-            className="input1"
+            type='email'
+            className='input1'
             onChange={(e) => Setemail(e.target.value)}
-            placeholder="Email"
+            placeholder='Email'
             required
           ></input>
           <input
-            type="password"
-            className="input1"
+            type='password'
+            className='input1'
             onChange={(e) => Setpassword(e.target.value)}
-            placeholder="Password"
+            placeholder='Password'
             required
           ></input>
-          <div className="verify">
+          <div className='verify'>
             <input
-              type="password"
+              type='password'
               className={`input1`}
               onChange={(e) => SetVerifiedPassword(e.target.value)}
-              placeholder="Verified Password"
+              placeholder='Verified Password'
               required
             ></input>
             <img
               src={VerifiedClass}
               className={`${VerifiedClass}`}
-              alt="default"
+              alt='default'
             />
           </div>
-          <button type="submit" className="signup1" onClick={clickHandler}>
+          <button type='submit' className='signup1' onClick={clickHandler}>
             Sign Up
           </button>
-          <button className="fp">Forget Password?</button>
-          <p className="p1">
+          {/* <div className="google_signup">
+            <GoogleLogin
+              clientId=""
+              buttonText="Sign Up with Google"
+              onSuccess={responseGoogle}
+              onFailure={responseGoogle}
+              cookiePolicy={'single_host_origin'}
+            />
+          </div> */}
+          <p className='p1'>
             Already Have an Account?{" "}
-            <Link to="/login" className="signin1">
+            <Link to='/login' className='signin1'>
               {" "}
               Sign In
             </Link>
