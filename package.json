@@ -20,9 +20,7 @@
   },
   "scripts": {
     "start": "react-scripts start",
-    "sitemap": "babel-node src/sitemap-generator.js",
     "build": "react-scripts build",
-    "predeploy": "npm run sitemap",
     "server": "cd ../Server && npm run dev",
     "dev": "concurrently --kill-others-on-fail \"npm run server\" \"npm run start\"",
     "test": "react-scripts test",

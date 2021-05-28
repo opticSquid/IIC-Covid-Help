@@ -394,7 +394,7 @@ function Hospitals() {
                 ></img>
               </Link>
             </div>
-            <h1>Add a new hostipal:</h1>
+            <h1>Add a new hospital:</h1>
             <form>
               <div className="information">
                 <input
