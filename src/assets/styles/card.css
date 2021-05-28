@@ -1,6 +1,13 @@
 .tag {
-  display: flex;
-  align-items: center;
-  overflow-wrap: break-word;
-  word-break: break-all;
+	display: flex;
+	align-items: center;
+	overflow-wrap: break-word;
+	word-break: break-all;
+}
+
+.card_location {
+	padding-right: 0.5rem;
+	font-size: 1.6rem;
+	color: #707070;
+	font-weight: normal;
 }
