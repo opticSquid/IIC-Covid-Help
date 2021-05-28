@@ -9,6 +9,7 @@
     "axios": "^0.21.1",
     "framer-motion": "^4.1.11",
     "react": "^17.0.2",
+    "sitemap": "babel-node src/sitemap-generator.js",
     "react-dom": "^17.0.2",
     "react-helmet": "^6.1.0",
     "react-loadingg": "^1.7.2",
