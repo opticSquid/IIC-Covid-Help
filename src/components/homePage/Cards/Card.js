@@ -150,7 +150,7 @@ function Card(props) {
     >
       <div className="HP__card--header">
         <div>
-          <div className="location">{props?.data?.FacilityName}</div>
+          <div className="card_location">{props?.data?.FacilityName}</div>
         </div>
         <div className="status-wrapper">
           {isAvailable()}
