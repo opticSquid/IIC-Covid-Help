@@ -14,7 +14,7 @@ const Signin = () => {
   const history = useHistory();
   return (
     <>
-      <div className='signIn'>
+      <div className="signIn">
         <Logo />
         <Form origin={origin} history={history} />
       </div>
@@ -24,8 +24,8 @@ const Signin = () => {
 
 const Logo = () => {
   return (
-    <section className='logoSignIn'>
-      <Link to='/'>
+    <section className="logoSignIn">
+      <Link to="/">
         <img
           style={{
             maxWidth: "30em",
@@ -33,7 +33,7 @@ const Logo = () => {
             cursor: "pointer",
           }}
           src={logoImg}
-          alt='Logo'
+          alt="Logo"
         />
       </Link>
       <h2>Helping people connect to the emergency services</h2>
@@ -130,36 +130,47 @@ const Form = ({ origin, history }) => {
       {IsLoading ? (
         <Loading />
       ) : (
-        <form className='form'>
+        <form className="form">
           {/* this is the popup for the forget password */}
           {!forgetPassword ? null : (
             <div className="fp">
               <div className="fp_content">
-                <div className="fp_close" onClick={() => setForgetPassword(!forgetPassword)}><FontAwesomeIcon icon={faTimes} /></div>
-                <input className="fp_input" type='email' placeholder="Enter your email"></input>
-                <button className="fp_button" type="submit">Send</button>
+                <div
+                  className="fp_close"
+                  onClick={() => setForgetPassword(!forgetPassword)}
+                >
+                  <FontAwesomeIcon icon={faTimes} />
+                </div>
+                <input
+                  className="fp_input"
+                  type="email"
+                  placeholder="Enter your email"
+                ></input>
+                <button className="fp_button" type="submit">
+                  Send
+                </button>
               </div>
             </div>
           )}
 
           <input
-            type='email'
+            type="email"
             onChange={(e) => SetEmail(e.target.value)}
-            className='input'
-            placeholder='Email'
+            className="input"
+            placeholder="Email"
             required
           />
           <input
-            type='password'
+            type="password"
             onChange={(e) => SetPassword(e.target.value)}
-            className='input'
-            placeholder='Password'
+            className="input"
+            placeholder="Password"
             required
           />
           <button
-            type='submit'
+            type="submit"
             onClick={(e) => submitHandler(e)}
-            className='signin'
+            className="signin"
           >
             Sign In
           </button>
@@ -172,12 +183,12 @@ const Form = ({ origin, history }) => {
               cookiePolicy={"single_host_origin"}
             />
           </div> */}
-          <button className='forgetPassword' onClick={handleForgetPassword}>
+          <button className="forgetPassword" onClick={handleForgetPassword}>
             Forget Password?
           </button>
           <p>
             Don't Have an Account?{" "}
-            <Link to='/signup' className='signup'>
+            <Link to="/signup" className="signup">
               Sign Up
             </Link>
           </p>

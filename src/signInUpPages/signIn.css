@@ -122,31 +122,31 @@
   text-align: center;
 }
 
-.fp_content{
+.fp_content {
   display: flex;
   flex-direction: column;
   justify-content: space-around;
   align-items: center;
-  gap:1.2em;
+  gap: 1.2em;
 }
 
 .fp_button {
   font-family: "Open Sans", sans-serif;
   font-size: 1.5rem;
-  padding:0.3em 1.5em;
+  padding: 0.3em 1.5em;
   background-color: #5600e7;
-  color:white;
+  color: white;
   border: 1px solid white;
   cursor: pointer;
 }
 
 .fp_close {
-  z-index:8;
+  z-index: 8;
   position: absolute;
-  top:2em;
-  right:2em;
+  top: 2em;
+  right: 2em;
   font-size: 2rem;
-  color:white;
+  color: white;
   cursor: pointer;
 }
 
@@ -262,7 +262,7 @@ p {
   .fp_button {
     font-family: "Open Sans", sans-serif;
     font-size: 1.2rem;
-    padding:0.3em 1.5em;
+    padding: 0.3em 1.5em;
   }
 
   p {
