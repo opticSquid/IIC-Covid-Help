@@ -410,7 +410,8 @@ function Hospitals() {
                   className="phone__number"
                   type="tel"
                   placeholder=" Enter Phone Number"
-                  maxLength="10"
+                  maxLength="12"
+                  minLength="10"
                   required
                   onChange={setValues}
                 ></input>
