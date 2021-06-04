@@ -8,6 +8,7 @@ import Loading from "../components/Loading";
 // import GoogleLogin from "react-google-login";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faTimes } from "@fortawesome/free-solid-svg-icons";
+import axios from "axios";
 
 const Signin = () => {
   const [{ origin }] = useStateContext();
@@ -119,12 +120,30 @@ const Form = ({ origin, history }) => {
   // };
 
   const [forgetPassword, setForgetPassword] = useState(false);
-
+  const [ForgottenEmail, setForgottenEmail] = useState("");
   const handleForgetPassword = (e) => {
     e.preventDefault();
     setForgetPassword(!forgetPassword);
   };
-
+  const sendForgotPassword = (e) => {
+    e.preventDefault();
+    console.log("IN send Forgot Password");
+    let Email = ForgottenEmail;
+    axios
+      .post(`${origin}/forgotPassword`, { Email: Email })
+      .then((response) => {
+        console.log("Response of Forgot Password", response.data);
+        if(response.data.status==="If your Email exists in our records you will recieve a mail in your inbox containig the password reset link. Remember to check your spam folder")
+        {
+          setForgetPassword(!forgetPassword);
+          history.push(`/verify/${response.data.status}`);
+        }
+      })
+      .catch((error) => {
+        console.error("Could not send the request of forgot Password", error);
+        history.push("/error/Could not send the request of forgot Password");
+      });
+  };
   return (
     <Fragment>
       {IsLoading ? (
@@ -145,8 +164,14 @@ const Form = ({ origin, history }) => {
                   className="fp_input"
                   type="email"
                   placeholder="Enter your email"
-                ></input>
-                <button className="fp_button" type="submit">
+                  value={ForgottenEmail}
+                  onChange={(e) => setForgottenEmail(e.target.value)}
+                />
+                <button
+                  className="fp_button"
+                  type="submit"
+                  onClick={sendForgotPassword}
+                >
                   Send
                 </button>
               </div>
