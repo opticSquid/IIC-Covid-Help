@@ -133,8 +133,10 @@ const Form = ({ origin, history }) => {
       .post(`${origin}/forgotPassword`, { Email: Email })
       .then((response) => {
         console.log("Response of Forgot Password", response.data);
-        if(response.data.status==="If your Email exists in our records you will recieve a mail in your inbox containig the password reset link. Remember to check your spam folder")
-        {
+        if (
+          response.data.status ===
+          "If your Email exists in our records you will recieve a mail in your inbox containig the password reset link. Remember to check your spam folder"
+        ) {
           setForgetPassword(!forgetPassword);
           history.push(`/verify/${response.data.status}`);
         }
